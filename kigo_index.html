@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kigo • WhatsApp Logistics Bot by Kangwana Tech</title>
+  <meta name="description" content="Kigo is a WhatsApp logistics assistant by Kangwana Tech. Reply to customers, track deliveries, schedule drivers and get route plans straight from WhatsApp." />
+  <meta property="og:title" content="Kigo — WhatsApp Logistics Bot" />
+  <meta property="og:description" content="Reply to customers, track deliveries and schedule drivers — all in WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;           /* deep indigo */
+      --text:#eef2f8;         /* near-white */
+      --muted:#aab3c5;        /* slate */
+      --primary:#1fd09b;      /* emerald */
+      --accent:#f0b429;       /* gold */
+      --card:#121936;         /* panel */
+      --line:rgba(255,255,255,.08);
+      --radius:14px;
+      --shadow:0 18px 46px rgba(0,0,0,.38);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;line-height:1.6}
+    a{color:var(--primary);text-decoration:none}
+    .container{max-width:1120px;margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header{position:sticky;top:0;z-index:50;background:rgba(11,16,32,.7);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px}
+    .brand-mark{width:28px;height:28px;border-radius:7px;background:linear-gradient(135deg,var(--primary),#1aa87a);position:relative;box-shadow:0 6px 18px rgba(31,208,155,.35)}
+    .brand-mark:after{content:"";position:absolute;inset:5px;background:radial-gradient(circle at 60% 30%,rgba(240,180,41,.9),rgba(240,180,41,0) 60%)}
+    .brand-name{font-weight:800;letter-spacing:.2px;white-space:nowrap;word-spacing:2px}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{color:var(--text);opacity:.95;font-weight:600}
+    .cta{padding:10px 14px;border-radius:10px;background:var(--primary);color:#04151f;font-weight:800}
+    .burger{display:none;width:38px;height:38px;border:1px solid var(--line);border-radius:10px;align-items:center;justify-content:center;color:var(--text)}
+    @media (max-width:900px){.menu{display:none}.burger{display:flex}.mobile{display:none;position:absolute;left:0;right:0;top:58px;background:rgba(11,16,32,.96);border-bottom:1px solid var(--line)}.mobile a{display:block;padding:14px 20px;border-top:1px solid var(--line);color:var(--text)}}
+
+    /* Hero */
+    .hero{position:relative;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:
+      radial-gradient(1000px 520px at -10% -20%, rgba(31,208,155,.17), rgba(31,208,155,0) 60%),
+      radial-gradient(820px 480px at 120% -40%, rgba(240,180,41,.13), rgba(240,180,41,0) 60%),
+      linear-gradient(180deg, rgba(18,25,54,.7), rgba(11,16,32,.93));}
+    .pattern{position:absolute;inset:-120px -120px auto auto;opacity:.16}
+    .hero-inner{position:relative;padding:88px 0 60px}
+    .eyebrow{color:var(--accent);font-weight:800;letter-spacing:1.1px;text-transform:uppercase;font-size:12px}
+    .title{font-family:Manrope,Inter,sans-serif;font-size:46px;line-height:1.15;margin:12px 0}
+    .lead{color:var(--muted);max-width:760px}
+    .hero-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;font-weight:800;border:1px solid var(--line)}
+    .btn.primary{background:var(--primary);color:#04151f;border-color:transparent}
+    .btn.ghost{background:transparent;color:var(--text)}
+
+    .stripes{height:12px;background:repeating-linear-gradient(90deg,rgba(240,180,41,.5),rgba(240,180,41,.5) 22px,transparent 22px,transparent 44px,rgba(31,208,155,.5) 44px,rgba(31,208,155,.5) 66px,transparent 66px,transparent 88px)}
+
+    /* Sections */
+    section{padding:68px 0}
+    .section-title{font-family:Manrope,Inter,sans-serif;font-size:28px;margin:0 0 10px}
+    .section-lead{color:var(--muted);max-width:760px}
+
+    .grid{display:grid;gap:16px}
+    @media (min-width:750px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px;font-size:18px}
+    .card p{margin:0;color:var(--muted)}
+
+    .check{display:flex;align-items:flex-start;gap:10px}
+    .tick{color:var(--primary);font-weight:900}
+
+    /* CTA band */
+    .cta-band{background:linear-gradient(90deg,rgba(31,208,155,.12),rgba(240,180,41,.12));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Kigo home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">Kigo • Kangwana Tech</span>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#problems">Problems</a>
+        <a href="#features">Features</a>
+        <a href="#how">How it works</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="mailto:info@kangwanatech.me">Get Kigo</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+    <nav class="mobile" id="mobile" aria-label="Mobile"></nav>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero-bg"></div>
+    <svg class="pattern" width="540" height="540" viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <pattern id="geo" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="none" stroke="url(#grad)" stroke-width="0.7" />
+        </pattern>
+        <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#1fd09b"/>
+          <stop offset="100%" stop-color="#f0b429"/>
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" fill="url(#geo)"/>
+    </svg>
+    <div class="container hero-inner">
+      <span class="eyebrow">WhatsApp-first logistics assistant</span>
+      <h1 class="title">Kigo helps teams reply faster, track better and deliver on time</h1>
+      <p class="lead">Customers chat on WhatsApp. Kigo meets them there. Handle inquiries, quotes, tracking and driver coordination without switching tools. Built in Nairobi for African routes and realities.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:info@kangwanatech.me">Request access</a>
+        <a class="btn ghost" href="#features">See features</a>
+      </div>
+    </div>
+    <div class="stripes" aria-hidden="true"></div>
+  </main>
+
+  <section id="problems">
+    <div class="container">
+      <h2 class="section-title">Problems we solve</h2>
+      <p class="section-lead">Most logistics teams juggle phones, spreadsheets and screenshots. That creates delays, mistakes and lost revenue. Kigo brings the work into one simple chat-driven flow.</p>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="card">
+          <h3>Slow replies</h3>
+          <p>Missed messages mean lost customers. Kigo provides fast, structured replies to common questions and keeps context.</p>
+        </div>
+        <div class="card">
+          <h3>Messy tracking</h3>
+          <p>Where is the package? Kigo shares live status, ETAs and proof of delivery with customers and your team.</p>
+        </div>
+        <div class="card">
+          <h3>Manual dispatch</h3>
+          <p>Assigning trips on calls is noisy. Kigo suggests routes, batches jobs and notifies drivers in WhatsApp.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <h2 class="section-title">What Kigo does</h2>
+      <p class="section-lead">Everything runs inside WhatsApp with a light web console when you need it.</p>
+      <div class="grid cols-3" style="margin-top:14px">
+        <div class="card check"><span class="tick">✓</span><p><strong>Customer replies:</strong> pricing, delivery areas, pickup times, FAQs</p></div>
+        <div class="card check"><span class="tick">✓</span><p><strong>Order intake:</strong> collect name, address, item and payment method</p></div>
+        <div class="card check"><span class="tick">✓</span><p><strong>Tracking:</strong> share order status, live updates and proof of delivery</p></div>
+        <div class="card check"><span class="tick">✓</span><p><strong>Driver coordination:</strong> assign trips, send stop lists, capture notes/photos</p></div>
+        <div class="card check"><span class="tick">✓</span><p><strong>Routing:</strong> simple multi-stop plans for Nairobi routes and beyond</p></div>
+        <div class="card check"><span class="tick">✓</span><p><strong>Notifications:</strong> confirmations, delays and arrival alerts</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="container">
+      <h2 class="section-title">How it works</h2>
+      <p class="section-lead">Connect your WhatsApp number, set your delivery zones and templates. Kigo handles the chat and posts events to your dashboard.</p>
+      <div class="grid cols-2" style="margin-top:14px">
+        <div class="card">
+          <h3>1. Connect WhatsApp</h3>
+          <p>Use a WhatsApp Business number or a verified provider. We guide the setup and webhooks.</p>
+        </div>
+        <div class="card">
+          <h3>2. Configure flows</h3>
+          <p>Set prompts for quotes, order intake and tracking. Drop-in templates get you live fast.</p>
+        </div>
+        <div class="card">
+          <h3>3. Go live</h3>
+          <p>Share your number. Customers chat; Kigo responds and your team monitors exceptions.</p>
+        </div>
+        <div class="card">
+          <h3>4. Learn and improve</h3>
+          <p>Dashboards surface volumes, repeat questions and delivery performance so you can tune operations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-band">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:18px 0">
+      <div>
+        <h3 style="margin:0 0 6px">Ready to try Kigo?</h3>
+        <p style="margin:0;color:var(--muted)">Tell us about your routes and we’ll set up a pilot.</p>
+      </div>
+      <div>
+        <a class="btn primary" href="mailto:info@kangwanatech.me">Request a pilot</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <h2 class="section-title">Contact</h2>
+      <p class="section-lead">We reply fast.</p>
+      <div class="grid cols-2" style="margin-top:14px">
+        <div class="card">
+          <h3 style="margin-top:0">Talk to us</h3>
+          <p><strong>Email:</strong> <a href="mailto:info@kangwanatech.me">info@kangwanatech.me</a></p>
+          <p><strong>Location:</strong> Nairobi, Kenya</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">What you get</h3>
+          <ul style="margin:0;padding-left:18px;color:var(--muted)">
+            <li>Clear setup steps and owner-friendly docs</li>
+            <li>Pilot in days, not months</li>
+            <li>Source code ownership options</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap">
+      <span>© <span id="year"></span> Kangwana Tech</span>
+      <span>Built with care in Africa</span>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const mobile = document.getElementById('mobile');
+    const links = [
+      { href: '#problems', label: 'Problems' },
+      { href: '#features', label: 'Features' },
+      { href: '#how', label: 'How it works' },
+      { href: '#contact', label: 'Contact' },
+      { href: 'mailto:info@kangwanatech.me', label: 'Get Kigo', cta: true },
+    ];
+    mobile.innerHTML = links.map(l => `<a href="${l.href}" ${l.cta ? 'style="background:var(--primary);color:#04151f;font-weight:800"' : ''}>${l.label}</a>`).join('');
+    burger.addEventListener('click', ()=>{
+      const open = mobile.style.display === 'block';
+      mobile.style.display = open ? 'none' : 'block';
+      burger.setAttribute('aria-expanded', String(!open));
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
