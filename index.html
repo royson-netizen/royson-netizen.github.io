@@ -41,16 +41,36 @@
     }
     .nav{
       height:var(--navH);
-      display:flex;align-items:center;justify-content:space-between; /* Fixes jumbled text */
+      display:flex;align-items:center;justify-content:space-between;
     }
     
-    /* Brand Styling */
+    /* Brand Styling with Face Logo */
     .brand{display:flex;gap:12px;align-items:center;font-weight:700;letter-spacing:-0.5px;white-space:nowrap; text-transform: uppercase; font-size:14px;}
     .brand .logo{
-      width:32px;height:32px;border-radius:8px;
-      background:var(--accent);
+      width:40px;height:40px;border-radius:10px;
+      background:linear-gradient(135deg, var(--accent), #10b981);
       color:#0b1220;
-      display:grid;place-items:center;font-weight:900;font-size:18px;
+      display:grid;place-items:center;font-weight:900;font-size:20px;
+      position:relative;
+      overflow:hidden;
+      box-shadow: 0 0 20px rgba(23, 201, 100, 0.3);
+    }
+
+    /* Face Silhouette in Logo */
+    .logo-face {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      opacity: 0.3;
+    }
+
+    .logo-text {
+      position: relative;
+      z-index: 1;
     }
     
     /* Desktop Nav */
@@ -67,7 +87,8 @@
       background:var(--accent); color:#062b1f; font-weight:800;
       padding:10px 20px; border-radius:100px; 
       display:flex; align-items:center; gap:8px;
-      animation: breathe 2s infinite; /* The breathing effect */
+      animation: breathe 2s infinite;
+      cursor: pointer;
     }
     .cta-live:hover { color:#000; text-decoration:none; }
     .dot { width:8px; height:8px; background:#062b1f; border-radius:50%; }
@@ -99,11 +120,12 @@
     .btn{
       padding:14px 24px; border-radius:10px; border:1px solid var(--line); 
       font-weight:600; font-size:15px; cursor:pointer; display:inline-block;
+      transition: all 0.3s ease;
     }
     .btn.primary{background:var(--text); border-color:transparent; color:var(--bg);}
-    .btn.primary:hover{background:#fff;}
-    .btn.ghost{background:transparent; color:var(--text);}
-    .btn.ghost:hover{border-color:var(--text);}
+    .btn.primary:hover{background:#fff; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(0,0,0,0.3);}
+    .btn.ghost{background:transparent; color:var(--text); border-color: var(--line);}
+    .btn.ghost:hover{border-color:var(--accent); color: var(--accent);}
 
     /* Sections */
     section{padding:60px 0;border-bottom:1px solid var(--line)}
@@ -118,9 +140,14 @@
     
     .card{
       background:var(--card); border:1px solid var(--line);
-      border-radius:var(--radius); padding:24px; transition: transform 0.2s;
+      border-radius:var(--radius); padding:24px; 
+      transition: all 0.3s ease;
     }
-    .card:hover { border-color: var(--muted); }
+    .card:hover { 
+      border-color: var(--accent); 
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(23, 201, 100, 0.1);
+    }
     .card h3{margin-top:0; font-size:20px; margin-bottom:10px;}
     .muted{color:var(--muted); font-size:15px; line-height:1.5;}
     
@@ -139,13 +166,55 @@
     .form input{
       width:100%;padding:14px;border-radius:8px;border:1px solid var(--line);
       background:#0b1220;color:var(--text); font-family:inherit;
+      transition: all 0.2s ease;
     }
-    .form input:focus { outline:none; border-color:var(--accent); }
+    .form input:focus { 
+      outline:none; 
+      border-color:var(--accent); 
+      box-shadow: 0 0 0 3px rgba(23, 201, 100, 0.1);
+    }
     .result-box {
-        margin-top:16px; padding:16px; background:#0b1220; border-radius:8px; border:1px solid var(--line); display:none;
+        margin-top:16px; padding:16px; background:#050911; border-radius:8px; border:1px solid var(--line); display:none;
+    }
+    .result-box.show {
+      display: block;
+      animation: slideIn 0.3s ease;
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     footer{padding:40px 0;color:var(--muted); font-size:14px; text-align:center;}
+
+    /* Copy Button Style */
+    .copy-btn {
+      background: var(--accent);
+      color: #062b1f;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 12px;
+      transition: all 0.2s ease;
+      font-size: 13px;
+    }
+    .copy-btn:hover {
+      background: #0faa51;
+      transform: translateY(-2px);
+    }
+    .copy-btn.copied {
+      background: #fbbf24;
+      color: #000;
+    }
   </style>
 </head>
 <body>
@@ -153,7 +222,10 @@
 <header>
   <div class="container nav">
     <div class="brand">
-      <div class="logo">K</div>
+      <div class="logo">
+        <div class="logo-face">👤</div>
+        <div class="logo-text">K</div>
+      </div>
       <div>Kigo <span style="font-weight:400; opacity:0.6; text-transform:none;">by KangwanaTech</span></div>
     </div>
 
@@ -161,7 +233,7 @@
       <a href="#features">What it does</a>
       <a href="#tools">Free Tools</a>
       <a href="#logs">Dev Logs</a>
-      <a id="whatsappTop" class="cta-live" href="#">
+      <a id="whatsappTop" class="cta-live" href="https://wa.me/14155238886?text=join%20environment-bag">
         <span class="dot"></span> Kigo Live
       </a>
     </nav>
@@ -176,7 +248,7 @@
       <a href="#features" onclick="closeMenu()">What it does</a>
       <a href="#tools" onclick="closeMenu()">Free Tools</a>
       <a href="#logs" onclick="closeMenu()">Dev Logs</a>
-      <a id="whatsappTopM" style="color:var(--accent); font-weight:bold;" href="#" onclick="closeMenu()">● Connect Kigo Live</a>
+      <a id="whatsappTopM" style="color:var(--accent); font-weight:bold;" href="https://wa.me/14155238886?text=join%20environment-bag" onclick="closeMenu()">● Connect Kigo Live</a>
     </div>
   </div>
 </header>
@@ -187,7 +259,7 @@
     <p>Kigo is the smart assistant for Kenyan businesses. It answers customer questions, shares your price list, and takes order details instantly—even when you're asleep.</p>
     
     <div class="actions">
-      <a id="whatsappHero" class="btn primary" href="#">
+      <a id="whatsappHero" class="btn primary" href="https://wa.me/14155238886?text=join%20environment-bag">
         Connect to Demo
       </a>
       <a class="btn ghost" href="#tools">Use Tools</a>
@@ -207,7 +279,7 @@
     <div class="grid-3">
       <div class="card">
         <h3>⚡ Instant Replies</h3>
-        <div class="muted">Kigo answers FAQs instantly. "Where are you located?", "How much is delivery?", "Do you have stock?". Done.</div>
+        <div class="muted">Kigo answers FAQs instantly. "Mko wapi? Pin location?", "Mna size 42", "Lipa na delivery ama pay first?", "Mnatuma na Fargo ama rider", "Last price ni ngapi?" Done.</div>
       </div>
       <div class="card">
         <h3>📋 Smart Order Taking</h3>
@@ -237,7 +309,10 @@
           <button id="btnLink" class="btn primary" style="width:100%;">Get Link</button>
         </div>
 
-        <div id="linkResult" class="result-box" style="word-break:break-all; font-family:monospace; color:var(--accent);"></div>
+        <div id="linkResult" class="result-box" style="word-break:break-all; font-family:monospace; color:var(--accent);">
+          <a id="linkResultText" href="#" target="_blank" style="color: var(--accent); text-decoration: underline;"></a>
+          <button id="copyLinkBtn" class="copy-btn" onclick="copyToClipboard('linkResultText')">Copy Link</button>
+        </div>
       </div>
 
       <div class="card">
@@ -249,7 +324,7 @@
             <div><label>Distance (KM)</label><input type="number" id="dist" placeholder="10"></div>
             <div><label>Fuel (KES/L)</label><input type="number" id="fuel" value="190"></div>
           </div>
-          <button id="btnCalc" class="btn ghost" style="width:100%;">Calculate</button>
+          <button id="btnCalc" class="btn primary" style="width:100%;">Calculate</button>
         </div>
 
         <div id="calcResult" class="result-box">
@@ -291,7 +366,6 @@
 
 <script>
   // Configuration
-  // Using the Twilio Sandbox Number from your image
   const SANDBOX_NUMBER = '14155238886'; 
   const JOIN_CODE = 'join environment-bag';
   
@@ -304,7 +378,6 @@
   window.closeMenu = () => menu.classList.remove('open');
 
   // WhatsApp Connect Logic
-  // This generates the link that pre-fills the join code
   function getSandboxLink() {
     const txt = encodeURIComponent(JOIN_CODE);
     return `https://wa.me/${SANDBOX_NUMBER}?text=${txt}`;
@@ -315,10 +388,15 @@
   document.getElementById('whatsappTopM').href = getSandboxLink();
   document.getElementById('whatsappHero').href = getSandboxLink();
 
-  // Link Generator Tool
+  // Link Generator Tool - Enhanced with better UX
   document.getElementById('btnLink').addEventListener('click', function() {
     let phone = document.getElementById('waPhone').value.replace(/\s+/g, '');
     let msg = encodeURIComponent(document.getElementById('waMsg').value);
+    
+    if (!phone) {
+      alert('Please enter your phone number');
+      return;
+    }
     
     // Auto-fix Kenya format
     if(phone.startsWith('0')) phone = '254' + phone.substring(1);
@@ -327,19 +405,47 @@
     const link = `https://wa.me/${phone}?text=${msg}`;
     
     const res = document.getElementById('linkResult');
-    res.style.display = 'block';
-    res.innerHTML = `<a href="${link}" target="_blank">${link}</a>`;
+    const linkText = document.getElementById('linkResultText');
+    linkText.href = link;
+    linkText.textContent = link;
+    res.classList.add('show');
   });
 
-  // Simple Calculator
+  // Simple Calculator - Enhanced
   document.getElementById('btnCalc').addEventListener('click', function() {
     const dist = parseFloat(document.getElementById('dist').value) || 0;
     const fuel = parseFloat(document.getElementById('fuel').value) || 190;
+    
+    if (dist <= 0) {
+      alert('Please enter a valid distance');
+      return;
+    }
+    
     // Simple logic: (Distance / 30km/l * fuel) + (30bob/km rider pay)
     const cost = ((dist / 30) * fuel) + (dist * 30);
     document.getElementById('outTotal').innerText = Math.round(cost * 1.2) + " KES"; // +20% buffer
-    document.getElementById('calcResult').style.display = 'block';
+    document.getElementById('calcResult').classList.add('show');
   });
+
+  // Copy to Clipboard Function
+  window.copyToClipboard = function(elementId) {
+    const element = document.getElementById(elementId);
+    const text = element.textContent || element.href;
+    
+    navigator.clipboard.writeText(text).then(function() {
+      const btn = document.getElementById('copyLinkBtn');
+      const originalText = btn.textContent;
+      btn.textContent = '✓ Copied!';
+      btn.classList.add('copied');
+      
+      setTimeout(function() {
+        btn.textContent = originalText;
+        btn.classList.remove('copied');
+      }, 2000);
+    }).catch(function(err) {
+      console.error('Failed to copy:', err);
+    });
+  };
 </script>
 </body>
 </html>
