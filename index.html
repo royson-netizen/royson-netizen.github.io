@@ -1,250 +1,287 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KangwanaTech | AI WhatsApp Bots for Kenyan Businesses</title>
-    <style>
-        :root {
-            --bg: #0f1115;
-            --card: #181c24;
-            --text-main: #e0e6ed;
-            --text-dim: #94a3b8;
-            --accent-gold: #fbbf24;
-            --accent-green: #10b981;
-            --border: #2d3748;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            background: linear-gradient(135deg, #0f1115 0%, #1a1f2e 100%);
-            color: var(--text-main);
-            font-family: 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
-        .header {
-            text-align: center;
-            padding: 60px 20px;
-            border-bottom: 2px solid var(--accent-green);
-            margin-bottom: 40px;
-        }
-        .pulse-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(16,185,129,0.15);
-            border: 1px solid var(--accent-green);
-            padding: 10px 25px;
-            border-radius: 50px;
-            margin-bottom: 30px;
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-        .pulse-dot {
-            width: 10px;
-            height: 10px;
-            background: var(--accent-green);
-            border-radius: 50%;
-            animation: pulse-dot 2s infinite;
-        }
-        @keyframes pulse-dot {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.7); }
-            50% { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
-        }
-        h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #10b981 0%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
-        .tagline {
-            font-size: 1.3rem;
-            color: var(--text-dim);
-            margin-bottom: 40px;
-        }
-        .cta-box {
-            background: linear-gradient(135deg, rgba(16,185,129,0.1) 0%, rgba(251,191,36,0.1) 100%);
-            border: 2px solid var(--accent-green);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-        }
-        .cta-title {
-            font-size: 1.8rem;
-            color: var(--accent-gold);
-            margin-bottom: 25px;
-            font-weight: 700;
-            text-align: center;
-        }
-        .step {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-        }
-        .step-number {
-            background: var(--accent-green);
-            color: #000;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-        .code-box {
-            background: #1e293b;
-            padding: 10px 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            color: var(--accent-green);
-            display: inline-block;
-            border: 1px solid var(--border);
-            margin: 5px 0;
-        }
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-        .feature-card {
-            background: var(--card);
-            padding: 30px;
-            border-radius: 15px;
-            border: 1px solid var(--border);
-            transition: 0.3s;
-        }
-        .feature-card:hover {
-            border-color: var(--accent-green);
-            transform: translateY(-5px);
-        }
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
-        .btn {
-            display: inline-block;
-            padding: 18px 45px;
-            background: var(--accent-green);
-            color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: 0.3s;
-            margin: 10px;
-            text-align: center;
-        }
-        .btn:hover {
-            background: var(--accent-gold);
-            transform: scale(1.05);
-        }
-        .contact-info {
-            text-align: center;
-            padding: 40px 20px;
-            background: var(--card);
-            border-radius: 20px;
-            margin-top: 40px;
-        }
-        .contact-info h3 {
-            color: var(--accent-gold);
-            margin-bottom: 20px;
-        }
-        .contact-item {
-            font-size: 1.1rem;
-            margin: 10px 0;
-        }
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            .tagline { font-size: 1.1rem; }
-            .cta-box { padding: 25px; }
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kangwana Tech — African-built technology for real-world growth</title>
+  <meta name="description" content="Kangwana Tech builds useful software, clean frontends and lean systems for teams in Africa. Based in Nairobi." />
+  <meta property="og:title" content="Kangwana Tech" />
+  <meta property="og:description" content="African-built technology for real-world growth." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://kangwanatech.me/" />
+  <meta name="theme-color" content="#0b1020" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020;         /* deep indigo */
+      --text:#eaeef7;       /* near-white */
+      --muted:#aab3c5;      /* desaturated slate */
+      --primary:#2cc58d;    /* emerald */
+      --accent:#f0b429;     /* warm gold */
+      --card:#131a33;       /* panel */
+      --line:rgba(255,255,255,0.08);
+      --shadow:0 10px 30px rgba(0,0,0,0.35);
+      --radius:14px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      line-height:1.55; letter-spacing:0.2px;
+    }
+    a{color:var(--primary); text-decoration:none}
+    .container{width:100%; max-width:1160px; margin:0 auto; padding:0 20px}
+
+    /* Header */
+    header{position:sticky; top:0; z-index:50; backdrop-filter:saturate(140%) blur(10px); background:rgba(11,16,32,0.6); border-bottom:1px solid var(--line)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:16px 0}
+    .brand{display:flex; align-items:center; gap:12px; font-weight:700; letter-spacing:0.4px}
+    .brand-mark{width:28px; height:28px; border-radius:7px; background:linear-gradient(135deg, var(--primary), #1aa87a); position:relative; box-shadow:0 6px 18px rgba(44,197,141,0.35)}
+    .brand-mark:after{content:""; position:absolute; inset:4px; background:radial-gradient(circle at 70% 30%, rgba(240,180,41,0.9), rgba(240,180,41,0.0) 60%)}
+    .menu{display:flex; gap:22px; align-items:center}
+    .menu a{color:var(--text); opacity:0.9; font-weight:500}
+    .cta{padding:10px 16px; border-radius:10px; background:var(--primary); color:#0a0f1e; font-weight:700}
+    .burger{display:none; width:38px; height:38px; border:1px solid var(--line); border-radius:10px; align-items:center; justify-content:center}
+
+    @media (max-width:900px){
+      .menu{display:none}
+      .burger{display:flex}
+      .mobile{display:none; position:absolute; left:0; right:0; top:64px; background:rgba(11,16,32,0.95); border-bottom:1px solid var(--line)}
+      .mobile a{display:block; padding:14px 20px; border-top:1px solid var(--line)}
+    }
+
+    /* Hero */
+    .hero{position:relative; overflow:hidden}
+    .hero-bg{position:absolute; inset:0; background:
+      radial-gradient(1200px 600px at -10% -20%, rgba(44,197,141,0.18), rgba(44,197,141,0) 60%),
+      radial-gradient(900px 500px at 120% -40%, rgba(240,180,41,0.15), rgba(240,180,41,0) 60%),
+      linear-gradient(180deg, rgba(19,26,51,0.7), rgba(11,16,32,0.95));
+    }
+    .pattern{position:absolute; inset:-120px -120px auto auto; opacity:0.15}
+    .hero-inner{position:relative; padding:92px 0 64px}
+    .eyebrow{color:var(--accent); font-weight:700; letter-spacing:1.2px; text-transform:uppercase; font-size:12px}
+    .title{font-family:Manrope, Inter, sans-serif; font-size:48px; line-height:1.15; margin:14px 0 14px}
+    .lead{color:var(--muted); max-width:760px}
+    .hero-actions{display:flex; gap:14px; margin-top:28px; flex-wrap:wrap}
+    .btn{display:inline-flex; align-items:center; gap:8px; padding:14px 18px; border-radius:12px; font-weight:700; border:1px solid var(--line)}
+    .btn.primary{background:var(--primary); color:#0a0f1e; border-color:transparent}
+    .btn.ghost{background:transparent; color:var(--text)}
+
+    /* Stripes separator */
+    .stripes{height:12px; background: repeating-linear-gradient(90deg, rgba(240,180,41,0.5), rgba(240,180,41,0.5) 22px, transparent 22px, transparent 44px, rgba(44,197,141,0.5) 44px, rgba(44,197,141,0.5) 66px, transparent 66px, transparent 88px)}
+
+    /* Sections */
+    section{padding:70px 0}
+    .section-title{font-family:Manrope, Inter, sans-serif; font-size:28px; margin:0 0 14px}
+    .section-lead{color:var(--muted); max-width:720px}
+
+    /* Cards */
+    .grid{display:grid; gap:18px}
+    @media (min-width:720px){.grid.cols-3{grid-template-columns:repeat(3,1fr)}.grid.cols-2{grid-template-columns:repeat(2,1fr)}}
+    .card{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow)}
+    .card h3{margin:0 0 8px; font-size:18px}
+    .card p{margin:0; color:var(--muted)}
+
+    /* Case studies */
+    .case{display:flex; flex-direction:column; gap:10px}
+    .case .badge{font-size:12px; font-weight:700; color:#0a0f1e; background:var(--accent); align-self:flex-start; padding:6px 10px; border-radius:999px}
+
+    /* Process */
+    .steps{display:grid; gap:12px}
+    @media (min-width:860px){.steps{grid-template-columns:repeat(4,1fr)}}
+    .step{background:linear-gradient(180deg, rgba(240,180,41,0.08), rgba(44,197,141,0.08)); border:1px solid var(--line); padding:18px; border-radius:12px}
+    .step strong{display:block; margin-bottom:6px}
+
+    /* Contact */
+    .contact{display:grid; gap:18px}
+    @media (min-width:860px){.contact{grid-template-columns:1.2fr 1fr}}
+    .panel{background:var(--card); border:1px solid var(--line); border-radius:var(--radius); padding:20px}
+    .list{margin:0; padding:0; list-style:none}
+    .list li{padding:10px 0; border-bottom:1px solid var(--line)}
+
+    /* Footer */
+    footer{border-top:1px solid var(--line); padding:26px 0; color:var(--muted)}
+
+    /* Accessibility helpers */
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="pulse-badge">
-                <div class="pulse-dot"></div>
-                <span style="font-weight:600;">🚀 KIGO BOT LIVE NOW</span>
-            </div>
-            <h1>AI WhatsApp Bot<br>for Kenyan Businesses</h1>
-            <p class="tagline">Automate customer service • Save KES 25,000/month • Never miss a customer</p>
-        </div>
-
-        <div class="cta-box">
-            <div class="cta-title">🤖 Try Kigo Free Demo</div>
-            <div class="step">
-                <div class="step-number">1</div>
-                <div>
-                    <strong>Message on WhatsApp:</strong><br>
-                    <span class="code-box">+1 415 523 8886</span>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <div>
-                    <strong>Send activation code:</strong><br>
-                    <span class="code-box">join environment-bag</span>
-                </div>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <div>
-                    <strong>Start chatting with Kigo AI!</strong><br>
-                    Ask about routes, deliveries, pricing
-                </div>
-            </div>
-            <div style="text-align:center; margin-top:30px;">
-                <a href="https://wa.me/254724249857?text=I%20want%20a%20custom%20WhatsApp%20bot" class="btn">💼 Get Your Own Bot</a>
-            </div>
-        </div>
-
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <h3>Instant Responses</h3>
-                <p>Reply to customers 24/7 in under 3 seconds. Never miss a sale.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">🗺️</div>
-                <h3>Nairobi Routes</h3>
-                <p>Smart route planning across Nairobi, Thika, Westlands, CBD.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <h3>Package Tracking</h3>
-                <p>Real-time delivery updates via WhatsApp messages.</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">💰</div>
-                <h3>Affordable</h3>
-                <p>From KES 5,000/month. Less than one employee's salary.</p>
-            </div>
-        </div>
-
-        <div class="contact-info">
-            <h3>📞 Contact KangwanaTech</h3>
-            <div class="contact-item">📱 WhatsApp: <strong>+254-724-249-857</strong></div>
-            <div class="contact-item">📧 Email: <strong>info@kangwanatech.me</strong></div>
-            <div class="contact-item">🌐 Website: <strong>kangwanatech.me</strong></div>
-            <div class="contact-item" style="margin-top:20px; color:var(--text-dim);">
-                ⚡ Powered by AI • 🇰🇪 Built in Nairobi • ☁️ Hosted on Azure
-            </div>
-        </div>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="Kangwana Tech home">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Kangwana Tech</span>
+      </a>
+      <nav class="menu" aria-label="Primary">
+        <a href="#solutions">Solutions</a>
+        <a href="#work">Work</a>
+        <a href="#process">Approach</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="mailto:info@kangwanatech.me">Talk to us</a>
+      </nav>
+      <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 6h18M3 12h18M3 18h18"/>
+        </svg>
+      </button>
     </div>
+    <nav class="mobile" id="mobile" aria-label="Mobile"></nav>
+  </header>
+
+  <main id="home" class="hero">
+    <div class="hero-bg"></div>
+    <svg class="pattern" width="540" height="540" viewBox="0 0 200 200" aria-hidden="true">
+      <defs>
+        <pattern id="geo" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+          <path d="M0 10 L10 0 L20 10 L10 20 Z" fill="none" stroke="url(#grad)" stroke-width="0.7" />
+        </pattern>
+        <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0%" stop-color="#2cc58d"/>
+          <stop offset="100%" stop-color="#f0b429"/>
+        </linearGradient>
+      </defs>
+      <rect width="200" height="200" fill="url(#geo)"/>
+    </svg>
+    <div class="container hero-inner">
+      <span class="eyebrow">Rooted in Nairobi. Building for Africa.</span>
+      <h1 class="title">African-built technology for real-world growth</h1>
+      <p class="lead">We design and ship useful software, lean platforms and clean frontends for teams that want clarity and speed. From concept to production, our work focuses on reliability, polish and measurable results.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="mailto:info@kangwanatech.me">Start a project</a>
+        <a class="btn ghost" href="#work">See our work</a>
+      </div>
+    </div>
+    <div class="stripes" aria-hidden="true"></div>
+  </main>
+
+  <section id="solutions">
+    <div class="container">
+      <h2 class="section-title">Solutions</h2>
+      <p class="section-lead">We combine product thinking with strong engineering. Each engagement is tailored to context. The goal is simple: ship what matters and keep it maintainable.</p>
+      <div class="grid cols-3" style="margin-top:18px">
+        <div class="card">
+          <h3>Digital products</h3>
+          <p>Web and mobile apps with fast interfaces and stable backends. Solid auth, clear APIs and sensible analytics.</p>
+        </div>
+        <div class="card">
+          <h3>Cloud and DevOps</h3>
+          <p>Deployments on AWS, Azure or simple VPS. CI, containers and monitoring that fits your scale.</p>
+        </div>
+        <div class="card">
+          <h3>Data and AI</h3>
+          <p>Dashboards, enrichment, light ML and practical automation that supports decisions.</p>
+        </div>
+        <div class="card">
+          <h3>Payments and integrations</h3>
+          <p>Integrations with common providers in the region. Clean adapters, good logs and predictable flows.</p>
+        </div>
+        <div class="card">
+          <h3>Brand and frontend</h3>
+          <p>Modern, accessible interfaces. Crisp typography, thoughtful motion and responsive layouts.</p>
+        </div>
+        <div class="card">
+          <h3>Advisory</h3>
+          <p>Short sprints to review architecture, costs or product scope. Clear notes and next steps.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work">
+    <div class="container">
+      <h2 class="section-title">Selected work</h2>
+      <p class="section-lead">A sample of problems we have shaped into working software.</p>
+      <div class="grid cols-3" style="margin-top:18px">
+        <div class="card case">
+          <span class="badge">Commerce</span>
+          <h3>Ordering app for local retailers</h3>
+          <p>Lightweight catalog, basket and delivery flow with offline support. Reduced time to order and fewer stock-outs.</p>
+        </div>
+        <div class="card case">
+          <span class="badge">Finance</span>
+          <h3>Scoring prototype for micro-lending</h3>
+          <p>Data pipeline and simple models to rank applications. Clear risk views for operators.</p>
+        </div>
+        <div class="card case">
+          <span class="badge">Agri</span>
+          <h3>Supply chain dashboard</h3>
+          <p>Clean status board across collection, transport and storage. Alerts for exceptions and trends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <h2 class="section-title">Approach</h2>
+      <p class="section-lead">We keep scope honest and communication clear. Small teams, tight loops and useful releases.</p>
+      <div class="steps" style="margin-top:18px">
+        <div class="step"><strong>Discover</strong><span>Understand goals, constraints and users. Define success and cut noise.</span></div>
+        <div class="step"><strong>Design</strong><span>Flows, wireframes and interface. Pick a stack that fits the job.</span></div>
+        <div class="step"><strong>Build</strong><span>Ship in slices. Test what matters. Keep environments lean.</span></div>
+        <div class="step"><strong>Run</strong><span>Observe, improve and plan the next release with real data.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container contact">
+      <div class="panel">
+        <h2 class="section-title">Start a conversation</h2>
+        <p class="section-lead">Tell us about your idea, problem or deadline. We will respond with options you can act on.</p>
+        <ul class="list" style="margin-top:8px">
+          <li><strong>Email</strong><br><a href="mailto:info@kangwanatech.me">info@kangwanatech.me</a></li>
+          <li><strong>Location</strong><br>Nairobi, Kenya</li>
+          <li><strong>Availability</strong><br>Project work and short advisory sprints</li>
+        </ul>
+        <div style="margin-top:16px; display:flex; gap:12px; flex-wrap:wrap">
+          <a class="btn primary" href="mailto:info@kangwanatech.me">Email us</a>
+          <a class="btn ghost" href="#">Book a call</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h3 style="margin-top:0">What you can expect</h3>
+        <ul class="list">
+          <li>Clear estimates and timelines</li>
+          <li>Source code you own</li>
+          <li>Practical documentation</li>
+          <li>Migration help if needed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container" style="display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap">
+      <span>© <span id="year"></span> Kangwana Tech</span>
+      <span>Built with care in Africa</span>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu build
+    const burger = document.getElementById('burger');
+    const mobile = document.getElementById('mobile');
+    const links = [
+      { href: '#solutions', label: 'Solutions' },
+      { href: '#work', label: 'Work' },
+      { href: '#process', label: 'Approach' },
+      { href: '#contact', label: 'Contact' },
+      { href: 'mailto:info@kangwanatech.me', label: 'Talk to us', cta: true },
+    ];
+    mobile.innerHTML = links.map(l => `<a href="${l.href}" ${l.cta ? 'style="color:#0a0f1e;background:var(--primary);font-weight:700"' : ''}>${l.label}</a>`).join('');
+    burger.addEventListener('click', () => {
+      const open = mobile.style.display === 'block';
+      mobile.style.display = open ? 'none' : 'block';
+      burger.setAttribute('aria-expanded', String(!open));
+    });
+
+    // Current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
