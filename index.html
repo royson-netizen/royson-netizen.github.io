@@ -3,39 +3,40 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kigo — Street Smart Logistics for Kenya</title>
-  <meta name="description" content="Kigo is the WhatsApp bot for Kenyan retail. Powered by Gemini for smarts and Groq for speed. Handle orders, tracking, and FAQs instantly." />
-  
-  <meta property="og:title" content="Kigo — The WhatsApp Logistics Bot" />
-  <meta property="og:description" content="Move goods, cut costs, no kelele. Powered by Gemini & Groq." />
+  <title>Kigo — Smart Logistics for Kenya</title>
+  <meta name="description" content="Kigo is the WhatsApp assistant for Kenyan retailers. Handle orders, calculate rider costs, and track deliveries instantly. No extra apps needed." />
+  <meta name="format-detection" content="telephone=no" />
+
+  <meta property="og:title" content="Kigo — Smart Logistics Agent" />
+  <meta property="og:description" content="Automate your Replies and deliveries on WhatsApp. Instant quotes, rider tracking, and receipts." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://kangwanatech.me" />
 
   <style>
     :root{
-      --bg:#050911; /* Darker, deeper black/blue */
-      --card:#0f1623;
-      --line:#1e293b;
-      --text:#e2e8f0;
-      --muted:#94a3b8;
-      --accent:#22c55e; /* Vibrant Green */
-      --accent-glow: rgba(34, 197, 94, 0.2);
+      --bg:#0b1220;
+      --card:#0f1a31;
+      --line:#1f2a44;
+      --text:#e6edf3;
+      --muted:#a9b4cc;
+      --accent:#17c964; /* Sharp Green */
       --danger:#ef4444;
-      --heading: clamp(32px, 4vw, 52px);
-      --radius:16px;
-      --shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
-      --navH:70px;
+      --heading: clamp(28px, 3vw, 44px);
+      --radius:12px;
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --navH:64px;
+      --mono: 'SF Mono', 'Menlo', 'Monaco', 'Courier New', monospace;
     }
     *{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter', system-ui, -apple-system, sans-serif;scroll-behavior:smooth}
-    a{color:inherit;text-decoration:none;transition:0.2s}
-    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+    html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,'Helvetica Neue',Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
 
     /* Header / Nav */
     header{
-      position:sticky;top:0;z-index:50;
-      backdrop-filter:blur(16px);
-      background:rgba(5,9,17,0.8);
+      position:sticky;top:0;z-index:20;
+      backdrop-filter:saturate(180%) blur(10px);
+      background:rgba(11,18,32,.85);
       border-bottom:1px solid var(--line);
       height:var(--navH);
     }
@@ -43,94 +44,96 @@
       height:var(--navH);
       display:flex;align-items:center;justify-content:space-between;
     }
-    .brand{display:flex;gap:12px;align-items:center;font-weight:800;font-size:18px;letter-spacing:-0.5px;}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.5px;white-space:nowrap}
     .brand .logo{
-      width:32px;height:32px;border-radius:8px;
+      width:28px;height:28px;border-radius:6px;
       background:var(--accent);
-      color:#000;
-      display:grid;place-items:center;font-weight:900;
+      color:#0b1220;
+      display:grid;place-items:center;font-weight:900;font-size:16px;
     }
-    .nav-links{display:flex;gap:30px;font-size:14px;font-weight:500;}
-    .nav-links a:hover{color:var(--accent)}
+    .nav-links{display:flex;gap:24px;align-items:center;font-size:14px;font-weight:500;}
+    .nav-links a{opacity:.8; transition:opacity 0.2s;}
+    .nav-links a:hover{opacity:1;}
     .cta{
-      background:var(--text);color:var(--bg);font-weight:700;
-      padding:10px 18px;border-radius:100px;
-      transition:transform 0.2s;
+      background:var(--accent);color:#062b1f;font-weight:700;
+      padding:8px 16px;border-radius:6px;opacity:1 !important;
     }
-    .cta:hover{transform:scale(1.02); box-shadow: 0 0 15px var(--accent-glow);}
+
+    /* Mobile menu */
+    .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0;}
+    .burger span{width:24px;height:2px;background:#cbd5e1;border-radius:2px}
+    @media (max-width: 860px){
+      .nav-links{display:none}
+      .burger{display:flex}
+      .mobile-menu{
+        display:none;position:absolute;top:var(--navH);left:0;right:0;background:var(--bg);
+        border-bottom:1px solid var(--line); box-shadow:0 10px 20px rgba(0,0,0,0.5);
+      }
+      .mobile-menu.open{display:block}
+      .mobile-menu .inner{padding:10px 20px;display:flex;flex-direction:column;gap:10px}
+      .mobile-menu a{padding:12px 0; border-bottom:1px solid var(--line); font-size:15px;}
+    }
 
     /* Hero */
     .hero{
-      position:relative;
-      padding:80px 0 60px 0;
-      border-bottom:1px solid var(--line);
-      overflow:hidden;
+      background:
+        radial-gradient(1000px 500px at 50% -20%, rgba(23,201,100,.08), transparent 70%);
+      padding:64px 0 40px 0;border-bottom:1px solid var(--line);
     }
-    /* "Street" vibe glow */
-    .hero::before {
-        content:'';position:absolute;top:-50%;left:50%;transform:translate(-50%,0);
-        width:600px;height:600px;background:radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-        z-index:-1;pointer-events:none;
-    }
-    .hero h1{font-size:var(--heading);line-height:1.05;letter-spacing:-1px;margin:0 0 16px; background:linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
-    .hero p{max-width:600px;color:var(--muted);font-size:18px;line-height:1.6;margin:0 0 32px}
-    
-    .actions{display:flex;gap:16px;flex-wrap:wrap;}
-    .btn{
-        padding:14px 24px;border-radius:12px;font-weight:600;font-size:15px;
-        display:inline-flex;align-items:center;gap:8px;cursor:pointer;
-        transition:all 0.2s;
-    }
-    .btn.primary{background:var(--accent);color:#022c22;border:none;}
-    .btn.primary:hover{background:#4ade80; box-shadow:0 0 20px var(--accent-glow);}
-    .btn.ghost{background:rgba(255,255,255,0.05);color:var(--text);border:1px solid var(--line);}
-    .btn.ghost:hover{background:rgba(255,255,255,0.1);border-color:var(--text);}
-    
-    /* Tech Specs Section */
-    .tech-pill {
-        display:inline-block; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1px;
-        padding:4px 8px; border-radius:4px; margin-bottom:8px;
-    }
-    .tp-gemini { background: #3b82f6; color:white; box-shadow:0 0 10px rgba(59,130,246,0.4); }
-    .tp-groq { background: #f97316; color:white; box-shadow:0 0 10px rgba(249,115,22,0.4); }
+    .hero h1{font-size:var(--heading);line-height:1.15;margin:0 0 16px; letter-spacing:-0.02em;}
+    .hero p{max-width:700px;color:var(--muted);margin:0 0 24px; font-size:18px; line-height:1.6;}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;}
+    .btn{padding:12px 20px;border-radius:8px;border:1px solid var(--line); font-weight:600; font-size:15px; cursor:pointer;}
+    .btn.primary{background:var(--accent);border-color:transparent;color:#062b1f;}
+    .btn.ghost{background:rgba(255,255,255,0.03);color:var(--text);}
+    .btn:hover{transform:translateY(-1px);}
 
     /* Sections */
-    section{padding:60px 0;border-bottom:1px solid var(--line)}
-    h2{font-size:32px;margin:0 0 12px;letter-spacing:-0.5px;}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
-    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+    section{padding:56px 0;border-bottom:1px solid var(--line)}
+    h2{font-size:28px;margin:0 0 12px;}
+    .section-intro { max-width:600px; color:var(--muted); margin-bottom:32px; font-size:16px; line-height:1.5; }
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+    @media (max-width: 900px){
+      .grid-3,.grid-2{grid-template-columns:1fr}
+    }
     
     .card{
       background:var(--card);border:1px solid var(--line);
-      border-radius:var(--radius);padding:24px;
-      transition:transform 0.2s;
+      border-radius:var(--radius);padding:20px;
     }
-    .card:hover{border-color:var(--muted);}
-    .card h3 {margin-top:0; font-size:18px;}
+    .card h3{margin-top:0; font-size:18px;}
+    .muted{color:var(--muted)}
     
-    /* Form Elements */
-    input, textarea, select {
-        width:100%; background:#050911; border:1px solid var(--line);
-        color:white; padding:12px; border-radius:8px; margin-top:6px; font-family:inherit;
-        transition:border 0.2s;
+    /* Notes Section (Terminal Style) */
+    .dev-log {
+        font-family: var(--mono);
+        background: #050911;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+        font-size: 13px;
+        color: #8b9bb4;
     }
-    input:focus, textarea:focus { outline:none; border-color:var(--accent); }
-    label { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; color:var(--muted); }
-    .form-group { margin-bottom:16px; }
+    .dev-log .entry { margin-bottom:12px; border-bottom:1px dashed #1f2a44; padding-bottom:12px; }
+    .dev-log .entry:last-child { border-bottom:none; margin-bottom:0; padding-bottom:0; }
+    .dev-log .date { color: var(--accent); margin-right:8px; }
 
-    /* Mobile */
-    @media (max-width: 860px){
-      .nav-links{display:none}
-      .grid-3, .grid-2 { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 36px; }
-      .burger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
-      .burger span{width:24px;height:2px;background:white;}
-      .mobile-menu{display:none;position:absolute;top:var(--navH);left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);padding:20px;}
-      .mobile-menu.open{display:block;}
-      .mobile-menu a{display:block;padding:12px 0;border-bottom:1px solid var(--line);}
+    /* Tools Form */
+    .form{display:grid;gap:14px}
+    .form label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:0.5px;color:var(--muted);margin-bottom:6px}
+    .form input, .form textarea{
+      width:100%;padding:12px;border-radius:8px;border:1px solid var(--line);
+      background:#0b1220;color:var(--text); font-family:inherit;
     }
+    .form input:focus { outline:none; border-color:var(--accent); }
     
-    footer { padding: 40px 0; text-align:center; color:var(--muted); font-size:14px; }
+    .result-box {
+        margin-top:16px; padding:16px; background:#0b1220; border-radius:8px; border:1px solid var(--line); display:none;
+    }
+
+    footer{padding:32px 0;color:var(--muted); font-size:14px; text-align:center;}
   </style>
 </head>
 <body>
@@ -139,14 +142,15 @@
   <div class="container nav">
     <div class="brand">
       <div class="logo">K</div>
-      <div>Kigo <span style="opacity:0.5; font-weight:400;">by Kangwana</span></div>
+      <div>Kigo <span style="font-weight:400; opacity:0.6;">by KangwanaTech</span></div>
     </div>
 
     <nav class="nav-links">
-      <a href="#tech">The Tech</a>
-      <a href="#tools">Tools</a>
-      <a href="#traffic">Nairobi Live</a>
-      <a href="https://wa.me/254724249857" class="cta">Launch Bot</a>
+      <a href="#features">Capabilities</a>
+      <a href="#how">How it Works</a>
+      <a href="#tools">Free Tools</a>
+      <a href="#logs">Updates</a>
+      <a id="whatsappTop" class="cta" href="#">Launch Assistant</a>
     </nav>
 
     <button id="burger" class="burger" aria-label="Menu">
@@ -155,59 +159,72 @@
   </div>
   
   <div id="menu" class="mobile-menu">
-    <a href="#tech" onclick="closeMenu()">The Tech</a>
-    <a href="#tools" onclick="closeMenu()">Tools</a>
-    <a href="https://wa.me/254724249857" onclick="closeMenu()">Launch Bot</a>
+    <div class="inner">
+      <a href="#features" onclick="closeMenu()">Capabilities</a>
+      <a href="#how" onclick="closeMenu()">How it Works</a>
+      <a href="#tools" onclick="closeMenu()">Free Tools</a>
+      <a id="whatsappTopM" class="cta" href="#" onclick="closeMenu()">Launch Assistant</a>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <div style="color:var(--accent); font-weight:700; margin-bottom:16px; text-transform:uppercase; letter-spacing:1px; font-size:12px;">
-      ● Live in Nairobi
-    </div>
-    <h1>Move Goods.<br>Cut Costs.<br>No Kelele.</h1>
-    <p>
-      The WhatsApp bot for the street smart retailer. We use <strong>Gemini AI</strong> to talk to your customers and <strong>Groq</strong> to calculate routes instantly. No apps to install. Just results.
-    </p>
+    <h1>Your logistics operations,<br>automated on WhatsApp.</h1>
+    <p>Kigo is the smart agent for Kenyan retailers. It handles customer inquiries, calculates accurate delivery quotes, and tracks riders instantly. Stop doing manual dispatch.</p>
     <div class="actions">
-      <a id="heroWa" href="#" class="btn primary">
-        <svg width="20" height="20" fill="currentColor" viewBox="0 0 16 16"><path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326z"/></svg>
-        Chat with Kigo
-      </a>
-      <a href="#tools" class="btn ghost">Use Free Tools</a>
+      <a id="whatsappHero" class="btn primary" href="#">Chat with Kigo</a>
+      <a class="btn ghost" href="#tools">Use Calculator</a>
+    </div>
+    <div style="margin-top:16px; font-size:13px; color:var(--muted);">
+      <span style="color:var(--accent);">●</span> Systems Operational: Nairobi, Kiambu, Kajiado
     </div>
   </div>
 </section>
 
-<section id="tech">
+<section id="features">
   <div class="container">
-    <h2>Under the Hood</h2>
-    <p class="muted" style="margin-bottom:32px; max-width:600px;">
-      We don't just route riders. We use two different AI engines to make sure your business runs on autopilot.
-    </p>
+    <h2>Built for the Street Smart Merchant</h2>
+    <p class="section-intro">We know the hustle. Riders delay, customers send vague locations, and pricing is often a guess. Kigo fixes the friction.</p>
     
+    <div class="grid-3">
+      <div class="card">
+        <h3>Instant Responses</h3>
+        <div class="muted">Your customers get replies in seconds, 24/7. No more losing sales because you were busy packing orders.</div>
+      </div>
+      <div class="card">
+        <h3>Accurate Pricing</h3>
+        <div class="muted">No more guesswork. Quotes are generated using real-time distance, fuel prices, and fair rider compensation.</div>
+      </div>
+      <div class="card">
+        <h3>Verified Tracking</h3>
+        <div class="muted">Kigo monitors the rider. Your customer gets a live link. You get peace of mind without making five phone calls.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="container">
+    <h2>How it Works</h2>
     <div class="grid-2">
       <div class="card">
-        <span class="tech-pill tp-gemini">Powered by Gemini</span>
-        <h3>The "Customer Service" Manager</h3>
-        <p class="muted">Gemini handles the messy human stuff. It understands context, Sheng, and business logic.</p>
-        <ul style="padding-left:20px; color:var(--text); margin-top:16px; line-height:1.6;">
-            <li><strong>Complex FAQs:</strong> "Do you deliver to Roysambu past 9 PM?"</li>
-            <li><strong>Business Details:</strong> Explains your pricing tiers and return policy naturally.</li>
-            <li><strong>Messy Orders:</strong> Deciphers "Send it to the stage near the petrol station" into a map pin.</li>
-        </ul>
+        <ol style="padding-left:20px; line-height:2; margin:0; color:var(--text);">
+          <li><strong>Customer Chats:</strong> They message your WhatsApp number.</li>
+          <li><strong>Agent Qualifies:</strong> Kigo gets the location and order details.</li>
+          <li><strong>Quote Generated:</strong> A professional invoice is sent instantly.</li>
+          <li><strong>Dispatch:</strong> You approve, and a rider is assigned.</li>
+          <li><strong>Completion:</strong> Payment is reconciled via M-Pesa.</li>
+        </ol>
       </div>
-
-      <div class="card">
-        <span class="tech-pill tp-groq">Powered by Groq</span>
-        <h3>The "Operations" Speed</h3>
-        <p class="muted">Groq handles the math and structure. It's built for instant latency, so no one is left waiting.</p>
-        <ul style="padding-left:20px; color:var(--text); margin-top:16px; line-height:1.6;">
-            <li><strong>Instant Quotes:</strong> Calculates distance + fuel + rider markup in milliseconds.</li>
-            <li><strong>Format Fixing:</strong> Turns a chaotic paragraph into a neat order receipt.</li>
-            <li><strong>Zero Lag:</strong> When a customer types "Buy", the invoice is there before they blink.</li>
-        </ul>
+      <div class="card" style="display:flex; flex-direction:column; justify-content:center;">
+        <div style="background:#050911; padding:20px; border-radius:8px; border:1px solid var(--line); font-family:monospace; font-size:13px;">
+          <div style="color:var(--accent); margin-bottom:8px;">> New Order Received</div>
+          <div style="margin-bottom:8px;">Customer: "I need 2 pairs of sneakers delivered to Roysambu, near TRM."</div>
+          <div style="color:var(--muted);">Analyzing route...</div>
+          <div style="color:var(--text); margin-top:8px;"><strong>Quote:</strong> KES 350 (Distance: 12km)</div>
+          <div style="color:var(--accent); margin-top:8px;">> Awaiting Dispatch Approval...</div>
+        </div>
       </div>
     </div>
   </div>
@@ -215,130 +232,129 @@
 
 <section id="tools">
   <div class="container">
-    <h2>Street Tools</h2>
-    <p class="muted">Don't guess. Calculate. These are free for every Kenyan merchant.</p>
-    
+    <h2>Merchant Toolkit</h2>
+    <p class="section-intro">Free utilities to help you run your business better. You don't need to use the agent to use these.</p>
+
     <div class="grid-2">
-      
       <div class="card">
-        <h3>Rider Cost Estimator 🇰🇪</h3>
-        <div class="form-group">
-           <label>Distance (KM)</label>
-           <input type="number" id="distance" placeholder="e.g. 15">
-        </div>
-        <div class="form-group" style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-            <div>
-               <label>Fuel (KES/L)</label>
-               <input type="number" id="fuel" value="190">
-            </div>
-            <div>
-               <label>Rider Pay/KM</label>
-               <input type="number" id="pay" value="25">
-            </div>
-        </div>
-        <button onclick="calcCost()" class="btn ghost" style="width:100%; justify-content:center;">Calculate Profit</button>
+        <h3>Rider Cost Estimator</h3>
+        <p class="muted" style="font-size:14px; margin-bottom:16px;">Calculate fair prices based on current fuel rates.</p>
         
-        <div id="calcResult" style="margin-top:16px; padding:16px; background:rgba(255,255,255,0.05); border-radius:8px; display:none;">
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                <span class="muted">Fuel Cost:</span> <span id="resFuel">0</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
-                <span class="muted">Rider Keeps:</span> <span id="resRider">0</span>
-            </div>
-            <div style="display:flex; justify-content:space-between; font-weight:bold; border-top:1px solid var(--line); padding-top:8px; color:var(--accent);">
-                <span>Total Quote:</span> <span id="resQuote">0</span>
-            </div>
+        <div class="form">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+            <div><label>Distance (KM)</label><input type="number" id="dist" placeholder="e.g. 10"></div>
+            <div><label>Fuel (KES/L)</label><input type="number" id="fuel" value="190"></div>
+          </div>
+          <button id="btnCalc" class="btn primary" style="width:100%;">Calculate Profit</button>
+        </div>
+
+        <div id="calcResult" class="result-box">
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span class="muted">Fuel Cost:</span> <span id="outFuel">0 KES</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; margin-bottom:8px;">
+            <span class="muted">Rider Pay:</span> <span id="outRider">0 KES</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-weight:bold; color:var(--accent); border-top:1px solid var(--line); padding-top:10px;">
+            <span>Suggested Price:</span> <span id="outTotal">0 KES</span>
+          </div>
         </div>
       </div>
 
       <div class="card">
-        <h3>Wa.me Link Generator</h3>
-        <div class="form-group">
-            <label>Phone (e.g., 0724...)</label>
-            <input type="text" id="waPhone" placeholder="0724249857">
+        <h3>WhatsApp Link Generator</h3>
+        <p class="muted" style="font-size:14px; margin-bottom:16px;">Create custom "Order Now" links for your Instagram.</p>
+        
+        <div class="form">
+          <div><label>Your Phone</label><input type="text" id="waPhone" placeholder="07XX XXX XXX"></div>
+          <div><label>Message</label><input type="text" id="waMsg" value="Hi, I'd like to place an order."></div>
+          <button id="btnLink" class="btn ghost" style="width:100%;">Get Link</button>
         </div>
-        <div class="form-group">
-            <label>Pre-filled Message</label>
-            <textarea id="waMsg" rows="2">Hi, I want to order via Kigo.</textarea>
-        </div>
-        <button onclick="genLink()" class="btn ghost" style="width:100%; justify-content:center;">Get Link</button>
-        <div id="linkResult" style="margin-top:10px; font-family:monospace; font-size:12px; color:var(--accent); word-break:break-all;"></div>
-      </div>
 
+        <div id="linkResult" class="result-box" style="word-break:break-all; font-family:monospace; color:var(--accent);">
+          https://wa.me/...
+        </div>
+      </div>
+      
+      <div class="card" style="grid-column: 1 / -1;">
+        <h3>Live Nairobi Traffic</h3>
+        <div style="height:350px; background:#000; border-radius:8px; overflow:hidden; margin-top:16px;">
+          <iframe src="https://embed.waze.com/iframe?zoom=12&lat=-1.286389&lon=36.817223&pin=1&layer=traffic" 
+            width="100%" height="100%" style="border:0;"></iframe>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="traffic">
+<section id="logs">
   <div class="container">
-    <h2>Nairobi Traffic (Live)</h2>
-    <p class="muted">Check the gridlock before you commit to a delivery time.</p>
-    <div style="border-radius:12px; overflow:hidden; border:1px solid var(--line); height:400px;">
-        <iframe src="https://embed.waze.com/iframe?zoom=13&lat=-1.2921&lon=36.8219&ct=livemap" width="100%" height="100%" allowfullscreen></iframe>
+    <h2>Kangwana's System Log</h2>
+    <p class="section-intro">Direct updates from the lab. We are constantly optimizing the logic.</p>
+    
+    <div class="dev-log">
+      <div class="entry">
+        <span class="date">[2026-02-14]</span>
+        <strong>M-Pesa Integration Update:</strong> We have reduced the confirmation delay. Receipts are now generated instantly upon payment detection.
+      </div>
+      <div class="entry">
+        <span class="date">[2026-02-10]</span>
+        <strong>Maps Upgrade:</strong> Improved location pin accuracy for areas without clear street names (e.g., Pipeline, Utawala).
+      </div>
+      <div class="entry">
+        <span class="date">[2026-02-01]</span>
+        <strong>System Status:</strong> Kigo is now processing 500+ orders daily. Server capacity increased for faster response times.
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="container">
-    <div style="margin-bottom:10px;">
-        <span style="opacity:0.6">© 2026 Kangwana Tech.</span> 
-        <span style="color:var(--accent)">Nairobi, KE.</span>
-    </div>
-    <div>
-        <a href="https://kangwanatech.me" style="border-bottom:1px dotted var(--muted);">kangwanatech.me</a>
+    <div style="margin-bottom:12px;">© <span id="year"></span> Kigo by KangwanaTech. All rights reserved.</div>
+    <div style="font-size:13px; opacity:0.6;">
+      Made in Nairobi 🇰🇪
     </div>
   </div>
 </footer>
 
 <script>
-  // KIGO LOGIC
-  const TWILIO_NUMBER = '254724249857';
-
-  // Calculator Logic
-  function calcCost() {
-      const dist = parseFloat(document.getElementById('distance').value) || 0;
-      const fuelPrice = parseFloat(document.getElementById('fuel').value) || 190;
-      const payPerKm = parseFloat(document.getElementById('pay').value) || 25;
-      
-      // Assumptions: Bike does 35km/L
-      const fuelUsed = dist / 35; 
-      const fuelCost = fuelUsed * fuelPrice;
-      const riderPay = dist * payPerKm;
-      const overhead = (fuelCost + riderPay) * 0.20; // 20% Markup
-      
-      const total = fuelCost + riderPay + overhead;
-
-      document.getElementById('resFuel').innerText = Math.round(fuelCost) + ' KES';
-      document.getElementById('resRider').innerText = Math.round(riderPay) + ' KES';
-      document.getElementById('resQuote').innerText = Math.round(total) + ' KES';
-      document.getElementById('calcResult').style.display = 'block';
-  }
-
-  // Link Gen Logic
-  function genLink() {
-      let phone = document.getElementById('waPhone').value.replace(/\s+/g, '');
-      // Auto-fix kenyan numbers
-      if(phone.startsWith('0')) phone = '254' + phone.substring(1);
-      
-      const msg = encodeURIComponent(document.getElementById('waMsg').value);
-      const link = `https://wa.me/${phone}?text=${msg}`;
-      
-      const resDiv = document.getElementById('linkResult');
-      resDiv.innerHTML = `<a href="${link}" target="_blank" style="text-decoration:underline;">${link}</a>`;
-  }
-
-  // Wiring buttons
-  document.getElementById('heroWa').href = `https://wa.me/${TWILIO_NUMBER}?text=Connect%20KIGO%20-%20Hi%2C%20I%20want%20to%20`;
+  // Configuration
+  const TWILIO_NUMBER = '254724249857'; // Your Bot Number
+  document.getElementById('year').textContent = new Date().getFullYear();
 
   // Mobile Menu
   const burger = document.getElementById('burger');
-  const menu = document.getElementById('menu');
-  burger.addEventListener('click', () => {
-     menu.classList.toggle('open');
-  });
+  const menu = document.querySelector('.mobile-menu');
+  burger.addEventListener('click', () => menu.classList.toggle('open'));
   window.closeMenu = () => menu.classList.remove('open');
 
-</script>
-</body>
-</html>
+  // WhatsApp Button Logic
+  function connectLink() {
+    return `https://wa.me/${TWILIO_NUMBER}?text=CONNECT%20KIGO%20-%20I%20want%20to%20streamline%20my%20logistics`;
+  }
+  
+  // Wire up buttons
+  document.getElementById('whatsappTop').href = connectLink();
+  document.getElementById('whatsappTopM').href = connectLink();
+  document.getElementById('whatsappHero').href = connectLink();
+
+  // Calculator Tool
+  document.getElementById('btnCalc').addEventListener('click', function() {
+    const dist = parseFloat(document.getElementById('dist').value) || 0;
+    const fuel = parseFloat(document.getElementById('fuel').value) || 190;
+    
+    // Logic: Bike avg 30km/L. Rider Pay 30 KES/km. Markup 20%.
+    const fuelCost = (dist / 30) * fuel;
+    const riderPay = dist * 30; 
+    const total = (fuelCost + riderPay) * 1.2;
+
+    document.getElementById('outFuel').innerText = Math.round(fuelCost) + " KES";
+    document.getElementById('outRider').innerText = Math.round(riderPay) + " KES";
+    document.getElementById('outTotal').innerText = Math.round(total) + " KES";
+    document.getElementById('calcResult').style.display = 'block';
+  });
+
+  // Link Generator Tool
+  document.getElementById('btnLink').addEventListener('click', function() {
+    let phone = document.getElementById('waPhone').value.
