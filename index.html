@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kigo by KangwanaTech | AI WhatsApp Assistant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -54,15 +55,31 @@
             text-decoration: none;
         }
 
+        /* THE NEW TECH LOGO (CSS Generated) */
+        .tech-icon-box {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-green), #059669);
+            color: #000;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
         .logo-text {
             color: var(--text-main);
             font-size: 1.3rem;
             font-weight: 700;
+            letter-spacing: -0.5px;
         }
 
         .logo-text span {
             color: var(--text-dim);
             font-weight: 400;
+            font-size: 0.9em;
         }
 
         .nav-links {
@@ -444,7 +461,9 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                <img src="logo.png" alt="KangwanaTech Logo" style="height: 50px; width: auto; margin-right: 10px;">
+                <div class="tech-icon-box">
+                    <i class="fas fa-microchip"></i>
+                </div>
                 <div class="logo-text">Kigo <span>by KangwanaTech</span></div>
             </a>
             <div class="nav-links">
