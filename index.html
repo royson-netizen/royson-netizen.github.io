@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kigo by KangwanaTech | AI WhatsApp Assistant</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -55,18 +54,25 @@
             text-decoration: none;
         }
 
-        /* THE NEW TECH LOGO (CSS Generated) */
-        .tech-icon-box {
+        /* SVG LOGO STYLING */
+        .circuit-k-logo {
             width: 45px;
             height: 45px;
-            background: linear-gradient(135deg, var(--accent-green), #059669);
-            color: #000;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+        }
+        
+        /* The green lines of the circuit */
+        .circuit-trace {
+            stroke: var(--accent-green);
+            stroke-width: 8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+        
+        /* The gold pads/dots */
+        .circuit-pad {
+            fill: var(--accent-gold);
         }
 
         .logo-text {
@@ -461,9 +467,15 @@
     <header>
         <nav>
             <a href="#" class="logo">
-                <div class="tech-icon-box">
-                    <i class="fas fa-microchip"></i>
-                </div>
+                <svg class="circuit-k-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <path class="circuit-trace" d="M30 10 V90 M30 50 L80 10 M30 50 L80 90" />
+                    <circle class="circuit-pad" cx="30" cy="10" r="6" />
+                    <circle class="circuit-pad" cx="30" cy="90" r="6" />
+                    <circle class="circuit-pad" cx="80" cy="10" r="6" />
+                    <circle class="circuit-pad" cx="80" cy="90" r="6" />
+                    <circle class="circuit-pad" cx="30" cy="50" r="6" />
+                </svg>
+                
                 <div class="logo-text">Kigo <span>by KangwanaTech</span></div>
             </a>
             <div class="nav-links">
