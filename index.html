@@ -54,38 +54,40 @@
             text-decoration: none;
         }
 
-        /* SVG LOGO STYLING */
-        .circuit-k-logo {
-            width: 45px;
-            height: 45px;
-            filter: drop-shadow(0 0 8px rgba(16, 185, 129, 0.4));
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--accent-green);
+            color: #000;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.5rem;
+            animation: breathe 3s ease-in-out infinite;
         }
-        
-        /* The green lines of the circuit */
-        .circuit-trace {
-            stroke: var(--accent-green);
-            stroke-width: 8;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            fill: none;
-        }
-        
-        /* The gold pads/dots */
-        .circuit-pad {
-            fill: var(--accent-gold);
+
+        @keyframes breathe {
+            0%, 100% { 
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+            }
+            50% { 
+                transform: scale(1.05);
+                box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.4);
+            }
         }
 
         .logo-text {
             color: var(--text-main);
             font-size: 1.3rem;
             font-weight: 700;
-            letter-spacing: -0.5px;
         }
 
         .logo-text span {
             color: var(--text-dim);
             font-weight: 400;
-            font-size: 0.9em;
         }
 
         .nav-links {
@@ -139,45 +141,52 @@
             padding: 60px 40px;
         }
 
-        /* HERO INTRO */
-        .hero-intro {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .hero-intro h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            background: linear-gradient(135deg, var(--accent-green), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-intro p {
-            font-size: 1.35rem;
-            color: var(--text-dim);
-            max-width: 850px;
-            margin: 0 auto 30px;
-            line-height: 1.6;
-        }
-
+        /* TAGLINE */
         .swahili-tagline {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.15), rgba(16, 185, 129, 0.15));
             border-left: 4px solid var(--accent-gold);
-            padding: 20px 30px;
+            padding: 25px;
             margin: 30px auto;
-            max-width: 600px;
+            max-width: 800px;
             border-radius: 10px;
+            text-align: center;
         }
 
         .swahili-tagline h2 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             color: var(--accent-gold);
             font-weight: 800;
             font-style: italic;
             letter-spacing: 1px;
+        }
+
+        /* SOCIAL BATTERY */
+        .social-battery {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-green);
+            padding: 35px;
+            border-radius: 12px;
+            margin: 40px auto 60px;
+            max-width: 900px;
+        }
+
+        .social-battery h3 {
+            color: var(--accent-green);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        .social-battery p {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .social-battery .highlight {
+            color: var(--text-main);
+            font-weight: 600;
         }
 
         /* SECTION STYLING */
@@ -195,70 +204,6 @@
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
-        }
-
-        /* HOW IT WORKS */
-        .two-column {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 80px;
-        }
-
-        .card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 40px;
-        }
-
-        .card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 30px;
-            color: var(--text-main);
-        }
-
-        .steps-list {
-            list-style: none;
-        }
-
-        .steps-list li {
-            padding: 18px 0;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-dim);
-            font-size: 1.05rem;
-        }
-
-        .steps-list li:last-child {
-            border-bottom: none;
-        }
-
-        .steps-list strong {
-            color: var(--text-main);
-            font-weight: 600;
-        }
-
-        .terminal-box {
-            background: #0a0e17;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 25px;
-            font-family: 'Courier New', monospace;
-            color: var(--accent-green);
-            line-height: 2;
-        }
-
-        .terminal-box .prompt {
-            color: var(--text-dim);
-        }
-
-        .terminal-box .output {
-            color: var(--accent-gold);
-            margin-left: 20px;
-        }
-
-        .terminal-box .success {
-            color: var(--accent-green);
         }
 
         /* SOLUTIONS GRID */
@@ -419,7 +364,7 @@
 
         /* RESPONSIVE */
         @media (max-width: 1024px) {
-            .two-column, .solutions-grid, .capabilities-grid {
+            .solutions-grid, .capabilities-grid {
                 grid-template-columns: 1fr;
             }
             
@@ -447,10 +392,6 @@
                 font-size: 2rem;
             }
 
-            .hero-intro h1 {
-                font-size: 2.2rem;
-            }
-
             .swahili-tagline h2 {
                 font-size: 1.5rem;
             }
@@ -464,44 +405,44 @@
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <nav>
             <a href="#" class="logo">
-                <svg class="circuit-k-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <path class="circuit-trace" d="M30 10 V90 M30 50 L80 10 M30 50 L80 90" />
-                    <circle class="circuit-pad" cx="30" cy="10" r="6" />
-                    <circle class="circuit-pad" cx="30" cy="90" r="6" />
-                    <circle class="circuit-pad" cx="80" cy="10" r="6" />
-                    <circle class="circuit-pad" cx="80" cy="90" r="6" />
-                    <circle class="circuit-pad" cx="30" cy="50" r="6" />
-                </svg>
-                
+                <div class="logo-icon">K</div>
                 <div class="logo-text">Kigo <span>by KangwanaTech</span></div>
             </a>
             <div class="nav-links">
                 <a href="#solutions">Solutions</a>
-                <a href="#how-it-works">How it Works</a>
                 <a href="#capabilities">Capabilities</a>
-                <a href="#access">Access Kigo</a>
-                <a href="https://wa.me/14155238886?text=join%20environment-bag" target="_blank" class="btn-launch">Launch Assistant</a>
+                <a href="#access">Try Demo</a>
+                <a href="https://wa.me/14155238886?text=join%20theory-selection" class="btn-launch" target="_blank">Launch Kigo</a>
             </div>
         </nav>
     </header>
 
+    <!-- MAIN CONTENT -->
     <div class="container">
 
-        <div class="hero-intro">
-            <h1>Your 24/7 Assistant on WhatsApp</h1>
-            <p>
-                Stop losing sales because you were busy or asleep. 
-                Kigo answers "Ni Ngapi??", "Mko wapi?", calculates delivery fees to Roysambu or Westlands, and closes deals instantly. 
-                It works while you rest.
-            </p>
-            <div class="swahili-tagline">
-                <h2>Punguza Mzigo na Kigo. Ongeza Biz.</h2>
-            </div>
+        <!-- HERO INTRO -->
+        <div class="swahili-tagline">
+            <h2>Punguza Mzigo na Kigo</h2>
         </div>
 
+        <!-- SOCIAL BATTERY -->
+        <div class="social-battery">
+            <h3>Social Battery Drained?</h3>
+            <p>
+                Tired of endless client calls, follow-ups, and coordination chaos? 
+                <span class="highlight">Let Kigo carry the mzigo.</span>
+            </p>
+            <p>
+                While you recharge, Kigo handles customer queries, tracks deliveries, 
+                and keeps everyone updated — 24/7, without breaking a sweat.
+            </p>
+        </div>
+
+        <!-- SOLUTIONS SECTION -->
         <section id="solutions">
             <h2 class="section-title">Solutions Kigo Provides</h2>
             <p class="section-subtitle">
@@ -520,7 +461,7 @@
                 <div class="solution-card featured">
                     <h4>Preserve Your Social Battery</h4>
                     <p>
-                        Tired of replying to "Uko wapi?" 100 times a day? <span class="highlight">Kigo carries the mzigo.</span> 
+                        Tired of endless calls and "Uko wapi?" messages? <span class="highlight">Kigo carries the mzigo.</span> 
                         Handle customer coordination without draining your energy.
                     </p>
                 </div>
@@ -528,8 +469,8 @@
                 <div class="solution-card">
                     <h4>Accurate Pricing</h4>
                     <p>
-                        No more guesswork. Quotes are generated using real-time distance calculations 
-                        (e.g., CBD to Rongai), ensuring you never undercharge on delivery.
+                        No more guesswork. Quotes are generated using real-time distance calculations, 
+                        fuel prices, and fair compensation models.
                     </p>
                 </div>
 
@@ -545,7 +486,7 @@
                     <h4>Real-Time Tracking</h4>
                     <p>
                         Customers get live tracking links. You get peace of mind without making 
-                        five phone calls to check on rider status.
+                        five phone calls to check on delivery status.
                     </p>
                 </div>
 
@@ -559,41 +500,12 @@
             </div>
         </section>
 
+        <!-- SLOGAN -->
         <div class="slogan-bar">
             <h3>Kigo: Mzigo on the Go</h3>
         </div>
 
-        <section id="how-it-works">
-            <h2 class="section-title">How Kigo Works</h2>
-            <p class="section-subtitle">
-                Simple workflow from customer inquiry to completed delivery
-            </p>
-            
-            <div class="two-column">
-                <div class="card">
-                    <h3>The Process</h3>
-                    <ol class="steps-list">
-                        <li><strong>One Click Connect:</strong> Customer clicks the link and Kigo activates instantly.</li>
-                        <li><strong>Agent Qualifies:</strong> Kigo gets the location and order details.</li>
-                        <li><strong>Quote Generated:</strong> A professional invoice is sent instantly.</li>
-                        <li><strong>Dispatch:</strong> You approve, and a rider is assigned.</li>
-                        <li><strong>Completion:</strong> Payment is reconciled via M-Pesa.</li>
-                    </ol>
-                </div>
-
-                <div class="card">
-                    <h3>Live Example</h3>
-                    <div class="terminal-box">
-                        <div class="prompt">> New Order Received</div>
-                        <div>Customer: "I need 2 pairs of sneakers delivered to Roysambu, near TRM."</div>
-                        <div><br>Analyzing route...</div>
-                        <div class="output">Quote: KES 200 (Distance: 12km)</div>
-                        <div class="success">> Awaiting Dispatch Approval...</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        <!-- CAPABILITIES -->
         <section id="capabilities">
             <h2 class="section-title">Technical Capabilities</h2>
             <p class="section-subtitle">
@@ -633,37 +545,33 @@
             </div>
         </section>
 
+        <!-- ACCESS KIGO -->
         <section id="access">
-            <h2 class="section-title">Access Kigo</h2>
+            <h2 class="section-title">Try Kigo Demo</h2>
             <p class="section-subtitle">
-                Get started in minutes. No technical setup required.
+                Get started in seconds. No setup required.
             </p>
 
-            <div class="two-column">
-                <div class="card">
-                    <h3>Try the Demo</h3>
-                    <ol class="steps-list">
-                        <li><strong>Click "Launch Assistant"</strong> (Top Right Button).</li>
-                        <li><strong>WhatsApp Opens:</strong> It will auto-fill the code: <code>join environment-bag</code>.</li>
-                        <li><strong>Hit Send:</strong> You are now connected.</li>
-                        <li><strong>Say "Hi"</strong> or "Price of Lenovo" to start testing.</li>
-                    </ol>
-                </div>
-
-                <div class="card">
-                    <h3>Get Your Own Agent</h3>
-                    <ol class="steps-list">
-                        <li><strong>Contact Kangwana</strong> via the chat button below.</li>
-                        <li><strong>Tell us</strong> about your business needs.</li>
-                        <li><strong>Customize</strong> Kigo for your workflows.</li>
-                        <li><strong>Launch</strong> your AI assistant in 48 hours.</li>
-                    </ol>
-                </div>
+            <div class="solution-card" style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <h4 style="font-size: 1.8rem; margin-bottom: 25px;">Quick Demo</h4>
+                <p style="margin-bottom: 25px; font-size: 1.1rem;">
+                    Click the button below to connect with Kigo on WhatsApp instantly:
+                </p>
+                <a href="https://wa.me/14155238886?text=join%20theory-selection" 
+                   class="btn-launch" 
+                   target="_blank"
+                   style="display: inline-block; margin: 10px 0; padding: 18px 45px; font-size: 1.1rem;">
+                    🚀 Try Kigo Now
+                </a>
+                <p style="margin-top: 25px; font-size: 0.95rem; color: var(--text-dim);">
+                    After connecting, say "hi" and Kigo will introduce the services!
+                </p>
             </div>
         </section>
 
     </div>
 
+    <!-- FOOTER -->
     <footer>
         <div class="footer-content">
             <p style="color: var(--text-dim); margin-bottom: 20px;">
@@ -672,7 +580,7 @@
             
             <div class="social-links">
                 <a href="https://youtube.com/@ubuntubantu" target="_blank" title="YouTube">▶</a>
-                <a href="mailto:info@kangwanatech.me,roykangwana@gmail.com">✉</a>
+                <a href="mailto:info@kangwanatech.me">✉</a>
             </div>
 
             <p style="color: var(--text-dim); font-size: 0.9rem; margin-top: 20px;">
@@ -681,8 +589,9 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/254724249857?text=Hi%20Kangwana,%20I%20am%20interested%20in%20deploying%20Kigo%20for%20my%20business." target="_blank" class="chat-float">
-        👨🏿‍💻 Chat with Kangwana
+    <!-- FLOATING CHAT BUTTON -->
+    <a href="https://wa.me/14155238886?text=join%20theory-selection" class="chat-float" target="_blank">
+        Try Kigo Demo
     </a>
 
 </body>
