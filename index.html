@@ -13,6 +13,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WangwanaTech | Automation with Humanity</title>
 
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%2310b981%22>W</text></svg>">
+
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -293,3 +295,251 @@
     }
 
     .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px;
+      border-radius: 14px;
+      transition: all 0.25s;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .card:hover {
+      border-color: rgba(16, 185, 129, 0.7);
+      transform: translateY(-4px);
+      box-shadow: 0 25px 70px rgba(16, 185, 129, 0.12);
+    }
+
+    .card.featured {
+      border-color: rgba(251, 191, 36, 0.7);
+      background: linear-gradient(135deg, rgba(251, 191, 36, 0.07), rgba(16, 185, 129, 0.05));
+    }
+
+    .card h4 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-dim);
+      line-height: 1.75;
+    }
+
+    /* PRICING */
+    .price {
+      font-size: 1.6rem;
+      font-weight: 950;
+      margin: 6px 0 12px;
+      color: var(--accent-gold);
+      letter-spacing: 0.02em;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.02);
+      color: var(--text-dim);
+      font-weight: 800;
+      font-size: 0.9rem;
+      margin-top: 10px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--card);
+      border-top: 1px solid var(--border);
+      padding: 40px 22px;
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 18px 0;
+    }
+
+    .social-links a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: color 0.25s;
+    }
+
+    .social-links a:hover { color: var(--accent-green); }
+
+    /* FLOATING CHAT BUTTON */
+    .chat-float {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      background: var(--wa);
+      color: #fff;
+      padding: 16px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 950;
+      z-index: 1000;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
+      transition: transform 0.2s;
+    }
+
+    .chat-float:hover { transform: scale(1.05); }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 18px 18px; }
+      .hero { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero h1 { font-size: 2.2rem; }
+      .swahili-tagline h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // WhatsApp in international format: 2547XXXXXXXX (no +, no leading 0)
+    const KIGO_WA_NUMBER = "254738071393";
+    const KIGO_WA_TEXT = encodeURIComponent("Hi WangwanaTech — I'd like to see a demo of your AI infrastructure.");
+    const KIGO_WA_LINK = `https://wa.me/${KIGO_WA_NUMBER}?text=${KIGO_WA_TEXT}`;
+  </script>
+
+  <header>
+    <nav>
+      <a href="#" class="logo">
+        <div class="logo-icon">W</div>
+        <div class="logo-text">WangwanaTech</div>
+      </a>
+
+      <div class="nav-links">
+        <a href="#manifesto">Philosophy</a>
+        <a href="#pilots">Live Pilots</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact</a>
+        <a href="#" class="btn-launch" id="launchTop" target="_blank" rel="noopener">Chat with AI</a>
+      </div>
+    </nav>
+  </header>
+
+  <div class="container">
+    <div class="hero">
+      <div class="hero-card">
+        <div class="badge">🇰🇪 Multi-Tenant AI Infrastructure</div>
+        <h1>Automation with Humanity.</h1>
+        <p>
+          Welcome to WangwanaTech. We don't just write code; we engineer <strong>Ungwana</strong>—bringing civility, intuition, and intelligence to digital spaces. 
+        </p>
+        <p>
+          Rooted in the philosophy of <strong>Ubuntu</strong> <em>(I am because we are)</em>, we believe that your business's success is our success. Technology should not replace human connection; it should elevate it.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#" class="btn-launch" id="launchHero" target="_blank" rel="noopener">Test the Live Gateway</a>
+          <a href="https://youtube.com/@ubuntubantu" class="btn-secondary" target="_blank">Watch on YouTube</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="side-title">The Kigo Engine</div>
+        <div class="side-item"><strong>SME Sales Automation</strong> (Zero-touch checkout)</div>
+        <div class="side-item"><strong>GovTech Portals</strong> (Citizen sentiment extraction)</div>
+        <div class="side-item"><strong>Central Command Terminal</strong> (Live intelligence tracking)</div>
+        <div class="side-item"><strong>M-Pesa API Bridging</strong> (Consent-based STK push)</div>
+      </aside>
+    </div>
+
+    <div class="swahili-tagline" id="manifesto">
+      <h2>Punguza Mzigo na Kigo</h2>
+      <p>Most AI chatbots feel cold, robotic, and disconnected. We build AI infrastructure that actually listens, remembers context, and interacts with the warmth and cultural nuance of a real human.</p>
+    </div>
+
+    <section id="pilots">
+      <h2 class="section-title">Our Live Pilots</h2>
+      <p class="section-subtitle">
+        We are currently powering localized, multi-tenant AI across diverse Kenyan sectors.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h4 style="color: var(--accent-gold);">🥭 Kigo SME (UoN Pilot)</h4>
+          <p>
+            Deployed for Smoothies DJs at the University of Nairobi. Kigo completely automates their WhatsApp sales funnel—negotiating with students, processing delivery logistics, and seamlessly triggering Safaricom M-Pesa Daraja payment prompts without the business owner ever touching their phone.
+          </p>
+        </div>
+
+        <div class="card featured">
+          <h4 style="color: var(--accent-green);">🗳️ Kigo Kura (Meru GovTech)</h4>
+          <p>
+            Bringing <em>Ungwana</em> to politics. Kigo Kura is a citizen-facing AI portal designed for the modern Mheshimiwa. It helps Kenyan voters log complaints seamlessly, conducts deep sentiment analysis, and logs constituency data (Ward, Occupation, Grievances) to help leaders actually understand their people.
+          </p>
+        </div>
+
+        <div class="card">
+          <h4 style="color: #60a5fa;">👁️ Central Command Terminal</h4>
+          <p>
+            Our proprietary live intelligence dashboard. As Kigo converses with hundreds of users across multiple tenants simultaneously, the Central Command terminal extracts, categorizes, and displays that data in real-time for business owners and politicians to monitor their operations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing">
+      <h2 class="section-title">Deployment & Infrastructure</h2>
+      <p class="section-subtitle">
+        Enterprise-grade AI architecture, scaled for Kenyan reality.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h4>SME Core (Sales Automation)</h4>
+          <div class="price">KES 5,000 setup</div>
+          <p class="muted">
+            Perfect for local businesses. We configure your product catalog, train the AI on your brand tone, and deploy the auto-checkout pipeline.
+          </p>
+          <div class="pill">✅ Stop losing midnight sales</div>
+        </div>
+
+        <div class="card featured">
+          <h4>GovTech (Constituency Portal)</h4>
+          <div class="price" style="color: var(--accent-green);">Enterprise / Custom</div>
+          <p class="muted">
+            For political leaders and campaigns. Includes secure voter database extraction, sentiment analysis mapping, and full access to the Central Command analytics dashboard.
+          </p>
+          <div class="pill">🏛️ Data-driven campaigning</div>
+        </div>
+
+        <div class="card">
+          <h4>White-Label Agency</h4>
+          <div class="price" style="color: #60a5fa;">Partner with us</div>
+          <p class="muted">
+            Are you a digital strategist or agency? Resell our Kigo infrastructure to your clients under your own brand, powered by our backend.
+          </p>
+          <div class="pill">🤝 Scale together</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="section-title">Connect with WangwanaTech</h2>
+      <p class="section-subtitle">
+        Building the digital nervous system for the African economy.
+      </p>
+
+      <div class="card" style="max-width: 920px; margin: 0 auto; text-align: center;">
+        <h4 style="font-size: 1.6rem; margin-bottom: 10px;">Test the AI Infrastructure</h4>
+        <p class="muted" style="margin-bottom: 14px;">WhatsApp Gateway: <strong style="color: var(--text-main);">0738 071 393</strong></p>
+
+        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:10px;">
+          <a href="#" class="btn-launch" id="launchContact" target="_blank" rel="noopener">Open WhatsApp</a>
+          <a href="mailto:roykangwana@gmail.com?subject=WangwanaTech%20Infrastructure%20Inquiry" class="btn-secondary">Email the Founder</a>
+        </div>
+
+        <p class="muted" style="margin-top: 16px; font-size: 0.95
