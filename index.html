@@ -1,545 +1,335 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4MZ1ECC9XC"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4MZ1ECC9XC');
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KangwanaTech | AI WhatsApp Architecture for Kenya</title>
+    <meta name="description" content="Kigo AI by KangwanaTech: Automating university resources, SME sales, and civic engagement directly on WhatsApp.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WangwanaTech | Automation with Humanity</title>
+        :root {
+            --bg: #0b0f19;
+            --card: rgba(24, 28, 36, 0.7);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+            --accent-gold: #fbbf24;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --border: rgba(255, 255, 255, 0.1);
+        }
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22sans-serif%22 font-weight=%22bold%22 fill=%22%2310b981%22>W</text></svg>">
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05), transparent 25%);
+        }
 
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px 40px;
+            position: relative;
+            text-align: center;
+        }
 
-    :root {
-      --bg: #0a0e17;
-      --card: #131827;
-      --text-main: #e2e8f0;
-      --text-dim: #94a3b8;
-      --accent-green: #10b981;
-      --accent-gold: #fbbf24;
-      --border: #1e293b;
-      --shadow: rgba(0, 0, 0, 0.35);
-      --wa: #25D366;
-    }
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent-green);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--accent-green);
+            animation: pulse-border 2s infinite;
+        }
 
-    body {
-      background-color: var(--bg);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      line-height: 1.6;
-    }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
 
-    /* HEADER / NAV */
-    header {
-      background: rgba(19, 24, 39, 0.95);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #f8fafc, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    nav {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 18px 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
+        .highlight {
+            background: linear-gradient(135deg, var(--accent-green) 0%, var(--accent-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      text-decoration: none;
-    }
+        .tagline {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-dim);
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
 
-    .logo-icon {
-      width: 40px;
-      height: 40px;
-      background: var(--accent-green);
-      color: #000;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 900;
-      font-size: 1.5rem;
-      animation: breathe 3s ease-in-out infinite;
-    }
+        /* THE 3 KIGO PILLARS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            width: 100%;
+            margin-bottom: 40px;
+        }
 
-    @keyframes breathe {
-      0%, 100% {
-        transform: scale(1);
-        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-      }
-      50% {
-        transform: scale(1.05);
-        box-shadow: 0 0 20px 5px rgba(16, 185, 129, 0.35);
-      }
-    }
+        .product-card {
+            background: var(--card);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: left;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .logo-text {
-      color: var(--text-main);
-      font-size: 1.2rem;
-      font-weight: 800;
-    }
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+        }
 
-    .logo-text span {
-      color: var(--text-dim);
-      font-weight: 500;
-    }
+        .card-scholar::before { background: var(--accent-blue); }
+        .card-sme::before { background: var(--accent-green); }
+        .card-citizen::before { background: var(--accent-gold); }
 
-    .nav-links {
-      display: flex;
-      gap: 28px;
-      align-items: center;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
 
-    .nav-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.25s;
-    }
+        .product-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
 
-    .nav-links a:hover {
-      color: var(--accent-green);
-    }
+        .product-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: white;
+        }
 
-    .btn-launch {
-      background: var(--accent-green);
-      color: #000;
-      padding: 12px 22px;
-      border-radius: 10px;
-      font-weight: 900;
-      text-decoration: none;
-      transition: all 0.25s;
-      box-shadow: 0 10px 30px rgba(16, 185, 129, 0.18);
-      white-space: nowrap;
-    }
+        .product-desc {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
 
-    .btn-launch:hover {
-      background: var(--accent-gold);
-      transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(251, 191, 36, 0.18);
-    }
+        .code-snippet {
+            background: rgba(0,0,0,0.5);
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #a78bfa;
+            font-size: 0.85rem;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
 
-    .btn-secondary {
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      padding: 12px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 900;
-      transition: 0.25s;
-      white-space: nowrap;
-    }
+        .btn {
+            display: block;
+            text-align: center;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
 
-    .btn-secondary:hover {
-      border-color: rgba(16, 185, 129, 0.6);
-      transform: translateY(-2px);
-    }
+        .btn-blue { background: rgba(59, 130, 246, 0.1); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
+        .btn-blue:hover { background: var(--accent-blue); color: white; }
 
-    /* MAIN CONTAINER */
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 60px 22px;
-    }
+        .btn-green { background: rgba(16, 185, 129, 0.1); color: var(--accent-green); border: 1px solid var(--accent-green); }
+        .btn-green:hover { background: var(--accent-green); color: white; }
 
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
-      align-items: center;
-      margin: 10px 0 35px;
-    }
+        .btn-gold { background: rgba(251, 191, 36, 0.1); color: var(--accent-gold); border: 1px solid var(--accent-gold); }
+        .btn-gold:hover { background: var(--accent-gold); color: black; }
 
-    .hero-card {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.08), rgba(16, 185, 129, 0.08));
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 35px;
-      box-shadow: 0 20px 60px var(--shadow);
-    }
+        /* TECH STACK SECTION */
+        .tech-stack {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.02), transparent);
+        }
 
-    .badge {
-      display: inline-flex;
-      gap: 10px;
-      align-items: center;
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      background: rgba(16, 185, 129, 0.08);
-      color: var(--text-main);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-weight: 850;
-      font-size: 0.9rem;
-      margin-bottom: 18px;
-    }
+        .tech-stack h2 {
+            font-size: 2rem;
+            margin-bottom: 40px;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
+        .tech-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    .hero p {
-      color: var(--text-dim);
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 18px;
-    }
+        .tech-badge {
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            transition: 0.3s;
+        }
 
-    .hero-cta {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
+        .tech-badge:hover {
+            border-color: var(--accent-green);
+            color: white;
+        }
 
-    .hero-side {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px;
-      box-shadow: 0 18px 50px var(--shadow);
-    }
+        /* FOOTER & FLOATING BUTTON */
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid var(--border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
 
-    .side-title {
-      color: var(--accent-gold);
-      font-weight: 900;
-      margin-bottom: 14px;
-      font-size: 1.1rem;
-      letter-spacing: 0.02em;
-    }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(37,211,102,0.4);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
 
-    .side-item {
-      padding: 12px;
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.02);
-      color: var(--text-dim);
-      font-weight: 650;
-      margin-bottom: 10px;
-    }
+        .whatsapp-float:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(37,211,102,0.6);
+        }
 
-    .side-item strong {
-      color: var(--text-main);
-    }
-
-    /* TAGLINE */
-    .swahili-tagline {
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(16, 185, 129, 0.12));
-      border-left: 4px solid var(--accent-gold);
-      padding: 22px;
-      margin: 25px auto 40px;
-      max-width: 980px;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .swahili-tagline h2 {
-      font-size: 2rem;
-      color: var(--accent-gold);
-      font-weight: 900;
-      font-style: italic;
-      letter-spacing: 0.6px;
-      margin-bottom: 6px;
-    }
-
-    .swahili-tagline p {
-      color: var(--text-dim);
-      font-weight: 650;
-    }
-
-    /* SECTION */
-    section { margin: 70px 0; }
-
-    .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 14px;
-      text-align: center;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--text-dim);
-      font-size: 1.05rem;
-      margin-bottom: 40px;
-      max-width: 860px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    /* GRID */
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 28px;
-      border-radius: 14px;
-      transition: all 0.25s;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.2);
-    }
-
-    .card:hover {
-      border-color: rgba(16, 185, 129, 0.7);
-      transform: translateY(-4px);
-      box-shadow: 0 25px 70px rgba(16, 185, 129, 0.12);
-    }
-
-    .card.featured {
-      border-color: rgba(251, 191, 36, 0.7);
-      background: linear-gradient(135deg, rgba(251, 191, 36, 0.07), rgba(16, 185, 129, 0.05));
-    }
-
-    .card h4 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
-
-    .card p {
-      color: var(--text-dim);
-      line-height: 1.75;
-    }
-
-    /* PRICING */
-    .price {
-      font-size: 1.6rem;
-      font-weight: 950;
-      margin: 6px 0 12px;
-      color: var(--accent-gold);
-      letter-spacing: 0.02em;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.02);
-      color: var(--text-dim);
-      font-weight: 800;
-      font-size: 0.9rem;
-      margin-top: 10px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: var(--card);
-      border-top: 1px solid var(--border);
-      padding: 40px 22px;
-      text-align: center;
-      margin-top: 80px;
-    }
-
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 18px;
-      margin: 18px 0;
-    }
-
-    .social-links a {
-      color: var(--text-dim);
-      text-decoration: none;
-      font-size: 1.2rem;
-      transition: color 0.25s;
-    }
-
-    .social-links a:hover { color: var(--accent-green); }
-
-    /* FLOATING CHAT BUTTON */
-    .chat-float {
-      position: fixed;
-      bottom: 26px;
-      right: 26px;
-      background: var(--wa);
-      color: #fff;
-      padding: 16px 22px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 950;
-      z-index: 1000;
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.35);
-      transition: transform 0.2s;
-    }
-
-    .chat-float:hover { transform: scale(1.05); }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      nav { padding: 18px 18px; }
-      .hero { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: 1fr; }
-    }
-
-    @media (max-width: 640px) {
-      .hero h1 { font-size: 2.2rem; }
-      .swahili-tagline h2 { font-size: 1.5rem; }
-    }
-  </style>
+        @media (max-width: 768px) {
+            .hero { padding-top: 60px; }
+            h1 { font-size: 2.2rem; }
+            .whatsapp-float { bottom: 20px; right: 20px; padding: 12px 20px; font-size: 0.9rem; }
+        }
+    </style>
 </head>
-
 <body>
-  <script>
-    // WhatsApp in international format: 2547XXXXXXXX (no +, no leading 0)
-    const KIGO_WA_NUMBER = "254738071393";
-    const KIGO_WA_TEXT = encodeURIComponent("Hi WangwanaTech — I'd like to see a demo of your AI infrastructure.");
-    const KIGO_WA_LINK = `https://wa.me/${KIGO_WA_NUMBER}?text=${KIGO_WA_TEXT}`;
-  </script>
 
-  <header>
-    <nav>
-      <a href="#" class="logo">
-        <div class="logo-icon">W</div>
-        <div class="logo-text">WangwanaTech</div>
-      </a>
+    <section class="hero">
+        <div class="live-badge">
+            <div style="width: 8px; height: 8px; background: var(--accent-green); border-radius: 50%;"></div>
+            KIGO AI V1.0 IS LIVE
+        </div>
 
-      <div class="nav-links">
-        <a href="#manifesto">Philosophy</a>
-        <a href="#pilots">Live Pilots</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-        <a href="#" class="btn-launch" id="launchTop" target="_blank" rel="noopener">Chat with AI</a>
-      </div>
-    </nav>
-  </header>
-
-  <div class="container">
-    <div class="hero">
-      <div class="hero-card">
-        <div class="badge">🇰🇪 Multi-Tenant AI Infrastructure</div>
-        <h1>Automation with Humanity.</h1>
-        <p>
-          Welcome to WangwanaTech. We don't just write code; we engineer <strong>Ungwana</strong>—bringing civility, intuition, and intelligence to digital spaces. 
-        </p>
-        <p>
-          Rooted in the philosophy of <strong>Ubuntu</strong> <em>(I am because we are)</em>, we believe that your business's success is our success. Technology should not replace human connection; it should elevate it.
+        <h1>The Operating System for<br><span class="highlight">Kenyan WhatsApp</span></h1>
+        
+        <p class="tagline">
+            KangwanaTech builds intelligent WhatsApp architectures. From automating university resource distribution to powering SME sales and civic engagement. 
         </p>
 
-        <div class="hero-cta">
-          <a href="#" class="btn-launch" id="launchHero" target="_blank" rel="noopener">Test the Live Gateway</a>
-          <a href="https://youtube.com/@ubuntubantu" class="btn-secondary" target="_blank">Watch on YouTube</a>
+        <div class="products-grid">
+            <div class="product-card card-scholar">
+                <div class="product-icon">🎓</div>
+                <div class="product-title">Kigo Scholar</div>
+                <div class="product-desc">
+                    Decentralizing UoN past papers. Stop begging in group chats. Text a course code and get the exact PDF instantly.
+                </div>
+                <div class="code-snippet">
+                    User: "CPS3433"<br>
+                    Bot: 📄 Sending CPS3433_EXAM.pdf
+                </div>
+                <a href="https://wa.me/254738071393?text=pastpapers" class="btn btn-blue" target="_blank">Test Kigo Scholar</a>
+            </div>
+
+            <div class="product-card card-sme">
+                <div class="product-icon">🏪</div>
+                <div class="product-title">Kigo SME</div>
+                <div class="product-desc">
+                    The ultimate AI cashier. Reads live menus from Google Sheets, chats in Sheng/English, and triggers auto M-Pesa STK pushes.
+                </div>
+                <div class="code-snippet">
+                    User: "I want a smocha"<br>
+                    Bot: 📲 Prompting M-Pesa for KES 60...
+                </div>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20what%20is%20on%20the%20menu?" class="btn btn-green" target="_blank">Test Kigo SME</a>
+            </div>
+
+            <div class="product-card card-citizen">
+                <div class="product-icon">🏛️</div>
+                <div class="product-title">Kigo Citizen</div>
+                <div class="product-desc">
+                    Automated civic engagement. An AI surveyor that interacts with locals to gather data on county issues like water and roads.
+                </div>
+                <div class="code-snippet">
+                    User: "Maji imepotea"<br>
+                    Bot: "Which county are you reporting from?"
+                </div>
+                <a href="https://wa.me/254738071393?text=I%20want%20to%20report%20a%20county%20issue" class="btn btn-gold" target="_blank">Test Kigo Citizen</a>
+            </div>
         </div>
-      </div>
-
-      <aside class="hero-side">
-        <div class="side-title">The Kigo Engine</div>
-        <div class="side-item"><strong>SME Sales Automation</strong> (Zero-touch checkout)</div>
-        <div class="side-item"><strong>GovTech Portals</strong> (Citizen sentiment extraction)</div>
-        <div class="side-item"><strong>Central Command Terminal</strong> (Live intelligence tracking)</div>
-        <div class="side-item"><strong>M-Pesa API Bridging</strong> (Consent-based STK push)</div>
-      </aside>
-    </div>
-
-    <div class="swahili-tagline" id="manifesto">
-      <h2>Punguza Mzigo na Kigo</h2>
-      <p>Most AI chatbots feel cold, robotic, and disconnected. We build AI infrastructure that actually listens, remembers context, and interacts with the warmth and cultural nuance of a real human.</p>
-    </div>
-
-    <section id="pilots">
-      <h2 class="section-title">Our Live Pilots</h2>
-      <p class="section-subtitle">
-        We are currently powering localized, multi-tenant AI across diverse Kenyan sectors.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h4 style="color: var(--accent-gold);">🥭 Kigo SME (UoN Pilot)</h4>
-          <p>
-            Deployed for Smoothies DJs at the University of Nairobi. Kigo completely automates their WhatsApp sales funnel—negotiating with students, processing delivery logistics, and seamlessly triggering Safaricom M-Pesa Daraja payment prompts without the business owner ever touching their phone.
-          </p>
-        </div>
-
-        <div class="card featured">
-          <h4 style="color: var(--accent-green);">🗳️ Kigo Kura (Meru GovTech)</h4>
-          <p>
-            Bringing <em>Ungwana</em> to politics. Kigo Kura is a citizen-facing AI portal designed for the modern Mheshimiwa. It helps Kenyan voters log complaints seamlessly, conducts deep sentiment analysis, and logs constituency data (Ward, Occupation, Grievances) to help leaders actually understand their people.
-          </p>
-        </div>
-
-        <div class="card">
-          <h4 style="color: #60a5fa;">👁️ Central Command Terminal</h4>
-          <p>
-            Our proprietary live intelligence dashboard. As Kigo converses with hundreds of users across multiple tenants simultaneously, the Central Command terminal extracts, categorizes, and displays that data in real-time for business owners and politicians to monitor their operations.
-          </p>
-        </div>
-      </div>
     </section>
 
-    <section id="pricing">
-      <h2 class="section-title">Deployment & Infrastructure</h2>
-      <p class="section-subtitle">
-        Enterprise-grade AI architecture, scaled for Kenyan reality.
-      </p>
-
-      <div class="grid-3">
-        <div class="card">
-          <h4>SME Core (Sales Automation)</h4>
-          <div class="price">KES 5,000 setup</div>
-          <p class="muted">
-            Perfect for local businesses. We configure your product catalog, train the AI on your brand tone, and deploy the auto-checkout pipeline.
-          </p>
-          <div class="pill">✅ Stop losing midnight sales</div>
+    <section class="tech-stack">
+        <h2>Powered by Enterprise Architecture</h2>
+        <div class="tech-grid">
+            <div class="tech-badge">Python Flask Gateway</div>
+            <div class="tech-badge">Node.js Baileys WebSockets</div>
+            <div class="tech-badge">Groq Llama-3.3-70b AI</div>
+            <div class="tech-badge">SQLite Vector Database</div>
+            <div class="tech-badge">Safaricom Daraja API</div>
+            <div class="tech-badge">Microsoft Azure Linux VMs</div>
+            <div class="tech-badge">PM2 Process Management</div>
         </div>
-
-        <div class="card featured">
-          <h4>GovTech (Constituency Portal)</h4>
-          <div class="price" style="color: var(--accent-green);">Enterprise / Custom</div>
-          <p class="muted">
-            For political leaders and campaigns. Includes secure voter database extraction, sentiment analysis mapping, and full access to the Central Command analytics dashboard.
-          </p>
-          <div class="pill">🏛️ Data-driven campaigning</div>
-        </div>
-
-        <div class="card">
-          <h4>White-Label Agency</h4>
-          <div class="price" style="color: #60a5fa;">Partner with us</div>
-          <p class="muted">
-            Are you a digital strategist or agency? Resell our Kigo infrastructure to your clients under your own brand, powered by our backend.
-          </p>
-          <div class="pill">🤝 Scale together</div>
-        </div>
-      </div>
     </section>
 
-    <section id="contact">
-      <h2 class="section-title">Connect with WangwanaTech</h2>
-      <p class="section-subtitle">
-        Building the digital nervous system for the African economy.
-      </p>
+    <footer>
+        <p style="margin-bottom: 10px;">Built by KangwanaTech in Nairobi, Kenya 🇰🇪</p>
+        <p>Contact Developer: <a href="mailto:info@kangwanatech.me" style="color: var(--accent-green); text-decoration: none;">info@kangwanatech.me</a></p>
+        <p style="margin-top: 20px; opacity: 0.5;">© 2026 KangwanaTech. All rights reserved.</p>
+    </footer>
 
-      <div class="card" style="max-width: 920px; margin: 0 auto; text-align: center;">
-        <h4 style="font-size: 1.6rem; margin-bottom: 10px;">Test the AI Infrastructure</h4>
-        <p class="muted" style="margin-bottom: 14px;">WhatsApp Gateway: <strong style="color: var(--text-main);">0738 071 393</strong></p>
+    <a href="https://wa.me/254738071393?text=pastpapers" class="whatsapp-float" target="_blank">
+        📚 Try Kigo Scholar Now
+    </a>
 
-        <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:10px;">
-          <a href="#" class="btn-launch" id="launchContact" target="_blank" rel="noopener">Open WhatsApp</a>
-          <a href="mailto:roykangwana@gmail.com?subject=WangwanaTech%20Infrastructure%20Inquiry" class="btn-secondary">Email the Founder</a>
-        </div>
-
-        <p class="muted" style="margin-top: 16px; font-size: 0.95
+</body>
+</html>
