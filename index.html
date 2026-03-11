@@ -219,7 +219,21 @@
             text-align: center;
             border-top: 1px solid var(--border);
             color: var(--text-dim);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        .footer-links {
+            margin: 15px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--accent-green);
+            text-decoration: none;
+            font-weight: 500;
         }
 
         .whatsapp-float {
@@ -284,7 +298,7 @@
                 <div class="product-icon">🏪</div>
                 <div class="product-title">Kigo SME</div>
                 <div class="product-desc">
-                    The ultimate AI cashier. Reads live menus from Google Sheets, chats in Sheng/English, and triggers auto M-Pesa STK pushes.
+                    The ultimate AI cashier. Reads live menus from cloud sheets, chats natively, and triggers automated STK pushes.
                 </div>
                 <div class="code-snippet">
                     User: "I want a smocha"<br>
@@ -297,7 +311,7 @@
                 <div class="product-icon">🏛️</div>
                 <div class="product-title">Kigo Citizen</div>
                 <div class="product-desc">
-                    Automated civic engagement. An AI surveyor that interacts with locals to gather data on county issues like water and roads.
+                    Automated civic engagement. An AI surveyor that interacts with locals to gather data on grassroots county issues.
                 </div>
                 <div class="code-snippet">
                     User: "Maji imepotea"<br>
@@ -311,20 +325,23 @@
     <section class="tech-stack">
         <h2>Powered by Enterprise Architecture</h2>
         <div class="tech-grid">
-            <div class="tech-badge">Python Flask Gateway</div>
-            <div class="tech-badge">Node.js Baileys WebSockets</div>
-            <div class="tech-badge">Groq Llama-3.3-70b AI</div>
-            <div class="tech-badge">SQLite Vector Database</div>
-            <div class="tech-badge">Safaricom Daraja API</div>
-            <div class="tech-badge">Microsoft Azure Linux VMs</div>
-            <div class="tech-badge">PM2 Process Management</div>
+            <div class="tech-badge">Scalable Microservices API</div>
+            <div class="tech-badge">Encrypted WebSocket Gateway</div>
+            <div class="tech-badge">High-Speed LLM Inference Engine</div>
+            <div class="tech-badge">Semantic Vector Database</div>
+            <div class="tech-badge">Automated FinTech Integration</div>
+            <div class="tech-badge">Enterprise Cloud Infrastructure</div>
+            <div class="tech-badge">Continuous Uptime Management</div>
         </div>
     </section>
 
     <footer>
-        <p style="margin-bottom: 10px;">Built by KangwanaTech in Nairobi, Kenya 🇰🇪</p>
-        <p>Contact Developer: <a href="mailto:info@kangwanatech.me" style="color: var(--accent-green); text-decoration: none;">info@kangwanatech.me</a></p>
-        <p style="margin-top: 20px; opacity: 0.5;">© 2026 KangwanaTech. All rights reserved.</p>
+        <p>Built by KangwanaTech in Nairobi, Kenya 🇰🇪</p>
+        <div class="footer-links">
+            <a href="mailto:roykangwana@gmail.com">✉️ roykangwana@gmail.com</a>
+            <a href="tel:+254724249857">📞 +254 724 249 857</a>
+        </div>
+        <p style="margin-top: 15px; opacity: 0.5;">© 2026 KangwanaTech. All rights reserved.</p>
     </footer>
 
     <a href="https://wa.me/254738071393?text=pastpapers" class="whatsapp-float" target="_blank">
