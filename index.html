@@ -108,8 +108,13 @@
             font-size: clamp(1.1rem, 2vw, 1.4rem);
             color: var(--text-secondary);
             max-width: 800px;
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
             font-weight: 300;
+        }
+        
+        .thesis strong {
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
         /* The Swarm Grid */
@@ -276,5 +281,74 @@
 
     <section class="hero">
         <h1>The Friction Tax is Dead. <br><span class="highlight">Enter the Architecture.</span></h1>
+        
         <p class="thesis">
-            Stop building apps.
+            <strong>Stop building apps.</strong> The operating system for the Kenyan economy already exists—it’s WhatsApp. <br><br>
+            We injected frontier AI directly into the protocol to automate SME sales, eradicate procurement bureaucracy, and bypass legacy systems.
+        </p>
+
+        <div class="grid-header">// DEPLOYED NODES</div>
+        
+        <div class="nodes-grid">
+            <div class="node-card">
+                <div class="node-title">Kigo SME</div>
+                <div class="node-desc">The Digital Makanga. Reads live cloud menus, natively chats with customers, and triggers 0.8-second Daraja STK pushes while you sleep.</div>
+                <div class="terminal-block">
+                    <span class="terminal-user">&gt; Send 2 smochas to Ngong Rd</span><br>
+                    <span class="terminal-bot">[SYS] Initiating KES 120 M-Pesa STK push...</span>
+                </div>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20what%20is%20on%20the%20menu?" class="btn-deploy" target="_blank">Initialize Kigo SME</a>
+            </div>
+
+            <div class="node-card">
+                <div class="node-title">Kigo Wera</div>
+                <div class="node-desc">Bureaucracy bypassed. Ingests 50-page government tender PDFs, extracts KRA/AGPO compliance checklists, and drafts quotations in seconds.</div>
+                <div class="terminal-block">
+                    <span class="terminal-user">&gt; Attached: County_Tender_04.pdf</span><br>
+                    <span class="terminal-bot">[SYS] 7 requirements found. Generating quote...</span>
+                </div>
+                <a href="https://wa.me/254738071393?text=I%20have%20a%20tender%20document" class="btn-deploy" target="_blank">Initialize Kigo Wera</a>
+            </div>
+
+            <div class="node-card">
+                <div class="node-title">Kigo Scholar</div>
+                <div class="node-desc">Decentralized intellect. Stop begging in group chats. Text a UoN course code and extract the exact past paper PDF instantly.</div>
+                <div class="terminal-block">
+                    <span class="terminal-user">&gt; Request: CPS3433</span><br>
+                    <span class="terminal-bot">[SYS] Extracting CPS3433_2023.pdf...</span>
+                </div>
+                <a href="https://wa.me/254738071393?text=pastpapers" class="btn-deploy" target="_blank">Initialize Scholar</a>
+            </div>
+
+            <div class="node-card">
+                <div class="node-title">Kigo Citizen</div>
+                <div class="node-desc">Automated civic engagement. An AI surveyor that interacts with locals to map grassroots county issues and bypass broken feedback loops.</div>
+                <div class="terminal-block">
+                    <span class="terminal-user">&gt; Maji imepotea tangu juzi</span><br>
+                    <span class="terminal-bot">[SYS] Logging outage. County location?</span>
+                </div>
+                <a href="https://wa.me/254738071393?text=I%20want%20to%20report%20a%20county%20issue" class="btn-deploy" target="_blank">Initialize Citizen</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="system-specs">
+        <div class="grid-header" style="border:none; margin-bottom: 0;">// INFRASTRUCTURE & LOGISTICS</div>
+        <div class="specs-list">
+            <div class="spec-item">Powered by Gemini 3 Flash LLM</div>
+            <div class="spec-item">Daraja M-Pesa API Integration</div>
+            <div class="spec-item">Encrypted WebSocket Gateway</div>
+            <div class="spec-item">Semantic Vector Database</div>
+            <div class="spec-item">Built in Nairobi 🇰🇪</div>
+        </div>
+        <div style="margin-top: 3rem; font-family: var(--font-code); font-size: 0.8rem; color: #444;">
+            roykangwana@gmail.com | +254 724 249 857
+        </div>
+    </footer>
+
+    <a href="https://wa.me/254738071393" class="fab-whatsapp" target="_blank">
+        <span class="pulse" style="box-shadow: none;"></span> PING THE SWARM
+    </a>
+
+</body>
+</html>
