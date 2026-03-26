@@ -4,445 +4,757 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kigo | AI for Kenyan Business & Procurement</title>
-    <meta name="description" content="Kigo AI automates sales, tenders, and business operations directly on WhatsApp. Built for SMEs, procurement, and brokers in Kenya.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <meta name="description" content="Kigo AI automates sales, tenders, and business operations directly on WhatsApp. Built for SMEs, procurement, and civic protection in Kenya.">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Sora:wght@700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --green: #10b981;
+            --green-dark: #059669;
+            --green-light: #d1fae5;
+            --green-muted: #ecfdf5;
+            --ink: #0f172a;
+            --slate: #334155;
+            --muted: #64748b;
+            --border: #e2e8f0;
+            --surface: #f8fafc;
+            --white: #ffffff;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background: #ffffff;
-            color: #1e293b;
-            line-height: 1.5;
+            font-family: 'DM Sans', sans-serif;
+            background: var(--white);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* Typography */
-        h1, h2, h3 {
-            font-weight: 700;
-            letter-spacing: -0.02em;
+        h1, h2, h3 { font-family: 'Sora', sans-serif; letter-spacing: -0.02em; }
+
+        h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.12; font-weight: 800; }
+        h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; }
+        h3 { font-size: 1.25rem; font-weight: 700; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        /* ─── NOISE TEXTURE OVERLAY ─── */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 1000;
+            opacity: 0.4;
         }
 
-        h1 {
-            font-size: 3.5rem;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Header */
+        /* ─── HEADER ─── */
         .header {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #e2e8f0;
-            background: white;
+            padding: 1.25rem 0;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
         }
 
-        .header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
 
         .logo {
-            font-size: 1.5rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.6rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #10b981, #059669);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            letter-spacing: -0.03em;
+            color: var(--green);
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
         }
+
+        .logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        .nav { display: flex; align-items: center; gap: 0.25rem; }
 
         .nav a {
             text-decoration: none;
-            color: #334155;
-            margin-left: 2rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav a:hover {
-            color: #10b981;
-        }
-
-        /* Buttons */
-        .btn {
-            display: inline-block;
-            padding: 0.75rem 1.5rem;
+            color: var(--slate);
+            padding: 0.5rem 1rem;
             border-radius: 8px;
-            font-weight: 600;
-            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
             transition: all 0.2s;
         }
 
+        .nav a:hover { color: var(--green); background: var(--green-muted); }
+
+        /* ─── BUTTONS ─── */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+            border: none;
+        }
+
         .btn-primary {
-            background: #10b981;
+            background: var(--green);
             color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 12px rgba(16,185,129,0.3);
         }
 
         .btn-primary:hover {
-            background: #059669;
+            background: var(--green-dark);
             transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(16,185,129,0.35);
         }
 
         .btn-outline {
-            border: 1px solid #cbd5e1;
-            color: #1e293b;
+            border: 1.5px solid var(--border);
+            color: var(--ink);
             background: white;
         }
 
-        .btn-outline:hover {
-            border-color: #10b981;
-            color: #10b981;
+        .btn-outline:hover { border-color: var(--green); color: var(--green); background: var(--green-muted); }
+
+        .btn-ghost { color: var(--green); background: var(--green-muted); }
+        .btn-ghost:hover { background: var(--green-light); }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 5rem 0 4rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Hero */
-        .hero {
-            padding: 5rem 0 3rem;
-            background: linear-gradient(to bottom, #f8fafc, white);
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%);
+            pointer-events: none;
         }
 
         .hero .container {
-            display: flex;
-            gap: 3rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
             align-items: center;
-        }
-
-        .hero-content {
-            flex: 1;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-badge {
-            background: #e6f7ec;
-            color: #10b981;
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--green-muted);
+            color: var(--green-dark);
+            padding: 0.35rem 0.9rem;
             border-radius: 20px;
-            font-size: 0.875rem;
+            font-size: 0.82rem;
             font-weight: 600;
-            margin-bottom: 1rem;
+            margin-bottom: 1.25rem;
+            border: 1px solid rgba(16,185,129,0.2);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            color: #475569;
+        .hero h1 { margin-bottom: 1.25rem; color: var(--ink); }
+
+        .hero h1 em {
+            font-style: normal;
+            color: var(--green);
+            position: relative;
+        }
+
+        .hero h1 em::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--green), transparent);
+            border-radius: 2px;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--muted);
             margin-bottom: 2rem;
+            max-width: 460px;
+            line-height: 1.7;
+        }
+
+        .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
+
+        .whatsapp-icon {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
         }
 
         .hero-stats {
             display: flex;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
+            gap: 2.5rem;
+            margin-top: 2.5rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 1.8rem;
             font-weight: 800;
-            color: #0f172a;
+            color: var(--ink);
+            line-height: 1;
         }
 
         .stat-label {
-            font-size: 0.875rem;
-            color: #64748b;
+            font-size: 0.8rem;
+            color: var(--muted);
+            margin-top: 0.3rem;
         }
 
-        .hero-image {
-            flex: 1;
-            background: #f1f5f9;
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid #e2e8f0;
+        /* ─── CHAT MOCKUP ─── */
+        .hero-visual {
+            position: relative;
         }
 
-        .mockup {
+        .phone-frame {
             background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 35px -15px rgba(0,0,0,0.1);
-            padding: 1rem;
-            text-align: left;
-            max-width: 320px;
+            border-radius: 28px;
+            box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+            overflow: hidden;
+            max-width: 340px;
             margin: 0 auto;
+            animation: float 5s ease-in-out infinite;
         }
 
-        .mockup-header {
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .phone-status {
+            background: #128c7e;
+            color: white;
+            padding: 0.6rem 1rem;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 0.75rem;
-            margin-bottom: 1rem;
+            gap: 0.6rem;
         }
 
-        .mockup-avatar {
-            width: 36px;
-            height: 36px;
-            background: #10b981;
+        .wa-avatar {
+            width: 34px;
+            height: 34px;
+            background: var(--green);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
-            font-weight: bold;
+            font-weight: 800;
+            font-size: 0.9rem;
         }
 
-        .mockup-name {
-            font-weight: 600;
+        .wa-info { flex: 1; }
+        .wa-name { font-weight: 600; font-size: 0.9rem; }
+        .wa-online { font-size: 0.75rem; opacity: 0.8; }
+
+        .chat-body {
+            background: #e5ddd5;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='%23e5ddd5'/%3E%3C/svg%3E");
+            padding: 1rem;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
         }
 
-        .mockup-msg {
-            background: #f1f5f9;
-            padding: 0.75rem;
+        .bubble {
+            max-width: 85%;
+            padding: 0.6rem 0.85rem;
             border-radius: 12px;
-            margin-bottom: 1rem;
-            font-size: 0.875rem;
+            font-size: 0.82rem;
+            line-height: 1.5;
+            position: relative;
         }
 
-        /* Services */
-        .services {
-            padding: 5rem 0;
+        .bubble-in {
             background: white;
+            border-bottom-left-radius: 2px;
+            align-self: flex-start;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
         }
+
+        .bubble-out {
+            background: #dcf8c6;
+            border-bottom-right-radius: 2px;
+            align-self: flex-end;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .bubble-time {
+            font-size: 0.65rem;
+            color: #999;
+            text-align: right;
+            margin-top: 0.2rem;
+        }
+
+        .bubble strong { color: var(--green-dark); }
+
+        /* ─── SERVICES ─── */
+        .services { padding: 5rem 0; background: white; }
 
         .section-header {
             text-align: center;
-            max-width: 700px;
+            max-width: 640px;
             margin: 0 auto 3rem;
         }
 
-        .section-header h2 {
-            margin-bottom: 0.5rem;
-        }
+        .section-header h2 { margin-bottom: 0.6rem; }
 
-        .section-header p {
-            color: #475569;
-        }
+        .section-header p { color: var(--muted); font-size: 1.05rem; }
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
         .card {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1.5px solid var(--border);
             border-radius: 20px;
             padding: 2rem;
-            transition: all 0.2s;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
         }
 
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--green);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.3s;
+        }
+
+        .card:hover::before { transform: scaleY(1); }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
-            border-color: #cbd5e1;
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px -12px rgba(0,0,0,0.12);
+            border-color: rgba(16,185,129,0.3);
+        }
+
+        .card-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            background: var(--green-muted);
+            color: var(--green-dark);
+            padding: 0.2rem 0.65rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            margin-bottom: 1rem;
         }
 
         .card-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .card h3 {
-            font-size: 1.5rem;
+            font-size: 2.2rem;
             margin-bottom: 0.75rem;
+            display: block;
         }
 
-        .card p {
-            color: #475569;
-            margin-bottom: 1rem;
+        .card h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
+
+        .card .card-subtitle {
+            font-size: 0.8rem;
+            color: var(--green-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-style: italic;
         }
 
-        .card-features {
-            list-style: none;
-            margin: 1rem 0;
-        }
+        .card p { color: var(--muted); margin-bottom: 1.25rem; font-size: 0.92rem; line-height: 1.6; }
+
+        .card-features { list-style: none; margin-bottom: 1.5rem; }
 
         .card-features li {
-            margin-bottom: 0.5rem;
             font-size: 0.875rem;
+            color: var(--slate);
+            padding: 0.35rem 0;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.5rem;
+            border-bottom: 1px dashed var(--border);
         }
+
+        .card-features li:last-child { border-bottom: none; }
 
         .card-features li::before {
             content: "✓";
-            color: #10b981;
-            font-weight: bold;
+            color: var(--green);
+            font-weight: 700;
+            margin-top: 0.05rem;
+            flex-shrink: 0;
         }
 
-        /* How to use */
+        /* ─── HOW IT WORKS ─── */
         .howto {
-            background: #f8fafc;
+            background: var(--surface);
             padding: 5rem 0;
-            border-top: 1px solid #e2e8f0;
-            border-bottom: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
         }
 
         .steps {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-            text-align: center;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            position: relative;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: calc(12.5% + 20px);
+            width: calc(75% - 40px);
+            height: 2px;
+            background: linear-gradient(90deg, var(--green), rgba(16,185,129,0.2));
+            z-index: 0;
         }
 
         .step {
             background: white;
-            padding: 2rem;
+            padding: 2rem 1.5rem;
             border-radius: 20px;
-            border: 1px solid #e2e8f0;
+            border: 1.5px solid var(--border);
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            transition: all 0.2s;
+        }
+
+        .step:hover {
+            border-color: rgba(16,185,129,0.3);
+            box-shadow: 0 8px 24px -8px rgba(16,185,129,0.15);
         }
 
         .step-number {
-            width: 40px;
-            height: 40px;
-            background: #10b981;
+            width: 44px;
+            height: 44px;
+            background: var(--green);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 800;
+            font-family: 'Sora', sans-serif;
             margin: 0 auto 1rem;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
         }
 
-        .step h3 {
-            margin-bottom: 0.5rem;
-        }
-
+        .step h3 { margin-bottom: 0.5rem; font-size: 1rem; }
+        .step p { font-size: 0.85rem; color: var(--muted); }
         .step code {
-            background: #f1f5f9;
-            padding: 0.2rem 0.4rem;
-            border-radius: 4px;
+            background: var(--green-muted);
+            color: var(--green-dark);
+            padding: 0.15rem 0.45rem;
+            border-radius: 5px;
             font-family: monospace;
+            font-size: 0.85rem;
         }
 
-        /* Pricing */
-        .pricing {
-            padding: 5rem 0;
-        }
+        /* ─── PRICING ─── */
+        .pricing { padding: 5rem 0; }
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
         }
 
         .pricing-card {
             background: white;
-            border: 1px solid #e2e8f0;
+            border: 1.5px solid var(--border);
             border-radius: 20px;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             text-align: center;
+            transition: all 0.25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
         }
 
         .pricing-card.featured {
-            border-color: #10b981;
-            box-shadow: 0 10px 25px -5px rgba(16,185,129,0.2);
+            border-color: var(--green);
+            box-shadow: 0 12px 30px -8px rgba(16,185,129,0.2);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--green);
+            color: white;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 0.25rem 1rem;
+            border-radius: 0 0 10px 10px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .pricing-tier {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.5rem;
         }
 
         .price {
-            font-size: 2.5rem;
+            font-family: 'Sora', sans-serif;
+            font-size: 3rem;
             font-weight: 800;
-            margin: 1rem 0;
+            color: var(--ink);
+            line-height: 1;
+            margin: 1rem 0 0.25rem;
         }
 
-        .price span {
-            font-size: 1rem;
-            font-weight: normal;
-            color: #64748b;
+        .price-period {
+            color: var(--muted);
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
         }
 
-        /* CTA */
-        .cta {
-            background: #0f172a;
+        .price-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .pricing-features { list-style: none; text-align: left; margin-bottom: 2rem; }
+
+        .pricing-features li {
+            font-size: 0.88rem;
+            color: var(--slate);
+            padding: 0.45rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .pricing-features li::before {
+            content: "✓";
+            color: var(--green);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* ─── SOCIAL PROOF ─── */
+        .trust-bar {
+            background: var(--ink);
+            padding: 1rem 0;
+            overflow: hidden;
+        }
+
+        .trust-scroll {
+            display: flex;
+            gap: 3rem;
+            animation: scroll 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .trust-item {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.82rem;
+            font-weight: 500;
+            flex-shrink: 0;
+        }
+
+        .trust-item span { color: var(--green); margin-right: 0.4rem; }
+
+        /* ─── CTA ─── */
+        .cta-section {
+            padding: 3rem 0 5rem;
+        }
+
+        .cta-inner {
+            background: linear-gradient(135deg, var(--ink) 0%, #1a3a2a 100%);
             color: white;
-            padding: 4rem 0;
+            padding: 4rem;
+            border-radius: 32px;
             text-align: center;
-            border-radius: 40px;
-            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
         }
 
-        .cta h2 {
-            margin-bottom: 1rem;
+        .cta-inner::before {
+            content: '';
+            position: absolute;
+            top: -80px;
+            right: -80px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 60%);
+            pointer-events: none;
         }
 
-        .cta .btn-primary {
-            background: #10b981;
-            margin-top: 1.5rem;
+        .cta-inner h2 { color: white; margin-bottom: 0.75rem; position: relative; }
+        .cta-inner p { color: rgba(255,255,255,0.65); margin-bottom: 2rem; font-size: 1.05rem; position: relative; }
+
+        .cta-inner .btn-primary {
+            background: var(--green);
+            font-size: 1rem;
+            padding: 0.9rem 2rem;
+            position: relative;
         }
 
-        /* Footer */
+        /* ─── FOOTER ─── */
         .footer {
-            border-top: 1px solid #e2e8f0;
+            border-top: 1px solid var(--border);
             padding: 2rem 0;
-            color: #64748b;
-            font-size: 0.875rem;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero .container {
-                flex-direction: column;
-            }
-            h1 {
-                font-size: 2.2rem;
-            }
-            .container {
-                padding: 0 1.5rem;
-            }
-            .nav a {
-                margin-left: 1rem;
-            }
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-left { color: var(--muted); font-size: 0.875rem; }
+        .footer-right { color: var(--muted); font-size: 0.875rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-right a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+        .footer-right a:hover { color: var(--green); }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 900px) {
+            .hero .container { grid-template-columns: 1fr; gap: 3rem; }
+            .cards { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: repeat(2, 1fr); }
+            .steps::before { display: none; }
+            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+        }
+
+        @media (max-width: 640px) {
+            .container { padding: 0 1.25rem; }
+            .steps { grid-template-columns: 1fr; }
+            .cta-inner { padding: 2.5rem 1.5rem; }
+            .hero-stats { gap: 1.5rem; }
+            .nav a:not(.btn) { display: none; }
+        }
+
+        /* ─── FADE IN ANIMATION ─── */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
+<!-- ─── HEADER ─── -->
 <header class="header">
     <div class="container">
-        <div class="logo">KIGO</div>
-        <div class="nav">
+        <div class="logo">
+            KIGO <span class="logo-dot"></span>
+        </div>
+        <nav class="nav">
             <a href="#services">Services</a>
             <a href="#howto">How it works</a>
             <a href="#pricing">Pricing</a>
-            <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-outline" style="margin-left: 1rem;">Talk to us</a>
-        </div>
+            <a href="https://wa.me/254738071393?text=Hi%20Kigo" class="btn btn-primary" style="padding: 0.55rem 1.2rem;">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Chat us
+            </a>
+        </nav>
     </div>
 </header>
 
+<!-- ─── HERO ─── -->
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <div class="hero-badge">Built in Nairobi 🇰🇪</div>
-            <h1>AI that works<br>like a real employee</h1>
-            <p>Kigo automates sales, tenders, and operations — directly on WhatsApp. No apps to download, no training required.</p>
-            <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-primary">Start on WhatsApp →</a>
+            <div class="hero-badge">🇰🇪 Built in Nairobi, for Nairobi</div>
+            <h1>Your AI employee.<br><em>Always on WhatsApp.</em></h1>
+            <p class="hero-sub">From government tenders to kanjo bylaws — Kigo handles the complex so you can focus on the hustle.</p>
+            <div class="hero-actions">
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nianze" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 1.8rem;">
+                    <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                    Start on WhatsApp — it's free
+                </a>
+                <a href="#services" class="btn btn-outline">See what Kigo does →</a>
+            </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <div class="stat-number">&lt;1s</div>
-                    <div class="stat-label">STK push response</div>
+                    <div class="stat-number">&lt;4s</div>
+                    <div class="stat-label">PDF audit speed</div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">24/7</div>
@@ -450,169 +762,296 @@
                 </div>
                 <div class="stat">
                     <div class="stat-number">KES 0</div>
-                    <div class="stat-label">Setup fee</div>
+                    <div class="stat-label">To get started</div>
                 </div>
             </div>
         </div>
-        <div class="hero-image">
-            <div class="mockup">
-                <div class="mockup-header">
-                    <div class="mockup-avatar">K</div>
-                    <div class="mockup-name">Kigo AI</div>
+
+        <div class="hero-visual">
+            <div class="phone-frame">
+                <div class="phone-status">
+                    <div class="wa-avatar">K</div>
+                    <div class="wa-info">
+                        <div class="wa-name">Kigo AI</div>
+                        <div class="wa-online">● online</div>
+                    </div>
                 </div>
-                <div class="mockup-msg">
-                    <strong>You:</strong> I need 5 crates of soda<br>
-                    <strong>Kigo:</strong> KES 2,500. Send STK to 0712345678? (reply YES)
-                </div>
-                <div class="mockup-msg">
-                    <strong>You:</strong> YES<br>
-                    <strong>Kigo:</strong> Payment received. Your order will be delivered in 30 mins.
+                <div class="chat-body">
+                    <div class="bubble bubble-out">
+                        Ninahitaji quotation ya tender — hii ni PDF ya 178 pages
+                        <div class="bubble-time">9:03 AM ✓✓</div>
+                    </div>
+                    <div class="bubble bubble-in">
+                        📄 <strong>Kigo Wera kasimami.</strong><br><br>
+                        Nimesoma. Bid Bond: <strong>KES 250,000</strong>. NCA Class: <strong>NCA 5</strong>. Deadline: <strong>July 18, 5PM</strong>.<br><br>
+                        ⚠️ Hidden trap: Section 14.3 — tenderer must show 3 years of audited accounts. Unazo?
+                        <div class="bubble-time">9:03 AM</div>
+                    </div>
+                    <div class="bubble bubble-out">
+                        Ndiyo nina. Nisaidie draft quotation
+                        <div class="bubble-time">9:04 AM ✓✓</div>
+                    </div>
+                    <div class="bubble bubble-in">
+                        ✅ Inafanya kazi. Nitakutumia draft ya compliant quotation ndani ya dakika 2.
+                        <div class="bubble-time">9:04 AM</div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ─── TRUST SCROLL ─── -->
+<div class="trust-bar">
+    <div class="trust-scroll">
+        <span class="trust-item"><span>✓</span> Works on any phone with WhatsApp</span>
+        <span class="trust-item"><span>🏛️</span> Live Government Tender Data</span>
+        <span class="trust-item"><span>⚡</span> Powered by Gemini 2.0 Flash</span>
+        <span class="trust-item"><span>🔒</span> Your data stays private</span>
+        <span class="trust-item"><span>📄</span> 150-page PDF → 4-second audit</span>
+        <span class="trust-item"><span>🇰🇪</span> Built for the Kenyan economy</span>
+        <span class="trust-item"><span>✓</span> No app download needed</span>
+        <span class="trust-item"><span>💳</span> M-Pesa integrated</span>
+        <!-- duplicate for seamless scroll -->
+        <span class="trust-item"><span>✓</span> Works on any phone with WhatsApp</span>
+        <span class="trust-item"><span>🏛️</span> Live Government Tender Data</span>
+        <span class="trust-item"><span>⚡</span> Powered by Gemini 2.0 Flash</span>
+        <span class="trust-item"><span>🔒</span> Your data stays private</span>
+        <span class="trust-item"><span>📄</span> 150-page PDF → 4-second audit</span>
+        <span class="trust-item"><span>🇰🇪</span> Built for the Kenyan economy</span>
+        <span class="trust-item"><span>✓</span> No app download needed</span>
+        <span class="trust-item"><span>💳</span> M-Pesa integrated</span>
+    </div>
+</div>
+
+<!-- ─── SERVICES ─── -->
 <section id="services" class="services">
     <div class="container">
-        <div class="section-header">
-            <h2>Products built for Kenyan business</h2>
-            <p>Choose the Kigo that fits your needs — or switch between them anytime.</p>
+        <div class="section-header fade-up">
+            <h2>Four AI minds. One WhatsApp number.</h2>
+            <p>Each Kigo tenant is purpose-built for a specific Kenyan business reality. Switch between them instantly.</p>
         </div>
+
         <div class="cards">
-            <div class="card">
-                <div class="card-icon">🏪</div>
+
+            <!-- SME -->
+            <div class="card fade-up">
+                <span class="card-tag">🏪 The Greeter</span>
+                <span class="card-icon">🏪</span>
                 <h3>Kigo SME</h3>
-                <p>Your digital shopkeeper. Takes orders, answers questions, and collects payments via M-Pesa.</p>
+                <div class="card-subtitle">"Your digital front-desk that understands vitu kwa ground"</div>
+                <p>Takes orders, answers customer questions in Swahili or English, collects M-Pesa payments via STK push, and routes inquiries to the right Kigo mind — without you lifting a finger.</p>
                 <ul class="card-features">
-                    <li>Live menu / catalog</li>
-                    <li>Instant STK push</li>
-                    <li>Order tracking</li>
+                    <li>Live product catalog & instant order processing</li>
+                    <li>Instant STK push payment collection via M-Pesa</li>
+                    <li>Handles customer queries 24/7 in your absence</li>
+                    <li>Witty, conversational — customers think it's human</li>
                 </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20start%20SME" class="btn btn-outline" style="width:100%; text-align:center;">Activate SME</a>
+                <a href="https://wa.me/254738071393?text=SME" class="btn btn-ghost" style="width:100%; justify-content:center;">
+                    Activate Kigo SME →
+                </a>
             </div>
-            <div class="card">
-                <div class="card-icon">📄</div>
+
+            <!-- Wera -->
+            <div class="card fade-up">
+                <span class="card-tag">📄 The Cash Cow</span>
+                <span class="card-icon">📄</span>
                 <h3>Kigo Wera</h3>
-                <p>Procurement assistant that reads tender documents and builds compliant bids automatically.</p>
+                <div class="card-subtitle">"The procurement radar that detects compliance traps before they kill your bid"</div>
+                <p>Forward a 150-page tender PDF to WhatsApp. In 4 seconds, Kigo Wera extracts the exact Bid Bond amount, NCA class requirement, hidden disqualifiers, and deadline. Then drafts your compliant quotation.</p>
                 <ul class="card-features">
-                    <li>Extracts requirements from PDFs</li>
-                    <li>Drafts quotations</li>
-                    <li>Reminds you of deadlines</li>
+                    <li>Pulls live tenders from PPRA & county portals daily</li>
+                    <li>Extracts Bid Bond, NCA class & compliance checklist</li>
+                    <li>Spots hidden traps that DQ 90% of bidders</li>
+                    <li>Drafts compliant quotations automatically</li>
                 </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20start%20Wera" class="btn btn-outline" style="width:100%; text-align:center;">Activate Wera</a>
+                <a href="https://wa.me/254738071393?text=Wera" class="btn btn-ghost" style="width:100%; justify-content:center;">
+                    Activate Kigo Wera →
+                </a>
             </div>
-            <div class="card">
-                <div class="card-icon">🤝</div>
-                <h3>Kigo Broker</h3>
-                <p>For real estate, car sales, and connecting buyers & sellers. Matches leads and handles inquiries.</p>
+
+            <!-- Biz -->
+            <div class="card fade-up">
+                <span class="card-tag">📊 The Ruthless Strategist</span>
+                <span class="card-icon">📊</span>
+                <h3>Kigo Biz</h3>
+                <div class="card-subtitle">"Gemini 2.0 Flash. Zero corporate jargon. Hyper-local leverage."</div>
+                <p>Forget generic business advice. Kigo Biz knows about Kanjo fee structures, KRA tax realities, supply chain cartels, and how to build a business that actually survives Nairobi. Your ruthless strategist on speed dial.</p>
                 <ul class="card-features">
-                    <li>Lead qualification</li>
-                    <li>Automated listings</li>
-                    <li>Appointment scheduling</li>
+                    <li>KRA tax strategy & compliance in plain Swahili</li>
+                    <li>Bypassing supply chain cartels & finding alternatives</li>
+                    <li>Surviving county council licensing & Kanjo harassment</li>
+                    <li>Powered by Gemini 2.0 Flash — raw, fast, precise</li>
                 </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20start%20Broker" class="btn btn-outline" style="width:100%; text-align:center;">Activate Broker</a>
+                <a href="https://wa.me/254738071393?text=Biz" class="btn btn-ghost" style="width:100%; justify-content:center;">
+                    Activate Kigo Biz →
+                </a>
             </div>
-        </div>
-        <div style="text-align: center; margin-top: 2rem;">
-            <p style="color: #475569;">*Kigo Scholar (for past papers & notes) coming soon.</p>
+
+            <!-- Tuko Kadi -->
+            <div class="card fade-up">
+                <span class="card-tag">⚖️ The Civic Shield</span>
+                <span class="card-icon">⚖️</span>
+                <h3>Kigo Tuko Kadi</h3>
+                <div class="card-subtitle">"A street-smart Nairobi constitutional lawyer in your pocket"</div>
+                <p>Know your rights. When police stop you, when the county slaps you with an illegal tax, when your landlord crosses a line — Kigo Tuko Kadi gives you the exact Article or Section of Kenyan law to cite. Zero tech jargon.</p>
+                <ul class="card-features">
+                    <li>Exact constitutional articles for police encounters</li>
+                    <li>Know which county taxes are legal vs. extortion</li>
+                    <li>Tenant & landlord rights under the Landlord-Tenant Act</li>
+                    <li>Gen Z & youth focused — fast, direct, no legalese</li>
+                </ul>
+                <a href="https://wa.me/254738071393?text=TukoKadi" class="btn btn-ghost" style="width:100%; justify-content:center;">
+                    Activate Tuko Kadi →
+                </a>
+            </div>
+
         </div>
     </div>
 </section>
 
+<!-- ─── HOW IT WORKS ─── -->
 <section id="howto" class="howto">
     <div class="container">
-        <div class="section-header">
-            <h2>How to use Kigo</h2>
-            <p>Works like a chat with a real person. You can switch between services instantly.</p>
+        <div class="section-header fade-up">
+            <h2>Up and running in 60 seconds</h2>
+            <p>No app to download. No account to create. Just WhatsApp — which you already have.</p>
         </div>
         <div class="steps">
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-number">1</div>
-                <h3>Start a chat</h3>
-                <p>Send “Hi” to our WhatsApp number: <strong>0748 714 575</strong></p>
+                <h3>Send "Hi"</h3>
+                <p>Open WhatsApp and message <strong>0738 071 393</strong>. Type anything — Kigo will greet you.</p>
             </div>
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-number">2</div>
-                <h3>Pick a service</h3>
-                <p>Type <code>SME</code>, <code>Wera</code>, or <code>Broker</code> to activate the tenant you need.</p>
-                <p style="font-size:0.875rem; margin-top:0.5rem;">(Kigo will remember your last used service)</p>
+                <h3>Pick your tenant</h3>
+                <p>Type <code>SME</code>, <code>Wera</code>, <code>Biz</code>, or <code>TukoKadi</code> to activate the right AI mind.</p>
             </div>
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-number">3</div>
-                <h3>Get things done</h3>
-                <p>Order stock, process tenders, qualify leads — all in plain English.</p>
+                <h3>Get it done</h3>
+                <p>Place orders, audit tenders, ask for business strategy, or know your rights — in plain language.</p>
             </div>
-            <div class="step">
+            <div class="step fade-up">
                 <div class="step-number">4</div>
-                <h3>Switch anytime</h3>
-                <p>Just type <code>tenant</code> to see options, or directly type <code>/sme</code>, <code>/wera</code>, <code>/broker</code> to jump.</p>
+                <h3>Switch freely</h3>
+                <p>Type <code>/tenant</code> to see all options, or jump directly with <code>/sme</code>, <code>/wera</code>, <code>/biz</code>, <code>/tukokadi</code>.</p>
             </div>
         </div>
     </div>
 </section>
 
+<!-- ─── PRICING ─── -->
 <section id="pricing" class="pricing">
     <div class="container">
-        <div class="section-header">
-            <h2>Simple, transparent pricing</h2>
-            <p>No hidden fees. Pay only for what you use.</p>
+        <div class="section-header fade-up">
+            <h2>Simple, honest pricing</h2>
+            <p>Start free. Upgrade when you're ready to go full power.</p>
         </div>
+
         <div class="pricing-grid">
-            <div class="pricing-card">
-                <h3>Starter</h3>
-                <div class="price">KES 0<span>/month</span></div>
-                <p>Perfect to test the system</p>
-                <ul class="card-features" style="margin: 1rem 0; text-align: left;">
-                    <li>Up to 100 conversations/month</li>
-                    <li>Basic tenant switching</li>
+
+            <!-- Starter -->
+            <div class="pricing-card fade-up">
+                <div class="pricing-tier">Trial</div>
+                <div class="price">KES 0</div>
+                <div class="price-period">forever free</div>
+                <div class="price-desc">Enough to feel the power before you commit.</div>
+                <ul class="pricing-features">
+                    <li>4 free data pulls or PDF audits total</li>
+                    <li>Access to Kigo SME (full)</li>
+                    <li>Basic tenant switching (SME, Wera, Biz, Tuko Kadi)</li>
                     <li>Email support</li>
                 </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20start%20Starter" class="btn btn-outline">Get started</a>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nianze%20free" class="btn btn-outline" style="width:100%; justify-content:center;">Start for free →</a>
             </div>
-            <div class="pricing-card featured">
-                <h3>Business</h3>
-                <div class="price">KES 1,500<span>/month</span></div>
-                <p>For growing SMEs & active brokers</p>
-                <ul class="card-features" style="margin: 1rem 0; text-align: left;">
-                    <li>Unlimited conversations</li>
-                    <li>All tenants (SME, Wera, Broker)</li>
-                    <li>Priority support</li>
-                    <li>Custom branding options</li>
+
+            <!-- Premium -->
+            <div class="pricing-card featured fade-up">
+                <div class="featured-badge">Most Popular</div>
+                <div class="pricing-tier" style="margin-top:1.25rem;">Premium Extraction</div>
+                <div class="price">KES 500</div>
+                <div class="price-period">per month</div>
+                <div class="price-desc">Unlimited firepower. No throttle. No limits.</div>
+                <ul class="pricing-features">
+                    <li>Unlimited live tender data pulls from PPRA & counties</li>
+                    <li>Unlimited PDF compliance audits (any page count)</li>
+                    <li>Full unthrottled Gemini 2.0 Flash via Kigo Biz</li>
+                    <li>Full Kigo Tuko Kadi — civic shield, no limits</li>
+                    <li>Priority WhatsApp support</li>
+                    <li>New tenant features first access</li>
                 </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20Business%20plan" class="btn btn-primary">Start Business</a>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nataka%20Premium%20plan" class="btn btn-primary" style="width:100%; justify-content:center;">Upgrade to Premium →</a>
             </div>
-            <div class="pricing-card">
-                <h3>Enterprise</h3>
-                <div class="price">Custom</div>
-                <p>For government, large procurement, and custom AI workflows</p>
-                <ul class="card-features" style="margin: 1rem 0; text-align: left;">
+
+            <!-- Enterprise -->
+            <div class="pricing-card fade-up">
+                <div class="pricing-tier">Enterprise</div>
+                <div class="price" style="font-size: 2rem;">Custom</div>
+                <div class="price-period">tailored to your org</div>
+                <div class="price-desc">For government agencies, large procurement firms, and custom AI workflows.</div>
+                <ul class="pricing-features">
+                    <li>Dedicated Kigo instance (private deployment)</li>
+                    <li>API access for your own systems</li>
+                    <li>Custom AI workflows & automations</li>
                     <li>Dedicated account manager</li>
-                    <li>API access</li>
-                    <li>On-premise or private cloud</li>
+                    <li>On-premise or private cloud option</li>
                 </ul>
-                <a href="mailto:roykangwana@gmail.com" class="btn btn-outline">Contact us</a>
+                <a href="mailto:roykangwana@gmail.com" class="btn btn-outline" style="width:100%; justify-content:center;">Contact us →</a>
             </div>
+
         </div>
     </div>
 </section>
 
-<section class="cta">
+<!-- ─── CTA ─── -->
+<section class="cta-section">
     <div class="container">
-        <h2>Ready to automate your business?</h2>
-        <p>Join the hundreds of Kenyan SMEs using Kigo to save time and close more deals.</p>
-        <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-primary" style="background: white; color: #0f172a;">Start on WhatsApp →</a>
+        <div class="cta-inner fade-up">
+            <h2>The hustle doesn't wait. Neither should you.</h2>
+            <p>Start your 4 free audits now. No credit card, no download, no setup. Just WhatsApp.</p>
+            <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nianze" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                </svg>
+                Open WhatsApp now →
+            </a>
+        </div>
     </div>
 </section>
 
+<!-- ─── FOOTER ─── -->
 <footer class="footer">
     <div class="container">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-            <div>© 2025 Kigo — AI for the Kenyan economy</div>
-            <div>📧 roykangwana@gmail.com | 📞 +254 724 249 857</div>
+        <div class="footer-inner">
+            <div class="footer-left">© 2025 Kigo — AI for the Kenyan economy. Built in Nairobi 🇰🇪</div>
+            <div class="footer-right">
+                <a href="mailto:roykangwana@gmail.com">📧 roykangwana@gmail.com</a>
+                <a href="https://wa.me/254738071393">📞 +254 738 071 393</a>
+            </div>
         </div>
     </div>
 </footer>
+
+<script>
+    // Intersection Observer for fade-up animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => {
+                    entry.target.classList.add('visible');
+                }, (entry.target.dataset.delay || 0) * 100);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach((el, i) => {
+        el.dataset.delay = i % 4;
+        observer.observe(el);
+    });
+</script>
 
 </body>
 </html>
