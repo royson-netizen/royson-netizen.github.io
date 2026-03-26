@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kigo | AI for Kenyan Business & Procurement</title>
-    <meta name="description" content="Kigo AI automates sales, government tender audits, and business strategy directly on WhatsApp. Built for the Nairobi hustle.">
+    <meta name="description" content="Kigo AI automates sales, tenders, and business operations directly on WhatsApp. Built for SMEs, procurement, and brokers in Kenya.">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -240,7 +240,7 @@
 
         .cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
         }
 
@@ -271,7 +271,6 @@
         .card p {
             color: #475569;
             margin-bottom: 1rem;
-            font-size: 0.95rem;
         }
 
         .card-features {
@@ -337,8 +336,6 @@
             padding: 0.2rem 0.4rem;
             border-radius: 4px;
             font-family: monospace;
-            color: #0f172a;
-            font-weight: bold;
         }
 
         /* Pricing */
@@ -350,8 +347,6 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            max-width: 900px;
-            margin: 0 auto;
         }
 
         .pricing-card {
@@ -365,20 +360,6 @@
         .pricing-card.featured {
             border-color: #10b981;
             box-shadow: 0 10px 25px -5px rgba(16,185,129,0.2);
-            position: relative;
-        }
-
-        .pricing-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #10b981;
-            color: white;
-            padding: 0.25rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: bold;
         }
 
         .price {
@@ -443,10 +424,10 @@
     <div class="container">
         <div class="logo">KIGO</div>
         <div class="nav">
-            <a href="#services">The Matrix</a>
+            <a href="#services">Services</a>
             <a href="#howto">How it works</a>
             <a href="#pricing">Pricing</a>
-            <a href="https://wa.me/254724249857?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-outline" style="margin-left: 1rem;">Talk to Kigo</a>
+            <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-outline" style="margin-left: 1rem;">Talk to us</a>
         </div>
     </div>
 </header>
@@ -454,14 +435,14 @@
 <section class="hero">
     <div class="container">
         <div class="hero-content">
-            <div class="hero-badge">Built for the Nairobi Hustle 🇰🇪</div>
-            <h1>AI that works<br>like a local insider.</h1>
-            <p>Kigo audits government tenders, provides ruthless business strategy, and automates your operations — directly on WhatsApp. No apps. No friction.</p>
-            <a href="https://wa.me/254724249857?text=Hi" class="btn btn-primary">Enter the Matrix on WhatsApp →</a>
+            <div class="hero-badge">Built in Nairobi 🇰🇪</div>
+            <h1>AI that works<br>like a real employee</h1>
+            <p>Kigo automates sales, tenders, and operations — directly on WhatsApp. No apps to download, no training required.</p>
+            <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-primary">Start on WhatsApp →</a>
             <div class="hero-stats">
                 <div class="stat">
-                    <div class="stat-number">4s</div>
-                    <div class="stat-label">PDF Audit Speed</div>
+                    <div class="stat-number">&lt;1s</div>
+                    <div class="stat-label">STK push response</div>
                 </div>
                 <div class="stat">
                     <div class="stat-number">24/7</div>
@@ -469,7 +450,7 @@
                 </div>
                 <div class="stat">
                     <div class="stat-number">KES 0</div>
-                    <div class="stat-label">To Test the Engine</div>
+                    <div class="stat-label">Setup fee</div>
                 </div>
             </div>
         </div>
@@ -477,19 +458,15 @@
             <div class="mockup">
                 <div class="mockup-header">
                     <div class="mockup-avatar">K</div>
-                    <div class="mockup-name">Kigo Wera</div>
+                    <div class="mockup-name">Kigo AI</div>
                 </div>
                 <div class="mockup-msg">
-                    <strong>📄 You forwarded:</strong> <em>SBD-Nairobi-Roads.pdf (150 pages)</em>
+                    <strong>You:</strong> I need 5 crates of soda<br>
+                    <strong>Kigo:</strong> KES 2,500. Send STK to 0712345678? (reply YES)
                 </div>
                 <div class="mockup-msg">
-                    <strong>Kigo:</strong> ⏳ Document received. Running strict compliance audit...
-                </div>
-                <div class="mockup-msg" style="border-left: 4px solid #10b981;">
-                    <strong>🛡️ KIGO WERA AUDIT:</strong><br><br>
-                    - <strong>Bid Bond:</strong> KES 500,000 required.<br>
-                    - <strong>NCA Class:</strong> NCA 4 or higher.<br>
-                    - <strong>Trap:</strong> Page 42 requires a mandatory site visit certificate stamped by the County Engineer. Do not miss this.
+                    <strong>You:</strong> YES<br>
+                    <strong>Kigo:</strong> Payment received. Your order will be delivered in 30 mins.
                 </div>
             </div>
         </div>
@@ -499,60 +476,46 @@
 <section id="services" class="services">
     <div class="container">
         <div class="section-header">
-            <h2>One Number. Four Strategic Minds.</h2>
-            <p>Choose the Kigo tenant that fits your immediate friction point.</p>
+            <h2>Products built for Kenyan business</h2>
+            <p>Choose the Kigo that fits your needs — or switch between them anytime.</p>
         </div>
         <div class="cards">
             <div class="card">
-                <div class="card-icon">🏗️</div>
-                <h3>Kigo Wera</h3>
-                <p>The procurement radar and compliance trap-detector. Never lose a bid bond to a hidden technicality.</p>
-                <ul class="card-features">
-                    <li>Live Government Tender Radar</li>
-                    <li>150-page PDF Audits in seconds</li>
-                    <li>Bid Bond & NCA Class Extraction</li>
-                </ul>
-                <a href="https://wa.me/254724249857?text=tenders" class="btn btn-outline" style="width:100%; text-align:center;">Activate Wera</a>
-            </div>
-            
-            <div class="card">
-                <div class="card-icon">💼</div>
-                <h3>Kigo Biz</h3>
-                <p>The ruthless, hyper-local business strategist. Powered by Gemini 2.0 Flash to understand the real Nairobi.</p>
-                <ul class="card-features">
-                    <li>Supply Chain Greyhacks</li>
-                    <li>KRA & Kanjo Survival Tactics</li>
-                    <li>Margin Leak Analysis</li>
-                </ul>
-                <a href="https://wa.me/254724249857?text=biz" class="btn btn-outline" style="width:100%; text-align:center;">Activate Biz</a>
-            </div>
-
-            <div class="card">
-                <div class="card-icon">🛡️</div>
-                <h3>Kigo Tuko Kadi</h3>
-                <p>Your street-smart constitutional shield. Giving Gen-Z the exact legal leverage to handle civic friction.</p>
-                <ul class="card-features">
-                    <li>Anti-Harassment Legal Clauses</li>
-                    <li>Street-Smart De-escalation</li>
-                    <li>Instant Constitutional Rights</li>
-                </ul>
-                <a href="https://wa.me/254724249857?text=kadi" class="btn btn-outline" style="width:100%; text-align:center;">Activate Kadi</a>
-            </div>
-
-            <div class="card">
                 <div class="card-icon">🏪</div>
                 <h3>Kigo SME</h3>
-                <p>Your digital front-desk router. Handles standard inquiries and directs traffic to the right systems.</p>
+                <p>Your digital shopkeeper. Takes orders, answers questions, and collects payments via M-Pesa.</p>
                 <ul class="card-features">
-                    <li>Instant Customer Routing</li>
-                    <li>Zero-Friction Interface</li>
-                    <li>Nairobi "Kwa Ground" Awareness</li>
+                    <li>Live menu / catalog</li>
+                    <li>Instant STK push</li>
+                    <li>Order tracking</li>
                 </ul>
-                <a href="https://wa.me/254724249857?text=hi" class="btn btn-outline" style="width:100%; text-align:center;">Activate SME</a>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20start%20SME" class="btn btn-outline" style="width:100%; text-align:center;">Activate SME</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">📄</div>
+                <h3>Kigo Wera</h3>
+                <p>Procurement assistant that reads tender documents and builds compliant bids automatically.</p>
+                <ul class="card-features">
+                    <li>Extracts requirements from PDFs</li>
+                    <li>Drafts quotations</li>
+                    <li>Reminds you of deadlines</li>
+                </ul>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20start%20Wera" class="btn btn-outline" style="width:100%; text-align:center;">Activate Wera</a>
+            </div>
+            <div class="card">
+                <div class="card-icon">🤝</div>
+                <h3>Kigo Broker</h3>
+                <p>For real estate, car sales, and connecting buyers & sellers. Matches leads and handles inquiries.</p>
+                <ul class="card-features">
+                    <li>Lead qualification</li>
+                    <li>Automated listings</li>
+                    <li>Appointment scheduling</li>
+                </ul>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20start%20Broker" class="btn btn-outline" style="width:100%; text-align:center;">Activate Broker</a>
             </div>
         </div>
-        <div style="text-align: center; margin-top: 3rem;">
-            <p style="color: #64748b; font-weight: 500;">* Kigo Scholar (Academic Bypass Engine) coming soon.</p>
+        <div style="text-align: center; margin-top: 2rem;">
+            <p style="color: #475569;">*Kigo Scholar (for past papers & notes) coming soon.</p>
         </div>
     </div>
 </section>
@@ -560,29 +523,30 @@
 <section id="howto" class="howto">
     <div class="container">
         <div class="section-header">
-            <h2>Zero Friction. Instant Leverage.</h2>
-            <p>No apps to install. No dashboards to learn. Just pure WhatsApp utility.</p>
+            <h2>How to use Kigo</h2>
+            <p>Works like a chat with a real person. You can switch between services instantly.</p>
         </div>
         <div class="steps">
             <div class="step">
                 <div class="step-number">1</div>
-                <h3>Save the Node</h3>
-                <p>Save <strong>0724 249 857</strong> to your contacts and send a simple "Hi" on WhatsApp.</p>
+                <h3>Start a chat</h3>
+                <p>Send “Hi” to our WhatsApp number: <strong>0748 714 575</strong></p>
             </div>
             <div class="step">
                 <div class="step-number">2</div>
-                <h3>Switch Minds</h3>
-                <p>Type <code>Wera</code>, <code>Biz</code>, or <code>Kadi</code> to switch the AI persona to exactly what you need.</p>
+                <h3>Pick a service</h3>
+                <p>Type <code>SME</code>, <code>Wera</code>, or <code>Broker</code> to activate the tenant you need.</p>
+                <p style="font-size:0.875rem; margin-top:0.5rem;">(Kigo will remember your last used service)</p>
             </div>
             <div class="step">
                 <div class="step-number">3</div>
-                <h3>Drop the Payload</h3>
-                <p>Forward a massive Tender PDF, or ask a ruthless business question.</p>
+                <h3>Get things done</h3>
+                <p>Order stock, process tenders, qualify leads — all in plain English.</p>
             </div>
             <div class="step">
                 <div class="step-number">4</div>
-                <h3>Extract Value</h3>
-                <p>Get instant compliance audits, legal shields, and structural strategy in seconds.</p>
+                <h3>Switch anytime</h3>
+                <p>Just type <code>tenant</code> to see options, or directly type <code>/sme</code>, <code>/wera</code>, <code>/broker</code> to jump.</p>
             </div>
         </div>
     </div>
@@ -591,33 +555,43 @@
 <section id="pricing" class="pricing">
     <div class="container">
         <div class="section-header">
-            <h2>The Toll Booth</h2>
-            <p>Test the engine for free. Pay when you hit the extraction limit.</p>
+            <h2>Simple, transparent pricing</h2>
+            <p>No hidden fees. Pay only for what you use.</p>
         </div>
         <div class="pricing-grid">
             <div class="pricing-card">
-                <h3>The Trial</h3>
-                <div class="price">KES 0</div>
-                <p>Test the structural integrity of the AI.</p>
-                <ul class="card-features" style="margin: 1.5rem 0; text-align: left;">
-                    <li>4 Free Government Tender Radars</li>
-                    <li>Access to Kigo SME</li>
-                    <li>Basic Persona Switching</li>
+                <h3>Starter</h3>
+                <div class="price">KES 0<span>/month</span></div>
+                <p>Perfect to test the system</p>
+                <ul class="card-features" style="margin: 1rem 0; text-align: left;">
+                    <li>Up to 100 conversations/month</li>
+                    <li>Basic tenant switching</li>
+                    <li>Email support</li>
                 </ul>
-                <a href="https://wa.me/254724249857?text=hi" class="btn btn-outline" style="width:100%;">Test the System</a>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20start%20Starter" class="btn btn-outline">Get started</a>
             </div>
             <div class="pricing-card featured">
-                <div class="pricing-badge">UNLOCKED ACCESS</div>
-                <h3>Premium Extraction</h3>
-                <div class="price">KES 500<span>/month</span></div>
-                <p>For contractors and serious founders.</p>
-                <ul class="card-features" style="margin: 1.5rem 0; text-align: left;">
-                    <li>Unlimited Live Tender Data Pulls</li>
-                    <li>Unlimited PDF Compliance Audits</li>
-                    <li>Full access to Kigo Biz (Gemini 2.0)</li>
-                    <li>Full access to Tuko Kadi Legal Shield</li>
+                <h3>Business</h3>
+                <div class="price">KES 1,500<span>/month</span></div>
+                <p>For growing SMEs & active brokers</p>
+                <ul class="card-features" style="margin: 1rem 0; text-align: left;">
+                    <li>Unlimited conversations</li>
+                    <li>All tenants (SME, Wera, Broker)</li>
+                    <li>Priority support</li>
+                    <li>Custom branding options</li>
                 </ul>
-                <a href="https://wa.me/254724249857?text=tenders" class="btn btn-primary" style="width:100%;">Unlock Premium</a>
+                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20Business%20plan" class="btn btn-primary">Start Business</a>
+            </div>
+            <div class="pricing-card">
+                <h3>Enterprise</h3>
+                <div class="price">Custom</div>
+                <p>For government, large procurement, and custom AI workflows</p>
+                <ul class="card-features" style="margin: 1rem 0; text-align: left;">
+                    <li>Dedicated account manager</li>
+                    <li>API access</li>
+                    <li>On-premise or private cloud</li>
+                </ul>
+                <a href="mailto:roykangwana@gmail.com" class="btn btn-outline">Contact us</a>
             </div>
         </div>
     </div>
@@ -625,17 +599,17 @@
 
 <section class="cta">
     <div class="container">
-        <h2>Stop fighting legacy bureaucracy manually.</h2>
-        <p>Join the Kenyan contractors, brokers, and SMEs using Kigo to bypass the friction.</p>
-        <a href="https://wa.me/254724249857?text=hi" class="btn btn-primary" style="background: white; color: #0f172a; font-weight: 700;">Open WhatsApp →</a>
+        <h2>Ready to automate your business?</h2>
+        <p>Join the hundreds of Kenyan SMEs using Kigo to save time and close more deals.</p>
+        <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20I%20want%20to%20get%20started" class="btn btn-primary" style="background: white; color: #0f172a;">Start on WhatsApp →</a>
     </div>
 </section>
 
 <footer class="footer">
     <div class="container">
         <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem;">
-            <div>© 2026 Kigo Systems — Structural leverage for the Kenyan economy.</div>
-            <div>📞 +254 724 249 857</div>
+            <div>© 2025 Kigo — AI for the Kenyan economy</div>
+            <div>📧 roykangwana@gmail.com | 📞 +254 724 249 857</div>
         </div>
     </div>
 </footer>
