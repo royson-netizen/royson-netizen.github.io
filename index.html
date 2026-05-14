@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kigo | AI for Kenyan Business & Procurement</title>
-    <meta name="description" content="Kigo AI automates sales, tenders, and business operations directly on WhatsApp. Built for SMEs, procurement, and civic protection in Kenya.">
+    <title>KangwanaTech | Enterprise AI & WhatsApp Automation</title>
+    <meta name="description" content="Custom WhatsApp AI automation with zero Twilio fees. Seamless Make.com CRM pipelines, Daraja M-PESA integrations, and headless WebSocket architecture built in Nairobi.">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Sora:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -21,7 +21,6 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         html { scroll-behavior: smooth; }
 
         body {
@@ -33,7 +32,6 @@
         }
 
         h1, h2, h3 { font-family: 'Sora', sans-serif; letter-spacing: -0.02em; }
-
         h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.12; font-weight: 800; }
         h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; }
         h3 { font-size: 1.25rem; font-weight: 700; }
@@ -67,15 +65,16 @@
 
         .logo {
             font-family: 'Sora', sans-serif;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             font-weight: 800;
             letter-spacing: -0.03em;
-            color: var(--green);
+            color: var(--ink);
             display: flex;
             align-items: center;
             gap: 0.4rem;
         }
 
+        .logo span { color: var(--green); }
         .logo-dot { width: 8px; height: 8px; background: var(--green); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
 
         @keyframes pulse {
@@ -84,17 +83,15 @@
         }
 
         .nav { display: flex; align-items: center; gap: 0.25rem; }
-
         .nav a {
             text-decoration: none;
             color: var(--slate);
             padding: 0.5rem 1rem;
             border-radius: 8px;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             transition: all 0.2s;
         }
-
         .nav a:hover { color: var(--green); background: var(--green-muted); }
 
         /* ─── BUTTONS ─── */
@@ -112,57 +109,17 @@
             border: none;
         }
 
-        .btn-primary {
-            background: var(--green);
-            color: white;
-            box-shadow: 0 2px 12px rgba(16,185,129,0.3);
-        }
-
-        .btn-primary:hover {
-            background: var(--green-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(16,185,129,0.35);
-        }
-
-        .btn-outline {
-            border: 1.5px solid var(--border);
-            color: var(--ink);
-            background: white;
-        }
-
+        .btn-primary { background: var(--green); color: white; box-shadow: 0 2px 12px rgba(16,185,129,0.3); }
+        .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(16,185,129,0.35); }
+        .btn-outline { border: 1.5px solid var(--border); color: var(--ink); background: white; }
         .btn-outline:hover { border-color: var(--green); color: var(--green); background: var(--green-muted); }
-
         .btn-ghost { color: var(--green); background: var(--green-muted); }
         .btn-ghost:hover { background: var(--green-light); }
 
         /* ─── HERO ─── */
-        .hero {
-            padding: 5rem 0 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -200px;
-            right: -200px;
-            width: 700px;
-            height: 700px;
-            background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
+        .hero { padding: 5rem 0 4rem; position: relative; overflow: hidden; }
+        .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%); pointer-events: none; }
+        .hero::after { content: ''; position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(16,185,129,0.05) 0%, transparent 70%); pointer-events: none; }
 
         .hero .container {
             display: grid;
@@ -182,47 +139,20 @@
             padding: 0.35rem 0.9rem;
             border-radius: 20px;
             font-size: 0.82rem;
-            font-weight: 600;
+            font-weight: 700;
             margin-bottom: 1.25rem;
             border: 1px solid rgba(16,185,129,0.2);
-            letter-spacing: 0.02em;
+            letter-spacing: 0.04em;
             text-transform: uppercase;
         }
 
         .hero h1 { margin-bottom: 1.25rem; color: var(--ink); }
+        .hero h1 em { font-style: normal; color: var(--green); position: relative; }
+        .hero h1 em::after { content: ''; position: absolute; bottom: 4px; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--green), transparent); border-radius: 2px; }
 
-        .hero h1 em {
-            font-style: normal;
-            color: var(--green);
-            position: relative;
-        }
-
-        .hero h1 em::after {
-            content: '';
-            position: absolute;
-            bottom: 4px;
-            left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--green), transparent);
-            border-radius: 2px;
-        }
-
-        .hero-sub {
-            font-size: 1.1rem;
-            color: var(--muted);
-            margin-bottom: 2rem;
-            max-width: 460px;
-            line-height: 1.7;
-        }
-
+        .hero-sub { font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 480px; line-height: 1.7; }
         .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-
-        .whatsapp-icon {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
+        .whatsapp-icon { width: 20px; height: 20px; fill: currentColor; }
 
         .hero-stats {
             display: flex;
@@ -232,61 +162,25 @@
             border-top: 1px solid var(--border);
         }
 
-        .stat-number {
-            font-family: 'Sora', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--ink);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.8rem;
-            color: var(--muted);
-            margin-top: 0.3rem;
-        }
+        .stat-number { font-family: 'Sora', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--ink); line-height: 1; }
+        .stat-label { font-size: 0.85rem; font-weight: 600; color: var(--muted); margin-top: 0.4rem; }
 
         /* ─── CHAT MOCKUP ─── */
-        .hero-visual {
-            position: relative;
-        }
-
+        .hero-visual { position: relative; }
         .phone-frame {
             background: white;
             border-radius: 28px;
             box-shadow: 0 30px 60px -15px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
             overflow: hidden;
-            max-width: 340px;
+            max-width: 350px;
             margin: 0 auto;
             animation: float 5s ease-in-out infinite;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
+        @keyframes float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
 
-        .phone-status {
-            background: #128c7e;
-            color: white;
-            padding: 0.6rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-        }
-
-        .wa-avatar {
-            width: 34px;
-            height: 34px;
-            background: var(--green);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 0.9rem;
-        }
-
+        .phone-status { background: #128c7e; color: white; padding: 0.6rem 1rem; display: flex; align-items: center; gap: 0.6rem; }
+        .wa-avatar { width: 34px; height: 34px; background: var(--green); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem; }
         .wa-info { flex: 1; }
         .wa-name { font-weight: 600; font-size: 0.9rem; }
         .wa-online { font-size: 0.75rem; opacity: 0.8; }
@@ -295,763 +189,101 @@
             background: #e5ddd5;
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h60v60H0z' fill='%23e5ddd5'/%3E%3C/svg%3E");
             padding: 1rem;
-            min-height: 260px;
+            min-height: 280px;
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
         }
 
-        .bubble {
-            max-width: 85%;
-            padding: 0.6rem 0.85rem;
-            border-radius: 12px;
-            font-size: 0.82rem;
-            line-height: 1.5;
-            position: relative;
-        }
-
-        .bubble-in {
-            background: white;
-            border-bottom-left-radius: 2px;
-            align-self: flex-start;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .bubble-out {
-            background: #dcf8c6;
-            border-bottom-right-radius: 2px;
-            align-self: flex-end;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .bubble-time {
-            font-size: 0.65rem;
-            color: #999;
-            text-align: right;
-            margin-top: 0.2rem;
-        }
-
+        .bubble { max-width: 85%; padding: 0.6rem 0.85rem; border-radius: 12px; font-size: 0.85rem; line-height: 1.5; position: relative; }
+        .bubble-in { background: white; border-bottom-left-radius: 2px; align-self: flex-start; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .bubble-out { background: #dcf8c6; border-bottom-right-radius: 2px; align-self: flex-end; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+        .bubble-time { font-size: 0.65rem; color: #999; text-align: right; margin-top: 0.2rem; }
         .bubble strong { color: var(--green-dark); }
+
+        /* ─── TRUST SCROLL ─── */
+        .trust-bar { background: var(--ink); padding: 1.25rem 0; overflow: hidden; }
+        .trust-scroll { display: flex; gap: 3rem; animation: scroll 25s linear infinite; white-space: nowrap; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .trust-item { color: rgba(255,255,255,0.7); font-size: 0.9rem; font-weight: 600; flex-shrink: 0; }
+        .trust-item span { color: var(--green); margin-right: 0.5rem; font-size: 1.1rem; }
 
         /* ─── SERVICES ─── */
         .services { padding: 5rem 0; background: white; }
+        .section-header { text-align: center; max-width: 700px; margin: 0 auto 3.5rem; }
+        .section-header h2 { margin-bottom: 0.8rem; }
+        .section-header p { color: var(--muted); font-size: 1.1rem; }
 
-        .section-header {
-            text-align: center;
-            max-width: 640px;
-            margin: 0 auto 3rem;
-        }
-
-        .section-header h2 { margin-bottom: 0.6rem; }
-
-        .section-header p { color: var(--muted); font-size: 1.05rem; }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-        }
-
-        .card {
-            background: white;
-            border: 1.5px solid var(--border);
-            border-radius: 20px;
-            padding: 2rem;
-            transition: all 0.25s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px;
-            height: 100%;
-            background: var(--green);
-            transform: scaleY(0);
-            transform-origin: bottom;
-            transition: transform 0.3s;
-        }
-
+        .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+        .card { background: white; border: 1.5px solid var(--border); border-radius: 20px; padding: 2.5rem; transition: all 0.25s; position: relative; overflow: hidden; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%; background: var(--green); transform: scaleY(0); transform-origin: bottom; transition: transform 0.3s; }
         .card:hover::before { transform: scaleY(1); }
+        .card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px -12px rgba(0,0,0,0.12); border-color: rgba(16,185,129,0.3); }
 
-        .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px -12px rgba(0,0,0,0.12);
-            border-color: rgba(16,185,129,0.3);
-        }
-
-        .card-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            background: var(--green-muted);
-            color: var(--green-dark);
-            padding: 0.2rem 0.65rem;
-            border-radius: 20px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            margin-bottom: 1rem;
-        }
-
-        .card-icon {
-            font-size: 2.2rem;
-            margin-bottom: 0.75rem;
-            display: block;
-        }
-
-        .card h3 { margin-bottom: 0.5rem; font-size: 1.3rem; }
-
-        .card .card-subtitle {
-            font-size: 0.8rem;
-            color: var(--green-dark);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            font-style: italic;
-        }
-
-        .card p { color: var(--muted); margin-bottom: 1.25rem; font-size: 0.92rem; line-height: 1.6; }
-
+        .card-tag { display: inline-flex; align-items: center; gap: 0.3rem; background: var(--ink); color: white; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 1.2rem; }
+        .card-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+        .card h3 { margin-bottom: 0.5rem; font-size: 1.4rem; }
+        .card p { color: var(--muted); margin-bottom: 1.5rem; font-size: 0.95rem; line-height: 1.6; }
         .card-features { list-style: none; margin-bottom: 1.5rem; }
-
-        .card-features li {
-            font-size: 0.875rem;
-            color: var(--slate);
-            padding: 0.35rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-            border-bottom: 1px dashed var(--border);
-        }
-
+        .card-features li { font-size: 0.9rem; font-weight: 500; color: var(--slate); padding: 0.4rem 0; display: flex; align-items: flex-start; gap: 0.5rem; border-bottom: 1px dashed var(--border); }
         .card-features li:last-child { border-bottom: none; }
+        .card-features li::before { content: "✓"; color: var(--green); font-weight: 800; margin-top: 0.05rem; flex-shrink: 0; }
 
-        .card-features li::before {
-            content: "✓";
-            color: var(--green);
-            font-weight: 700;
-            margin-top: 0.05rem;
-            flex-shrink: 0;
-        }
-
-        /* ─── HOW IT WORKS ─── */
-        .howto {
-            background: var(--surface);
-            padding: 5rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .steps {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            position: relative;
-        }
-
-        .steps::before {
-            content: '';
-            position: absolute;
-            top: 36px;
-            left: calc(12.5% + 20px);
-            width: calc(75% - 40px);
-            height: 2px;
-            background: linear-gradient(90deg, var(--green), rgba(16,185,129,0.2));
-            z-index: 0;
-        }
-
-        .step {
-            background: white;
-            padding: 2rem 1.5rem;
-            border-radius: 20px;
-            border: 1.5px solid var(--border);
-            text-align: center;
-            position: relative;
-            z-index: 1;
-            transition: all 0.2s;
-        }
-
-        .step:hover {
-            border-color: rgba(16,185,129,0.3);
-            box-shadow: 0 8px 24px -8px rgba(16,185,129,0.15);
-        }
-
-        .step-number {
-            width: 44px;
-            height: 44px;
-            background: var(--green);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-family: 'Sora', sans-serif;
-            margin: 0 auto 1rem;
-            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
-        }
-
-        .step h3 { margin-bottom: 0.5rem; font-size: 1rem; }
-        .step p { font-size: 0.85rem; color: var(--muted); }
-        .step code {
-            background: var(--green-muted);
-            color: var(--green-dark);
-            padding: 0.15rem 0.45rem;
-            border-radius: 5px;
-            font-family: monospace;
-            font-size: 0.85rem;
-        }
-
-        /* ─── PRICING ─── */
-        .pricing { padding: 5rem 0; }
-
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-        }
-
-        .pricing-card {
-            background: white;
-            border: 1.5px solid var(--border);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            text-align: center;
-            transition: all 0.25s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1);
-        }
-
-        .pricing-card.featured {
-            border-color: var(--green);
-            box-shadow: 0 12px 30px -8px rgba(16,185,129,0.2);
-        }
-
-        .featured-badge {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--green);
-            color: white;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 0.25rem 1rem;
-            border-radius: 0 0 10px 10px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .pricing-tier {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.5rem;
-        }
-
-        .price {
-            font-family: 'Sora', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--ink);
-            line-height: 1;
-            margin: 1rem 0 0.25rem;
-        }
-
-        .price-period {
-            color: var(--muted);
-            font-size: 0.85rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .price-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .pricing-features { list-style: none; text-align: left; margin-bottom: 2rem; }
-
-        .pricing-features li {
-            font-size: 0.88rem;
-            color: var(--slate);
-            padding: 0.45rem 0;
-            display: flex;
-            align-items: flex-start;
-            gap: 0.5rem;
-        }
-
-        .pricing-features li::before {
-            content: "✓";
-            color: var(--green);
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        /* ─── SOCIAL PROOF ─── */
-        .trust-bar {
-            background: var(--ink);
-            padding: 1rem 0;
-            overflow: hidden;
-        }
-
-        .trust-scroll {
-            display: flex;
-            gap: 3rem;
-            animation: scroll 20s linear infinite;
-            white-space: nowrap;
-        }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .trust-item {
-            color: rgba(255,255,255,0.5);
-            font-size: 0.82rem;
-            font-weight: 500;
-            flex-shrink: 0;
-        }
-
-        .trust-item span { color: var(--green); margin-right: 0.4rem; }
+        /* ─── ARCHITECTURE OVERVIEW ─── */
+        .howto { background: var(--surface); padding: 5rem 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; position: relative; }
+        .steps::before { content: ''; position: absolute; top: 36px; left: calc(12.5% + 20px); width: calc(75% - 40px); height: 2px; background: linear-gradient(90deg, var(--green), rgba(16,185,129,0.2)); z-index: 0; }
+        .step { background: white; padding: 2rem 1.5rem; border-radius: 20px; border: 1.5px solid var(--border); text-align: center; position: relative; z-index: 1; transition: all 0.2s; }
+        .step:hover { border-color: rgba(16,185,129,0.3); box-shadow: 0 8px 24px -8px rgba(16,185,129,0.15); }
+        .step-number { width: 44px; height: 44px; background: var(--ink); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-family: 'Sora', sans-serif; margin: 0 auto 1rem; box-shadow: 0 4px 12px rgba(15,23,42,0.2); }
+        .step h3 { margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .step p { font-size: 0.9rem; color: var(--muted); }
 
         /* ─── CTA ─── */
-        .cta-section {
-            padding: 3rem 0 5rem;
-        }
-
-        .cta-inner {
-            background: linear-gradient(135deg, var(--ink) 0%, #1a3a2a 100%);
-            color: white;
-            padding: 4rem;
-            border-radius: 32px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-inner::before {
-            content: '';
-            position: absolute;
-            top: -80px;
-            right: -80px;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .cta-inner h2 { color: white; margin-bottom: 0.75rem; position: relative; }
-        .cta-inner p { color: rgba(255,255,255,0.65); margin-bottom: 2rem; font-size: 1.05rem; position: relative; }
-
-        .cta-inner .btn-primary {
-            background: var(--green);
-            font-size: 1rem;
-            padding: 0.9rem 2rem;
-            position: relative;
-        }
+        .cta-section { padding: 5rem 0; }
+        .cta-inner { background: linear-gradient(135deg, var(--ink) 0%, #1a3a2a 100%); color: white; padding: 4.5rem; border-radius: 32px; text-align: center; position: relative; overflow: hidden; }
+        .cta-inner::before { content: ''; position: absolute; top: -80px; right: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(16,185,129,0.15) 0%, transparent 60%); pointer-events: none; }
+        .cta-inner h2 { color: white; margin-bottom: 1rem; position: relative; font-size: 2.5rem; }
+        .cta-inner p { color: rgba(255,255,255,0.7); margin-bottom: 2.5rem; font-size: 1.15rem; position: relative; max-width: 600px; margin-inline: auto; }
+        .cta-inner .btn-primary { background: var(--green); font-size: 1.05rem; padding: 1rem 2.5rem; position: relative; }
 
         /* ─── FOOTER ─── */
-        .footer {
-            border-top: 1px solid var(--border);
-            padding: 2rem 0;
-        }
-
-        .footer-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-left { color: var(--muted); font-size: 0.875rem; }
-        .footer-right { color: var(--muted); font-size: 0.875rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
-        .footer-right a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+        .footer { border-top: 1px solid var(--border); padding: 2.5rem 0; }
+        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+        .footer-left { color: var(--muted); font-weight: 500; font-size: 0.9rem; }
+        .footer-right { font-weight: 600; font-size: 0.9rem; display: flex; gap: 1.5rem; flex-wrap: wrap; }
+        .footer-right a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
         .footer-right a:hover { color: var(--green); }
 
         /* ─── RESPONSIVE ─── */
         @media (max-width: 900px) {
             .hero .container { grid-template-columns: 1fr; gap: 3rem; }
             .cards { grid-template-columns: 1fr; }
-            .steps { grid-template-columns: repeat(2, 1fr); }
+            .steps { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
             .steps::before { display: none; }
-            .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
         }
-
         @media (max-width: 640px) {
             .container { padding: 0 1.25rem; }
             .steps { grid-template-columns: 1fr; }
-            .cta-inner { padding: 2.5rem 1.5rem; }
-            .hero-stats { gap: 1.5rem; }
+            .cta-inner { padding: 3rem 1.5rem; }
+            .hero-stats { gap: 1.5rem; flex-wrap: wrap; }
             .nav a:not(.btn) { display: none; }
         }
 
         /* ─── FADE IN ANIMATION ─── */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-up { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+        .fade-up.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-<!-- ─── HEADER ─── -->
 <header class="header">
     <div class="container">
         <div class="logo">
-            KIGO <span class="logo-dot"></span>
+            Kangwana<span>Tech</span> <span class="logo-dot"></span>
         </div>
         <nav class="nav">
-            <a href="#services">Services</a>
-            <a href="#howto">How it works</a>
-            <a href="#pricing">Pricing</a>
-            <a href="https://wa.me/254738071393?text=Hi%20Kigo" class="btn btn-primary" style="padding: 0.55rem 1.2rem;">
-                <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Chat us
-            </a>
-        </nav>
-    </div>
-</header>
-
-<!-- ─── HERO ─── -->
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">🇰🇪 Built in Nairobi, for Nairobi</div>
-            <h1>Your AI employee.<br><em>Always on WhatsApp.</em></h1>
-            <p class="hero-sub">From government tenders to kanjo bylaws — Kigo handles the complex so you can focus on the hustle.</p>
-            <div class="hero-actions">
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nianze" class="btn btn-primary" style="font-size: 1rem; padding: 0.9rem 1.8rem;">
-                    <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                    </svg>
-                    Start on WhatsApp — it's free
-                </a>
-                <a href="#services" class="btn btn-outline">See what Kigo does →</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">&lt;4s</div>
-                    <div class="stat-label">PDF audit speed</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Always online</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">KES 0</div>
-                    <div class="stat-label">To get started</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="phone-frame">
-                <div class="phone-status">
-                    <div class="wa-avatar">K</div>
-                    <div class="wa-info">
-                        <div class="wa-name">Kigo AI</div>
-                        <div class="wa-online">● online</div>
-                    </div>
-                </div>
-                <div class="chat-body">
-                    <div class="bubble bubble-out">
-                        Ninahitaji quotation ya tender — hii ni PDF ya 178 pages
-                        <div class="bubble-time">9:03 AM ✓✓</div>
-                    </div>
-                    <div class="bubble bubble-in">
-                        📄 <strong>Kigo Wera kasimami.</strong><br><br>
-                        Nimesoma. Bid Bond: <strong>KES 250,000</strong>. NCA Class: <strong>NCA 5</strong>. Deadline: <strong>July 18, 5PM</strong>.<br><br>
-                        ⚠️ Hidden trap: Section 14.3 — tenderer must show 3 years of audited accounts. Unazo?
-                        <div class="bubble-time">9:03 AM</div>
-                    </div>
-                    <div class="bubble bubble-out">
-                        Ndiyo nina. Nisaidie draft quotation
-                        <div class="bubble-time">9:04 AM ✓✓</div>
-                    </div>
-                    <div class="bubble bubble-in">
-                        ✅ Inafanya kazi. Nitakutumia draft ya compliant quotation ndani ya dakika 2.
-                        <div class="bubble-time">9:04 AM</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ─── TRUST SCROLL ─── -->
-<div class="trust-bar">
-    <div class="trust-scroll">
-        <span class="trust-item"><span>✓</span> Works on any phone with WhatsApp</span>
-        <span class="trust-item"><span>🏛️</span> Live Government Tender Data</span>
-        <span class="trust-item"><span>⚡</span> Powered by Gemini 2.0 Flash</span>
-        <span class="trust-item"><span>🔒</span> Your data stays private</span>
-        <span class="trust-item"><span>📄</span> 150-page PDF → 4-second audit</span>
-        <span class="trust-item"><span>🇰🇪</span> Built for the Kenyan economy</span>
-        <span class="trust-item"><span>✓</span> No app download needed</span>
-        <span class="trust-item"><span>💳</span> M-Pesa integrated</span>
-        <!-- duplicate for seamless scroll -->
-        <span class="trust-item"><span>✓</span> Works on any phone with WhatsApp</span>
-        <span class="trust-item"><span>🏛️</span> Live Government Tender Data</span>
-        <span class="trust-item"><span>⚡</span> Powered by Gemini 2.0 Flash</span>
-        <span class="trust-item"><span>🔒</span> Your data stays private</span>
-        <span class="trust-item"><span>📄</span> 150-page PDF → 4-second audit</span>
-        <span class="trust-item"><span>🇰🇪</span> Built for the Kenyan economy</span>
-        <span class="trust-item"><span>✓</span> No app download needed</span>
-        <span class="trust-item"><span>💳</span> M-Pesa integrated</span>
-    </div>
-</div>
-
-<!-- ─── SERVICES ─── -->
-<section id="services" class="services">
-    <div class="container">
-        <div class="section-header fade-up">
-            <h2>Four AI minds. One WhatsApp number.</h2>
-            <p>Each Kigo tenant is purpose-built for a specific Kenyan business reality. Switch between them instantly.</p>
-        </div>
-
-        <div class="cards">
-
-            <!-- SME -->
-            <div class="card fade-up">
-                <span class="card-tag">🏪 The Greeter</span>
-                <span class="card-icon">🏪</span>
-                <h3>Kigo SME</h3>
-                <div class="card-subtitle">"Your digital front-desk that understands vitu kwa ground"</div>
-                <p>Takes orders, answers customer questions in Swahili or English, collects M-Pesa payments via STK push, and routes inquiries to the right Kigo mind — without you lifting a finger.</p>
-                <ul class="card-features">
-                    <li>Live product catalog & instant order processing</li>
-                    <li>Instant STK push payment collection via M-Pesa</li>
-                    <li>Handles customer queries 24/7 in your absence</li>
-                    <li>Witty, conversational — customers think it's human</li>
-                </ul>
-                <a href="https://wa.me/254738071393?text=SME" class="btn btn-ghost" style="width:100%; justify-content:center;">
-                    Activate Kigo SME →
-                </a>
-            </div>
-
-            <!-- Wera -->
-            <div class="card fade-up">
-                <span class="card-tag">📄 The Cash Cow</span>
-                <span class="card-icon">📄</span>
-                <h3>Kigo Wera</h3>
-                <div class="card-subtitle">"The procurement radar that detects compliance traps before they kill your bid"</div>
-                <p>Forward a 150-page tender PDF to WhatsApp. In 4 seconds, Kigo Wera extracts the exact Bid Bond amount, NCA class requirement, hidden disqualifiers, and deadline. Then drafts your compliant quotation.</p>
-                <ul class="card-features">
-                    <li>Pulls live tenders from PPRA & county portals daily</li>
-                    <li>Extracts Bid Bond, NCA class & compliance checklist</li>
-                    <li>Spots hidden traps that DQ 90% of bidders</li>
-                    <li>Drafts compliant quotations automatically</li>
-                </ul>
-                <a href="https://wa.me/254738071393?text=Wera" class="btn btn-ghost" style="width:100%; justify-content:center;">
-                    Activate Kigo Wera →
-                </a>
-            </div>
-
-            <!-- Biz -->
-            <div class="card fade-up">
-                <span class="card-tag">📊 The Ruthless Strategist</span>
-                <span class="card-icon">📊</span>
-                <h3>Kigo Biz</h3>
-                <div class="card-subtitle">"Gemini 2.0 Flash. Zero corporate jargon. Hyper-local leverage."</div>
-                <p>Forget generic business advice. Kigo Biz knows about Kanjo fee structures, KRA tax realities, supply chain cartels, and how to build a business that actually survives Nairobi. Your ruthless strategist on speed dial.</p>
-                <ul class="card-features">
-                    <li>KRA tax strategy & compliance in plain Swahili</li>
-                    <li>Bypassing supply chain cartels & finding alternatives</li>
-                    <li>Surviving county council licensing & Kanjo harassment</li>
-                    <li>Powered by Gemini 2.0 Flash — raw, fast, precise</li>
-                </ul>
-                <a href="https://wa.me/254738071393?text=Biz" class="btn btn-ghost" style="width:100%; justify-content:center;">
-                    Activate Kigo Biz →
-                </a>
-            </div>
-
-            <!-- Tuko Kadi -->
-            <div class="card fade-up">
-                <span class="card-tag">⚖️ The Civic Shield</span>
-                <span class="card-icon">⚖️</span>
-                <h3>Kigo Tuko Kadi</h3>
-                <div class="card-subtitle">"A street-smart Nairobi constitutional lawyer in your pocket"</div>
-                <p>Know your rights. When police stop you, when the county slaps you with an illegal tax, when your landlord crosses a line — Kigo Tuko Kadi gives you the exact Article or Section of Kenyan law to cite. Zero tech jargon.</p>
-                <ul class="card-features">
-                    <li>Exact constitutional articles for police encounters</li>
-                    <li>Know which county taxes are legal vs. extortion</li>
-                    <li>Tenant & landlord rights under the Landlord-Tenant Act</li>
-                    <li>Gen Z & youth focused — fast, direct, no legalese</li>
-                </ul>
-                <a href="https://wa.me/254738071393?text=TukoKadi" class="btn btn-ghost" style="width:100%; justify-content:center;">
-                    Activate Tuko Kadi →
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ─── HOW IT WORKS ─── -->
-<section id="howto" class="howto">
-    <div class="container">
-        <div class="section-header fade-up">
-            <h2>Up and running in 60 seconds</h2>
-            <p>No app to download. No account to create. Just WhatsApp — which you already have.</p>
-        </div>
-        <div class="steps">
-            <div class="step fade-up">
-                <div class="step-number">1</div>
-                <h3>Send "Hi"</h3>
-                <p>Open WhatsApp and message <strong>0738 071 393</strong>. Type anything — Kigo will greet you.</p>
-            </div>
-            <div class="step fade-up">
-                <div class="step-number">2</div>
-                <h3>Pick your tenant</h3>
-                <p>Type <code>SME</code>, <code>Wera</code>, <code>Biz</code>, or <code>TukoKadi</code> to activate the right AI mind.</p>
-            </div>
-            <div class="step fade-up">
-                <div class="step-number">3</div>
-                <h3>Get it done</h3>
-                <p>Place orders, audit tenders, ask for business strategy, or know your rights — in plain language.</p>
-            </div>
-            <div class="step fade-up">
-                <div class="step-number">4</div>
-                <h3>Switch freely</h3>
-                <p>Type <code>/tenant</code> to see all options, or jump directly with <code>/sme</code>, <code>/wera</code>, <code>/biz</code>, <code>/tukokadi</code>.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ─── PRICING ─── -->
-<section id="pricing" class="pricing">
-    <div class="container">
-        <div class="section-header fade-up">
-            <h2>Simple, honest pricing</h2>
-            <p>Start free. Upgrade when you're ready to go full power.</p>
-        </div>
-
-        <div class="pricing-grid">
-
-            <!-- Starter -->
-            <div class="pricing-card fade-up">
-                <div class="pricing-tier">Trial</div>
-                <div class="price">KES 0</div>
-                <div class="price-period">forever free</div>
-                <div class="price-desc">Enough to feel the power before you commit.</div>
-                <ul class="pricing-features">
-                    <li>4 free data pulls or PDF audits total</li>
-                    <li>Access to Kigo SME (full)</li>
-                    <li>Basic tenant switching (SME, Wera, Biz, Tuko Kadi)</li>
-                    <li>Email support</li>
-                </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nianze%20free" class="btn btn-outline" style="width:100%; justify-content:center;">Start for free →</a>
-            </div>
-
-            <!-- Premium -->
-            <div class="pricing-card featured fade-up">
-                <div class="featured-badge">Most Popular</div>
-                <div class="pricing-tier" style="margin-top:1.25rem;">Premium Extraction</div>
-                <div class="price">KES 500</div>
-                <div class="price-period">per month</div>
-                <div class="price-desc">Unlimited firepower. No throttle. No limits.</div>
-                <ul class="pricing-features">
-                    <li>Unlimited live tender data pulls from PPRA & counties</li>
-                    <li>Unlimited PDF compliance audits (any page count)</li>
-                    <li>Full unthrottled Gemini 2.0 Flash via Kigo Biz</li>
-                    <li>Full Kigo Tuko Kadi — civic shield, no limits</li>
-                    <li>Priority WhatsApp support</li>
-                    <li>New tenant features first access</li>
-                </ul>
-                <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nataka%20Premium%20plan" class="btn btn-primary" style="width:100%; justify-content:center;">Upgrade to Premium →</a>
-            </div>
-
-            <!-- Enterprise -->
-            <div class="pricing-card fade-up">
-                <div class="pricing-tier">Enterprise</div>
-                <div class="price" style="font-size: 2rem;">Custom</div>
-                <div class="price-period">tailored to your org</div>
-                <div class="price-desc">For government agencies, large procurement firms, and custom AI workflows.</div>
-                <ul class="pricing-features">
-                    <li>Dedicated Kigo instance (private deployment)</li>
-                    <li>API access for your own systems</li>
-                    <li>Custom AI workflows & automations</li>
-                    <li>Dedicated account manager</li>
-                    <li>On-premise or private cloud option</li>
-                </ul>
-                <a href="mailto:roykangwana@gmail.com" class="btn btn-outline" style="width:100%; justify-content:center;">Contact us →</a>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- ─── CTA ─── -->
-<section class="cta-section">
-    <div class="container">
-        <div class="cta-inner fade-up">
-            <h2>The hustle doesn't wait. Neither should you.</h2>
-            <p>Start your 4 free audits now. No credit card, no download, no setup. Just WhatsApp.</p>
-            <a href="https://wa.me/254738071393?text=Hi%20Kigo,%20nianze" class="btn btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
-                <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                </svg>
-                Open WhatsApp now →
-            </a>
-        </div>
-    </div>
-</section>
-
-<!-- ─── FOOTER ─── -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-inner">
-            <div class="footer-left">© 2025 Kigo — AI for the Kenyan economy. Built in Nairobi 🇰🇪</div>
-            <div class="footer-right">
-                <a href="mailto:roykangwana@gmail.com">📧 roykangwana@gmail.com</a>
-                <a href="https://wa.me/254738071393">📞 +254 738 071 393</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-<script>
-    // Intersection Observer for fade-up animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, i) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('visible');
-                }, (entry.target.dataset.delay || 0) * 100);
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-up').forEach((el, i) => {
-        el.dataset.delay = i % 4;
-        observer.observe(el);
-    });
-</script>
-
-</body>
-</html>
+            <a href="#services">Architecture</a>
+            <a href="#howto">Integration</a>
+            <a href="https://wa.me/254738071393?text=Hi%20Royson,%20I%20am%20interested%20in%20your%20AI%20deployments" class="btn btn-primary" style="padding: 0.55rem 1.2rem;">
+                <svg class="whatsapp-icon" viewBox="0 0 24 24" xmlns="http://www.w
