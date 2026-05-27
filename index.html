@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KangwanaTech | Kigo AI - The Autonomous WhatsApp Worker</title>
-    <meta name="description" content="Meet Kigo: The autonomous WhatsApp AI for Kenyan SMEs, students, and communities. Zero Meta API fees, live Daraja M-PESA integration, and headless WebSocket architecture.">
+    <meta name="description" content="Meet Kigo: The autonomous WhatsApp AI for Kenyan SMEs, students, Chamas, and communities. Zero Meta API fees and live Daraja M-PESA integration.">
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -172,32 +172,6 @@
         .bubble-time { font-size: 0.7rem; color: #999; text-align: right; margin-top: 0.3rem; display: block;}
         .bubble strong { color: var(--green-dark); }
 
-        /* ─── VIDEO SECTION (KIGO KARANI) ─── */
-        .video-showcase {
-            padding: 5rem 0;
-            background: var(--ink);
-            text-align: center;
-        }
-        .video-showcase h2 { color: white; margin-bottom: 1rem; }
-        .video-showcase p { color: rgba(255,255,255,0.7); margin-bottom: 3rem; font-size: 1.1rem; max-width: 600px; margin-left: auto; margin-right: auto; }
-        
-        .video-wrapper {
-            max-width: 800px;
-            margin: 0 auto;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            border: 4px solid rgba(255,255,255,0.1);
-            background: #000;
-            aspect-ratio: 16/9;
-        }
-        
-        .video-wrapper video, .video-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
         /* ─── TRUST SCROLL ─── */
         .trust-bar { background: var(--green); padding: 1rem 0; overflow: hidden; }
         .trust-scroll { display: flex; gap: 4rem; animation: scroll 25s linear infinite; white-space: nowrap; }
@@ -229,16 +203,8 @@
             margin-bottom: 1rem;
         }
 
-        /* ─── HOW IT WORKS ─── */
-        .howto { background: var(--surface); padding: 6rem 0; border-top: 1px solid var(--border); }
-        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-        .step { background: white; padding: 2rem; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
-        .step-number { width: 40px; height: 40px; background: var(--green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 1.5rem; }
-        .step h3 { margin-bottom: 0.8rem; font-size: 1.2rem; color: var(--ink);}
-        .step p { font-size: 0.95rem; color: var(--slate); }
-
         /* ─── FOOTER ─── */
-        .footer { background: var(--white); border-top: 1px solid var(--border); padding: 3rem 0; }
+        .footer { background: var(--surface); border-top: 1px solid var(--border); padding: 3rem 0; }
         .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
         .footer-left { color: var(--muted); font-weight: 500; font-size: 0.95rem; }
         .footer-right { font-weight: 600; font-size: 0.95rem; display: flex; gap: 2rem; flex-wrap: wrap; }
@@ -248,15 +214,12 @@
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .cards { grid-template-columns: repeat(2, 1fr); }
-            .steps { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         }
         @media (max-width: 768px) {
             .hero .container { grid-template-columns: 1fr; gap: 3rem; }
-            .video-wrapper { border-radius: 8px; border-width: 2px; }
         }
         @media (max-width: 640px) {
             .cards { grid-template-columns: 1fr; }
-            .steps { grid-template-columns: 1fr; }
             .nav a.link { display: none; }
             .hero-stats { flex-wrap: wrap; }
         }
@@ -268,9 +231,7 @@
     <div class="container">
         <a href="#" class="logo"><span class="logo-dot"></span> Kangwana<span>Tech</span></a>
         <nav class="nav">
-            <a href="#demo" class="link">Watch Demo</a>
             <a href="#features" class="link">The Kigo Suite</a>
-            <a href="#howto" class="link">How it Works</a>
             <a href="mailto:roykangwana@gmail.com" class="btn btn-primary">Contact Founder</a>
         </nav>
     </div>
@@ -281,7 +242,7 @@
         <div class="hero-content">
             <div class="hero-badge">🇰🇪 Built for Kenyan SMEs & Communities</div>
             <h1>Your Operations, Fully Automated.<br><em>Right on WhatsApp.</em></h1>
-            <p class="hero-sub">Meet Kigo, your sovereign digital worker. From processing M-Pesa sales and updating Google Sheets, to logging community grievances and scouting TikTok trends—all natively inside WhatsApp with zero Meta API fees.</p>
+            <p class="hero-sub">Meet Kigo, your sovereign digital worker. From processing M-Pesa sales and updating Google Sheets, to logging community grievances and fetching live breaking news—all natively inside WhatsApp.</p>
             <div class="hero-actions">
                 <a href="#features" class="btn btn-primary">Explore Kigo Features</a>
                 <a href="https://wa.me/254738071393" class="btn btn-outline" target="_blank">Test AI Live</a>
@@ -334,32 +295,18 @@
     </div>
 </section>
 
-<section id="demo" class="video-showcase">
-    <div class="container">
-        <h2>Meet Kigo Karani</h2>
-        <p>Watch how our AI Clerk parses complex documents, updates databases, and handles administrative data entry instantly via WhatsApp.</p>
-        
-        <div class="video-wrapper">
-            <video controls poster="placeholder-image.jpg">
-                <source src="link-to-your-kigo-karani-video.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            </div>
-    </div>
-</section>
-
 <div class="trust-bar">
     <div class="trust-scroll">
-        <span class="trust-item">⚡ Headless WebSocket Protocol</span>
-        <span class="trust-item">✓ Zero Twilio/Meta Fees</span>
+        <span class="trust-item">⚡ Seamless WhatsApp Integration</span>
+        <span class="trust-item">✓ Zero Twilio/Meta API Fees</span>
         <span class="trust-item">📊 Google Sheets Sync</span>
         <span class="trust-item">💳 Safaricom Daraja STK</span>
-        <span class="trust-item">🤖 Gemini & Llama-3 Powered</span>
-        <span class="trust-item">⚡ Headless WebSocket Protocol</span>
-        <span class="trust-item">✓ Zero Twilio/Meta Fees</span>
+        <span class="trust-item">🤖 Advanced AI Engine</span>
+        <span class="trust-item">⚡ Seamless WhatsApp Integration</span>
+        <span class="trust-item">✓ Zero Twilio/Meta API Fees</span>
         <span class="trust-item">📊 Google Sheets Sync</span>
         <span class="trust-item">💳 Safaricom Daraja STK</span>
-        <span class="trust-item">🤖 Gemini & Llama-3 Powered</span>
+        <span class="trust-item">🤖 Advanced AI Engine</span>
     </div>
 </div>
 
@@ -375,14 +322,14 @@
                 <div class="card-tag">For Retail & Logistics</div>
                 <span class="card-icon">🛒</span>
                 <h3>Kigo SME</h3>
-                <p>A fully automated digital storefront. Customers order via text, Kigo checks Google Sheets inventory, calculates totals, and pushes an M-Pesa Daraja STK prompt to close the sale without human intervention.</p>
+                <p>A fully automated digital storefront. Customers order via text, Kigo checks live inventory, calculates totals, and pushes an M-Pesa Daraja STK prompt to close the sale without human intervention.</p>
             </div>
 
             <div class="card">
-                <div class="card-tag">For Admin & Office</div>
-                <span class="card-icon">📑</span>
+                <div class="card-tag">For Chamas & Groups</div>
+                <span class="card-icon">💰</span>
                 <h3>Kigo Karani</h3>
-                <p>Your digital clerk. Drop a PDF manifest, legal document, or messy voice note into WhatsApp, and Kigo Karani instantly parses the data, formats it cleanly, and logs it into your CRM or database.</p>
+                <p>Your digital Chama treasurer. Drop a list of member contributions or forward M-Pesa messages into the group, and Kigo instantly calculates totals, balances the books, and updates your shared Google Sheet.</p>
             </div>
 
             <div class="card">
@@ -393,10 +340,10 @@
             </div>
 
             <div class="card">
-                <div class="card-tag">For Creators & Marketers</div>
-                <span class="card-icon">🔥</span>
-                <h3>Kigo Scout (Trends)</h3>
-                <p>A live internet scraping engine. Text a command, and Kigo pulls the top trending TikTok videos, hooks, and sounds globally, instantly adapting them into customized script ideas for the Nairobi market.</p>
+                <div class="card-tag">For Breaking Updates</div>
+                <span class="card-icon">🌍</span>
+                <h3>Kigo Trends</h3>
+                <p>Stay ahead of the curve. Ask Kigo for the latest breaking news, trending political topics, or market updates in Kenya, and it scrapes the live internet to deliver a clean, unbiased summary straight to your chat.</p>
             </div>
 
             <div class="card">
@@ -411,37 +358,6 @@
                 <span class="card-icon">📚</span>
                 <h3>Kigo Scholar / Comrade</h3>
                 <p>Currently serving over 200+ UoN students. A 24/7 digital tutor that pulls past papers, explains complex university concepts, and helps students prepare for exams using highly localized, relatable language.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="howto" class="howto">
-    <div class="container">
-        <div class="section-header">
-            <h2>The Technical Pipeline</h2>
-            <p>How we bypass expensive Meta APIs to deliver unlimited AI automation.</p>
-        </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>WebSocket Connection</h3>
-                <p>We use Baileys (Node.js) to connect Kigo as a "Linked Device", entirely bypassing the restrictive Meta API per-message taxes.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>LLM Processing</h3>
-                <p>Messages hit ultra-low latency models (Gemini 1.5 / Groq Llama-3) equipped with custom prompts to understand Kenyan context and slang.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>Make.com Routing</h3>
-                <p>The AI determines the intent (e.g., "Make a payment" or "Log a complaint") and triggers live Make.com webhooks to act.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h3>Live Execution</h3>
-                <p>Whether it's pushing a Daraja STK prompt, updating a Google Sheet, or generating a video script, Kigo executes and replies instantly.</p>
             </div>
         </div>
     </div>
