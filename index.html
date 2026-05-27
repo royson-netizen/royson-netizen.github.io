@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KangwanaTech | Enterprise AI & WhatsApp Automation</title>
-    <meta name="description" content="Custom WhatsApp AI automation with zero Twilio fees. Seamless Make.com CRM pipelines, Daraja M-PESA integrations, and headless WebSocket architecture built in Nairobi.">
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+    <title>KangwanaTech | Kigo AI - The Autonomous WhatsApp Worker</title>
+    <meta name="description" content="Meet Kigo: The autonomous WhatsApp AI for Kenyan SMEs, students, and communities. Zero Meta API fees, live Daraja M-PESA integration, and headless WebSocket architecture.">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Sora:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --green: #10b981;
@@ -33,7 +33,7 @@
 
         h1, h2, h3 { font-family: 'Sora', sans-serif; letter-spacing: -0.02em; }
         h1 { font-size: clamp(2.4rem, 5vw, 3.8rem); line-height: 1.12; font-weight: 800; }
-        h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 700; }
+        h2 { font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; }
         h3 { font-size: 1.25rem; font-weight: 700; }
 
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
@@ -70,7 +70,7 @@
             50% { opacity: 0.5; transform: scale(0.8); }
         }
 
-        .nav { display: flex; align-items: center; gap: 1rem; }
+        .nav { display: flex; align-items: center; gap: 1.5rem; }
         .nav a.link {
             text-decoration: none;
             color: var(--slate);
@@ -102,7 +102,7 @@
         .btn-outline:hover { border-color: var(--green); color: var(--green); background: var(--green-muted); }
 
         /* ─── HERO ─── */
-        .hero { padding: 5rem 0; position: relative; background: var(--surface); }
+        .hero { padding: 5rem 0; position: relative; background: var(--surface); overflow: hidden; }
 
         .hero .container {
             display: grid;
@@ -129,7 +129,7 @@
         .hero h1 { margin-bottom: 1.5rem; color: var(--ink); }
         .hero h1 em { font-style: normal; color: var(--green); position: relative; }
 
-        .hero-sub { font-size: 1.1rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 500px; line-height: 1.7; }
+        .hero-sub { font-size: 1.1rem; color: var(--muted); margin-bottom: 2.5rem; max-width: 520px; line-height: 1.7; }
         .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
         .hero-stats {
@@ -167,257 +167,3 @@
         }
 
         .bubble { max-width: 85%; padding: 0.75rem 1rem; border-radius: 12px; font-size: 0.9rem; line-height: 1.5; position: relative; }
-        .bubble-in { background: white; border-bottom-left-radius: 2px; align-self: flex-start; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .bubble-out { background: #dcf8c6; border-bottom-right-radius: 2px; align-self: flex-end; box-shadow: 0 1px 2px rgba(0,0,0,0.1); }
-        .bubble-time { font-size: 0.7rem; color: #999; text-align: right; margin-top: 0.3rem; display: block;}
-        .bubble strong { color: var(--green-dark); }
-
-        /* ─── TRUST SCROLL ─── */
-        .trust-bar { background: var(--ink); padding: 1.5rem 0; overflow: hidden; }
-        .trust-scroll { display: flex; gap: 4rem; animation: scroll 25s linear infinite; white-space: nowrap; }
-        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .trust-item { color: rgba(255,255,255,0.8); font-size: 0.95rem; font-weight: 600; flex-shrink: 0; display: flex; align-items: center; gap: 0.5rem;}
-        .trust-item span { color: var(--green); font-size: 1.2rem; }
-
-        /* ─── SERVICES ─── */
-        .services { padding: 6rem 0; background: white; }
-        .section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
-        .section-header h2 { margin-bottom: 1rem; }
-        .section-header p { color: var(--muted); font-size: 1.1rem; }
-
-        .cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.5rem; }
-        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; transition: transform 0.2s, box-shadow 0.2s; }
-        .card:hover { transform: translateY(-5px); box-shadow: 0 20px 40px -15px rgba(0,0,0,0.1); border-color: var(--green); }
-
-        .card-icon { font-size: 2.5rem; margin-bottom: 1.2rem; display: block; }
-        .card h3 { margin-bottom: 0.8rem; font-size: 1.4rem; color: var(--ink);}
-        .card p { color: var(--slate); margin-bottom: 1.5rem; font-size: 1rem; }
-        
-        .card-features { list-style: none; }
-        .card-features li { font-size: 0.95rem; color: var(--ink); padding: 0.5rem 0; border-bottom: 1px dashed var(--border); }
-        .card-features li:last-child { border-bottom: none; }
-        .card-features li::before { content: "✓"; color: var(--green); font-weight: 800; margin-right: 0.8rem; }
-
-        /* ─── HOW IT WORKS ─── */
-        .howto { background: var(--ink); color: white; padding: 6rem 0; }
-        .howto .section-header p { color: rgba(255,255,255,0.7); }
-        .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; }
-        .step { background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 16px; border: 1px solid rgba(255,255,255,0.1); }
-        .step-number { width: 40px; height: 40px; background: var(--green); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; margin-bottom: 1.5rem; }
-        .step h3 { margin-bottom: 0.8rem; font-size: 1.2rem; color: white;}
-        .step p { font-size: 0.95rem; color: rgba(255,255,255,0.7); }
-
-        /* ─── FOOTER ─── */
-        .footer { background: var(--white); border-top: 1px solid var(--border); padding: 3rem 0; }
-        .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
-        .footer-left { color: var(--muted); font-weight: 500; font-size: 0.95rem; }
-        .footer-right { font-weight: 600; font-size: 0.95rem; display: flex; gap: 2rem; flex-wrap: wrap; }
-        .footer-right a { color: var(--ink); text-decoration: none; }
-        .footer-right a:hover { color: var(--green); }
-
-        /* ─── RESPONSIVE ─── */
-        @media (max-width: 900px) {
-            .hero .container { grid-template-columns: 1fr; gap: 3rem; }
-            .cards { grid-template-columns: 1fr; }
-            .steps { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-        }
-        @media (max-width: 640px) {
-            .steps { grid-template-columns: 1fr; }
-            .nav a.link { display: none; }
-            .hero-stats { flex-wrap: wrap; }
-        }
-    </style>
-</head>
-<body>
-
-<header class="header">
-    <div class="container">
-        <a href="#" class="logo">Kangwana<span>Tech</span></a>
-        <nav class="nav">
-            <a href="#services" class="link">Architecture</a>
-            <a href="#howto" class="link">Integration</a>
-            <a href="mailto:roykangwana@gmail.com" class="btn btn-primary">Contact Founder</a>
-        </nav>
-    </div>
-</header>
-
-<section class="hero">
-    <div class="container">
-        <div class="hero-content">
-            <div class="hero-badge">🇰🇪 B2B Digital Infrastructure</div>
-            <h1>Automate Support & Sales.<br><em>Right on WhatsApp.</em></h1>
-            <p class="hero-sub">We build custom LLM integrations using headless WebSocket architecture and Make.com pipelines to automate enterprise customer service, process M-Pesa payments, and sync CRM data seamlessly.</p>
-            <div class="hero-actions">
-                <a href="#services" class="btn btn-primary">View Technical Capabilities</a>
-                <a href="https://wa.me/254738071393" class="btn btn-outline" target="_blank">Test AI Live</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-number">KES 0</div>
-                    <div class="stat-label">Meta API Fees</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">CRM Sync</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-number">&lt;3s</div>
-                    <div class="stat-label">System Latency</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="hero-visual">
-            <div class="phone-frame">
-                <div class="phone-status">
-                    <div class="wa-avatar">K</div>
-                    <div class="wa-info">
-                        <div class="wa-name">Retail Support AI</div>
-                        <div class="wa-online">● online</div>
-                    </div>
-                </div>
-                <div class="chat-body">
-                    <div class="bubble bubble-out">
-                        Jambo, nilinunua bidhaa kwenu jana na imekataa kuwaka. Niko na warranty receipt.
-                        <span class="bubble-time">9:03 AM ✓✓</span>
-                    </div>
-                    <div class="bubble bubble-in">
-                        📄 <strong>Automated Support System.</strong><br><br>
-                        Pole sana kwa hiyo shida. Tafadhali nipe Order Number au Serial Number niconfirm status kwa system yetu.
-                        <span class="bubble-time">9:03 AM</span>
-                    </div>
-                    <div class="bubble bubble-out">
-                        Ni Order #RT-8842
-                        <span class="bubble-time">9:04 AM ✓✓</span>
-                    </div>
-                    <div class="bubble bubble-in">
-                        ✅ <strong>Warranty Verified.</strong><br><br>
-                        Nimeona rekodi yako kwa CRM. Nimefungua replacement ticket <strong>#TKT-099</strong>. Unaweza kuleta bidhaa kwa service center yetu ya CBD leo kwa exchange.
-                        <span class="bubble-time">9:04 AM</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<div class="trust-bar">
-    <div class="trust-scroll">
-        <span class="trust-item"><span>⚡</span> Headless WebSocket Architecture</span>
-        <span class="trust-item"><span>✓</span> Zero Meta & Twilio API Fees</span>
-        <span class="trust-item"><span>📊</span> Live Google Sheets CRM Sync</span>
-        <span class="trust-item"><span>💳</span> Safaricom Daraja STK Push</span>
-        <span class="trust-item"><span>🤖</span> Powered by LLMs</span>
-        <span class="trust-item"><span>🔗</span> Make.com Automation</span>
-        <span class="trust-item"><span>⚡</span> Headless WebSocket Architecture</span>
-        <span class="trust-item"><span>✓</span> Zero Meta & Twilio API Fees</span>
-        <span class="trust-item"><span>📊</span> Live Google Sheets CRM Sync</span>
-        <span class="trust-item"><span>💳</span> Safaricom Daraja STK Push</span>
-        <span class="trust-item"><span>🤖</span> Powered by LLMs</span>
-        <span class="trust-item"><span>🔗</span> Make.com Automation</span>
-    </div>
-</div>
-
-<section id="services" class="services">
-    <div class="container">
-        <div class="section-header">
-            <h2>Enterprise Automation Modules</h2>
-            <p>Our backend engine deploys custom WhatsApp bots tailored precisely for corporate pain points, reducing overhead and scaling operations organically.</p>
-        </div>
-
-        <div class="cards">
-            <div class="card">
-                <span class="card-icon">🤝</span>
-                <h3>Automated Grievance & Ticketing</h3>
-                <p>Retail brands handle thousands of support tickets daily. We bypass expensive human call centers by using NLP to interact with users, calm them down, and extract necessary data instantly.</p>
-                <ul class="card-features">
-                    <li>Zero-fee WebSocket deployment</li>
-                    <li>Make.com API pipelines push data instantly</li>
-                    <li>Live synchronization with Google Sheets CRM</li>
-                    <li>Pre-programmed de-escalation personas</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">💳</span>
-                <h3>E-Commerce & Mobile Payments</h3>
-                <p>A true end-to-end digital storefront living entirely on WhatsApp. We eliminate checkout friction by keeping the customer on the app they already use all day.</p>
-                <ul class="card-features">
-                    <li>Safaricom Daraja API integration</li>
-                    <li>Instant M-PESA STK Push triggered in-chat</li>
-                    <li>Live product catalog filtering via AI</li>
-                    <li>Automated order processing and receipts</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">📄</span>
-                <h3>Rapid Document Parsing</h3>
-                <p>We build bots capable of auditing large PDFs (like legal compliance documents or supply chain manifests) directly within WhatsApp in under 4 seconds.</p>
-                <ul class="card-features">
-                    <li>LLM-powered document reading and summarization</li>
-                    <li>Automated compliance checklists & trap detection</li>
-                    <li>Instant data structuring and text formatting</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <span class="card-icon">☁️</span>
-                <h3>Lean Server Infrastructure</h3>
-                <p>We do not rely on bloated no-code builders. The entire KangwanaTech Node.js architecture is independently deployed and managed on optimized cloud servers.</p>
-                <ul class="card-features">
-                    <li>Hosted on lightweight DigitalOcean Droplets</li>
-                    <li>Built via VS Code development environments</li>
-                    <li>High uptime and continuous server maintenance</li>
-                    <li>Completely bypasses official Meta messaging fees</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="howto" class="howto">
-    <div class="container">
-        <div class="section-header">
-            <h2 style="color: white;">The Technical Pipeline</h2>
-            <p>How we move data securely from a customer's phone directly into your enterprise database.</p>
-        </div>
-        <div class="steps">
-            <div class="step">
-                <div class="step-number">1</div>
-                <h3>WebSocket Connection</h3>
-                <p>We utilize headless browsers (Node.js) to connect to WhatsApp, sidestepping third-party API subscription costs.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">2</div>
-                <h3>LLM Prompting</h3>
-                <p>Customer messages are processed by AI models trained specifically on your brand guidelines and product data.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">3</div>
-                <h3>API Routing</h3>
-                <p>Webhooks trigger Make.com scenarios or Daraja M-Pesa STK pushes depending on user intent.</p>
-            </div>
-            <div class="step">
-                <div class="step-number">4</div>
-                <h3>CRM Sync</h3>
-                <p>Structured data (names, serial numbers, issues) is instantly formatted and pushed to your internal dashboards.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<footer class="footer">
-    <div class="container">
-        <div class="footer-inner">
-            <div class="footer-left">© 2026 KangwanaTech — Custom AI Automations. Built in Nairobi 🇰🇪</div>
-            <div class="footer-right">
-                <a href="mailto:roykangwana@gmail.com">📧 roykangwana@gmail.com</a>
-                <a href="https://wa.me/254738071393" target="_blank">📞 +254 738 071 393</a>
-            </div>
-        </div>
-    </div>
-</footer>
-
-</body>
-</html>
