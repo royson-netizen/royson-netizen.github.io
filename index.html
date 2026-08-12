@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiggo AI | The OS for the African Hustle</title>
+    <title>Kiggo AI | Kiggo on the Go</title>
     <meta name="description" content="Kiggo: The autonomous WhatsApp ecosystem for Kenyan SMEs. Sell, dispatch, and bank without leaving your chat. Built by KangwanaTech.">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /* AFRICAN GREEN & GOLD PALETTE */
         :root {
-            --bg-forest: #022c22; /* Deep dark green */
+            --bg-forest: #022c22;
             --bg-surface: rgba(255, 255, 255, 0.05);
             --gold-primary: #fbbf24;
             --gold-accent: #d97706;
@@ -115,13 +115,16 @@
     <!-- Navigation -->
     <nav class="fixed w-full z-50 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="brand text-2xl font-bold flex items-center gap-2">
-                <span class="w-3 h-3 rounded-full bg-yellow-400 animate-pulse"></span>
-                KIGGO
-            </a>
+            <div class="flex flex-col">
+                <a href="#" class="brand text-2xl font-bold flex items-center gap-2">
+                    <span class="w-3 h-3 rounded-full bg-yellow-400 animate-pulse"></span>
+                    KIGGO
+                </a>
+                <span class="text-xs font-bold text-yellow-400 tracking-widest uppercase">Kiggo on the Go</span>
+            </div>
             <div class="hidden md:flex gap-8 text-sm font-semibold tracking-wide">
+                <a href="#origin" class="hover:text-yellow-400 transition">Our Story</a>
                 <a href="#features" class="hover:text-yellow-400 transition">OS Modules</a>
-                <a href="#ledger" class="hover:text-yellow-400 transition">Ledger</a>
                 <a href="#pricing" class="hover:text-yellow-400 transition">Pricing</a>
             </div>
             <a href="#contact" class="btn-gold px-6 py-2 rounded-lg text-sm">Join Beta</a>
@@ -136,11 +139,11 @@
                     Ubuntu Bantu Intelligence
                 </div>
                 <h1 class="text-5xl md:text-6xl font-extrabold leading-tight mb-6">
-                    Sell on WhatsApp. <br>
-                    <span class="gold-gradient-text">Bank Instantly.</span>
+                    Formalize the Informal.<br>
+                    <span class="gold-gradient-text">Profit-Maxxing with Zero Overhead.</span>
                 </h1>
                 <p class="text-lg text-gray-400 mb-8 max-w-lg">
-                    The autonomous WhatsApp ecosystem for Kenyan SMEs. Kigo negotiates prices, secures M-Pesa payments, and dispatches boda riders locally. Zero friction. Zero app downloads.
+                    The autonomous WhatsApp ecosystem for Kenyan SMEs. Kiggo negotiates prices, secures M-Pesa payments, and dispatches boda riders locally. We automate the hustle so you can focus on growth, not chaos.
                 </p>
                 <div class="flex gap-4">
                     <a href="#features" class="btn-gold px-8 py-3 rounded-xl text-lg">Explore Kiggo</a>
@@ -162,7 +165,7 @@
                         Niaje, I need the Air Max size 42. How much?
                     </div>
                     <div class="chat-bubble-out p-3 w-4/5 ml-auto">
-                        We have size 42 in stock for KES 4,500. 👟 Want to proceed with payment?
+                        We have size 42 in stock for KES 4,500. Want to proceed with payment?
                     </div>
                     <div class="chat-bubble-in p-3 w-4/5">
                         Chukua 4k msee.
@@ -181,120 +184,137 @@
             <span>◆ 100% Native to WhatsApp</span>
             <span>◆ Daraja M-Pesa Integrated</span>
             <span>◆ Zero Meta API Fees</span>
-            <span>◆ KRA eTIMS Ready</span>
+            <span>◆ Custom Cloud Architecture</span>
             <span>◆ Hyper-Local Dispatch</span>
-            <!-- Duplicated for seamless scroll -->
             <span>◆ 100% Native to WhatsApp</span>
             <span>◆ Daraja M-Pesa Integrated</span>
             <span>◆ Zero Meta API Fees</span>
-            <span>◆ KRA eTIMS Ready</span>
+            <span>◆ Custom Cloud Architecture</span>
             <span>◆ Hyper-Local Dispatch</span>
         </div>
     </div>
 
-    <!-- Features Section -->
-    <section id="features" class="py-24 px-6">
+    <!-- The Origin Story -->
+    <section id="origin" class="py-24 px-6 bg-[#011c16]">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">The Architecture of Resilience</h2>
+            <p class="text-gray-400 mb-6">
+                In February, we presented the first bare-metal WhatsApp AI prototype in Kenya at C4DLab. While others were building basic conversational wrappers, we realized the street economy didn't need a chatbot. It needed financial infrastructure.
+            </p>
+            <p class="text-gray-400 mb-6">
+                We went heads down. We upgraded the underlying architecture, moved to custom WebSockets on Google Cloud to bypass API overhead, and evolved from a simple bot into a complete Agentic OS. Kigo became Kiggo.
+            </p>
+            <p class="text-gray-400 font-bold gold-gradient-text mt-6 text-xl">
+                We stopped being a bot and became a bankable operating system.
+            </p>
+        </div>
+    </section>
+
+    <!-- Target Audience Stories -->
+    <section class="py-24 px-6 border-y border-white/5">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">The Complete OS for the Hustle</h2>
-                <p class="text-gray-400">Everything you need to automate your business, integrated seamlessly into WhatsApp.</p>
+                <h2 class="text-4xl font-bold mb-4">Built for the Ground Level</h2>
+                <p class="text-gray-400">Solving the chaos of informal commerce for the people actually doing the work.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Dante -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold gold-gradient-text mb-2">Meet Dante</h3>
+                    <p class="text-gray-400 mb-6">27 years old. Holds a college diploma but turned to the street hustle when formal jobs dried up. Runs a sneaker stall in Maua.</p>
+                    <ul class="text-sm space-y-4 mb-8">
+                        <li class="flex gap-3">
+                            <span class="text-yellow-400 font-bold">x</span> 
+                            <div><span class="font-bold text-white">High Cognitive Load:</span> Juggles physical walk-ins while monitoring WhatsApp.</div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-yellow-400 font-bold">x</span> 
+                            <div><span class="font-bold text-white">The Credit Gap:</span> Strong cash flow, but completely unbankable without a digital ledger.</div>
+                        </li>
+                    </ul>
+                    <div class="p-4 bg-yellow-400/10 rounded-lg border border-yellow-400/20">
+                        <div class="font-bold text-yellow-400 mb-1">The Fix: Margin-Maxxing</div>
+                        <p class="text-sm text-gray-300">Kiggo OS handles the negotiations, locking in price floors and securing the M-Pesa push automatically.</p>
+                    </div>
+                </div>
+
+                <!-- Mutethia -->
+                <div class="feature-card p-8 rounded-2xl">
+                    <h3 class="text-2xl font-bold text-green-400 mb-2">Meet Mutethia</h3>
+                    <p class="text-gray-400 mb-6">16 years old. High school dropout and breadwinner for his siblings. Bought a boda boda to survive the hustle.</p>
+                    <ul class="text-sm space-y-4 mb-8">
+                        <li class="flex gap-3">
+                            <span class="text-green-400 font-bold">x</span> 
+                            <div><span class="font-bold text-white">Idle Time:</span> Spends hours waiting at the stage for unpredictable, sporadic clients.</div>
+                        </li>
+                        <li class="flex gap-3">
+                            <span class="text-green-400 font-bold">x</span> 
+                            <div><span class="font-bold text-white">Financial Exclusion:</span> Zero access to micro-loans to upgrade his bike.</div>
+                        </li>
+                    </ul>
+                    <div class="p-4 bg-green-400/10 rounded-lg border border-green-400/20">
+                        <div class="font-bold text-green-400 mb-1">The Fix: Trip-Maxxing</div>
+                        <p class="text-sm text-gray-300">Kiggo Dispatch drops delivery tickets directly to his stage WhatsApp group. The first to claim gets the job.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-24 px-6 bg-[#011c16]">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">The Kiggo Ecosystem</h2>
+                <p class="text-gray-400">Zero behavioral change. We bring the operating system to where the users already live.</p>
             </div>
 
             <div class="grid md:grid-cols-3 gap-6">
-                <!-- Kiggo OS -->
-                <div class="feature-card p-8 rounded-2xl">
-                    <div class="w-12 h-12 rounded-lg bg-green-500/20 text-green-400 flex items-center justify-center text-2xl mb-6">🤖</div>
-                    <h3 class="text-xl font-bold mb-3">Kiggo Agentic OS</h3>
+                <div class="feature-card p-8 rounded-2xl border-t-2 border-t-yellow-400">
+                    <h3 class="text-xl font-bold mb-3">Kiggo OS</h3>
                     <p class="text-gray-400 text-sm">
                         A 24/7 AI sales agent that bargains in Sheng and Swahili. It checks inventory, negotiates prices within your set margins, and closes sales while you sleep.
                     </p>
                 </div>
 
-                <!-- Kiggo Dispatch -->
-                <div class="feature-card p-8 rounded-2xl">
-                    <div class="w-12 h-12 rounded-lg bg-yellow-500/20 text-yellow-400 flex items-center justify-center text-2xl mb-6">🛵</div>
+                <div class="feature-card p-8 rounded-2xl border-t-2 border-t-green-400">
                     <h3 class="text-xl font-bold mb-3">Kiggo Dispatch</h3>
                     <p class="text-gray-400 text-sm">
                         Hyper-local peer-to-peer logistics. Kiggo drops order tickets into verified stage WhatsApp groups. The first rider to reply #claim gets the delivery.
                     </p>
                 </div>
 
-                <!-- Kiggo Ledger -->
-                <div class="feature-card p-8 rounded-2xl">
-                    <div class="w-12 h-12 rounded-lg bg-blue-500/20 text-blue-400 flex items-center justify-center text-2xl mb-6">📊</div>
+                <div class="feature-card p-8 rounded-2xl border-t-2 border-t-blue-400">
                     <h3 class="text-xl font-bold mb-3">Kiggo Ledger</h3>
                     <p class="text-gray-400 text-sm">
-                        Making the unbankable, bankable. Every STK push is logged into an immutable Google Sheet, creating a clean credit profile for future micro-loans.
+                        Making the unbankable, bankable. Every M-Pesa transaction is silently logged into a secure Google Sheet, giving vendors an instant, verifiable credit profile.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Deep Dive: Ledger & Ardhi -->
-    <section class="py-24 bg-[#011c16] px-6 border-y border-white/5">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-            <div>
-                <h2 class="text-3xl font-bold mb-6">Multi-Tenant Architecture. <br><span class="gold-gradient-text">Built for Scale.</span></h2>
-                <ul class="space-y-6">
-                    <li class="flex gap-4">
-                        <div class="w-8 h-8 rounded bg-yellow-500/10 flex items-center justify-center text-yellow-500 mt-1">✓</div>
-                        <div>
-                            <h4 class="font-bold text-lg">Kiggo Ardhi</h4>
-                            <p class="text-gray-400 text-sm">A decentralized real estate bulletin. Sellers post plots, buyers search natively. Unlock seller details securely via micro-transactions.</p>
-                        </div>
-                    </li>
-                    <li class="flex gap-4">
-                        <div class="w-8 h-8 rounded bg-yellow-500/10 flex items-center justify-center text-yellow-500 mt-1">✓</div>
-                        <div>
-                            <h4 class="font-bold text-lg">Zero Cloud Costs to Start</h4>
-                            <p class="text-gray-400 text-sm">Built on optimized Connection Manager architecture. Host your business initially via secure WebSockets without paying heavy Meta API bulk fees.</p>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="relative">
-                <div class="absolute inset-0 bg-yellow-500/20 blur-3xl rounded-full"></div>
-                <img src="/api/placeholder/600/400" alt="Dashboard visualization" class="relative rounded-2xl border border-white/10 shadow-2xl">
-            </div>
-        </div>
-    </section>
-
     <!-- Pricing -->
     <section id="pricing" class="py-24 px-6">
-        <div class="max-w-5xl mx-auto">
+        <div class="max-w-3xl mx-auto">
             <div class="text-center mb-16">
                 <h2 class="text-4xl font-bold mb-4">Transparent Pricing</h2>
                 <p class="text-gray-400">Scale your hustle without the overhead.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-8 max-w-3xl mx-auto">
-                <!-- Micro-SME -->
-                <div class="feature-card p-8 rounded-2xl text-center">
-                    <h3 class="text-xl font-bold mb-2">Merchant Base</h3>
-                    <div class="text-3xl font-bold gold-gradient-text mb-6">KES 500<span class="text-sm text-gray-400">/mo</span></div>
-                    <ul class="text-sm text-gray-400 space-y-3 mb-8 text-left">
-                        <li>✓ Kiggo Agentic OS (AI Sales)</li>
-                        <li>✓ Daraja STK Push Integration</li>
-                        <li>✓ Google Sheets Inventory Sync</li>
-                        <li>✓ Kiggo Ledger Tracking</li>
-                    </ul>
-                    <button class="btn-outline w-full py-3 rounded-lg font-bold">Start Free Trial</button>
-                </div>
-
-                <!-- Pro/Dispatch -->
-                <div class="feature-card p-8 rounded-2xl text-center border-yellow-500/50 bg-yellow-500/5 relative overflow-hidden">
-                    <div class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-bl-lg">POPULAR</div>
-                    <h3 class="text-xl font-bold mb-2">Kiggo Pro</h3>
-                    <div class="text-3xl font-bold gold-gradient-text mb-6">KES 1,500<span class="text-sm text-gray-400">/mo</span></div>
-                    <ul class="text-sm text-gray-400 space-y-3 mb-8 text-left">
-                        <li>✓ Everything in Merchant Base</li>
-                        <li>✓ <strong>Kiggo Dispatch</strong> (Boda network)</li>
-                        <li>✓ Multi-stage ticket routing</li>
-                        <li>✓ Priority tech support</li>
-                    </ul>
-                    <button class="btn-gold w-full py-3 rounded-lg">Upgrade to Pro</button>
-                </div>
+            <div class="feature-card p-10 rounded-2xl text-center border-yellow-500/50 bg-yellow-500/5 relative overflow-hidden">
+                <div class="absolute top-0 right-0 bg-yellow-500 text-black text-xs font-bold px-4 py-2 rounded-bl-lg">ENTERPRISE OS</div>
+                <h3 class="text-2xl font-bold mb-2">Kiggo Pro Architecture</h3>
+                <div class="text-4xl font-bold gold-gradient-text mb-6">KES 5,000<span class="text-sm text-gray-400">/mo</span></div>
+                <ul class="text-sm text-gray-400 space-y-4 mb-8 text-left max-w-sm mx-auto">
+                    <li class="flex gap-2"><span>✓</span> Kiggo Agentic OS (AI Sales & Negotiation)</li>
+                    <li class="flex gap-2"><span>✓</span> Daraja STK Push Integration</li>
+                    <li class="flex gap-2"><span>✓</span> Kiggo Dispatch (Boda network routing)</li>
+                    <li class="flex gap-2"><span>✓</span> Kiggo Ledger (Google Sheets sync)</li>
+                    <li class="flex gap-2"><span>✓</span> Zero Meta API Messaging Fees</li>
+                </ul>
+                <button class="btn-gold w-full max-w-sm mx-auto block py-4 rounded-lg text-lg">Formalize Your Hustle</button>
             </div>
         </div>
     </section>
@@ -302,10 +322,7 @@
     <!-- Footer -->
     <footer class="border-t border-white/10 pt-16 pb-8 bg-[#011c16] text-center">
         <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-6">Ready to formalize your hustle?</h2>
-            <a href="#" class="btn-gold inline-block px-8 py-3 rounded-xl text-lg mb-16">Talk to Kiggo on WhatsApp</a>
-            
-            <div class="text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center border-t border-white/5 pt-8">
+            <div class="text-sm text-gray-500 flex flex-col md:flex-row justify-between items-center">
                 <p>&copy; 2026 KangwanaTech. Built in Nairobi. Scaled for Africa.</p>
                 <div class="flex gap-4 mt-4 md:mt-0">
                     <a href="#" class="hover:text-yellow-400">Privacy</a>
