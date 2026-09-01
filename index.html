@@ -1,20 +1,20 @@
-code
-Html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kiggo | Automate Your Hustle on WhatsApp</title>
-    <meta name="description" content="Kiggo: The WhatsApp Operating System for Kenyan businesses. Automate sales, manage deliveries, and track every shilling effortlessly.">
+    <title>Kiggo Agentic OS | The Autonomous WhatsApp Operating System for Africa</title>
+    <meta name="description" content="Kiggo: The WhatsApp-native AI Agentic Operating System. Automating MSME commerce, smallholder agricultural trade, political campaign war rooms, and multimodal intelligence.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-forest: #022c22;
+            --bg-forest: #02241c;
+            --forest-card: #043328;
             --gold: #fbbf24;
+            --gold-dark: #d97706;
             --wa-green: #25D366;
-            --surface: rgba(255, 255, 255, 0.05);
+            --wa-dark: #075E54;
         }
 
         body {
@@ -22,225 +22,563 @@ Html
             background-color: var(--bg-forest);
             color: #f8fafc;
             overflow-x: hidden;
-            background-image: radial-gradient(circle at 10% 20%, rgba(251, 191, 36, 0.05), transparent 20%);
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(251, 191, 36, 0.08), transparent 30%),
+                radial-gradient(circle at 85% 85%, rgba(37, 211, 102, 0.06), transparent 30%);
         }
 
-        h1, h2, h3, .brand { font-family: 'Space Grotesk', sans-serif; }
+        h1, h2, h3, h4, .brand { font-family: 'Space Grotesk', sans-serif; }
 
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gold), #d97706);
-            color: #000;
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: #02241c;
             font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.35);
+        }
+
+        .btn-wa {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: #fff;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-wa:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.35);
+        }
+
+        .glass-card {
+            background: rgba(4, 51, 40, 0.65);
+            border: 1px solid rgba(251, 191, 36, 0.12);
+            backdrop-filter: blur(16px);
             transition: all 0.3s ease;
         }
-
-        .chat-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(251, 191, 36, 0.1);
-            backdrop-filter: blur(10px);
+        .glass-card:hover {
+            border-color: rgba(251, 191, 36, 0.35);
+            transform: translateY(-3px);
         }
 
-        .step-number {
-            background: linear-gradient(135deg, var(--gold), #d97706);
+        .chat-bubble-in {
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .chat-bubble-out {
+            background: rgba(37, 211, 102, 0.15);
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .badge-gold {
+            background: rgba(251, 191, 36, 0.12);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .badge-wa {
+            background: rgba(37, 211, 102, 0.12);
+            color: #25D366;
+            border: 1px solid rgba(37, 211, 102, 0.3);
+        }
+
+        .gradient-text-gold {
+            background: linear-gradient(135deg, #fef08a, #fbbf24, #d97706);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        .success-border { border-left: 4px solid var(--wa-green); }
+        .gradient-text-wa {
+            background: linear-gradient(135deg, #86efac, #25D366, #10b981);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navbar -->
-    <nav class="fixed w-full z-50 bg-[#022c22]/80 backdrop-blur-lg border-b border-white/5">
+    <!-- Sticky Navigation -->
+    <nav class="fixed w-full z-50 bg-[#02241c]/90 backdrop-blur-xl border-b border-white/10">
         <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="brand text-2xl font-bold tracking-tighter flex items-center gap-2">
-                <span class="w-2 h-6 bg-yellow-400 rounded-full"></span>KIGGO
+            <a href="#" class="brand text-2xl font-bold tracking-tight flex items-center gap-2">
+                <span class="w-2.5 h-7 bg-yellow-400 rounded-full inline-block"></span>
+                <span>KIGGO<span class="text-yellow-400">.OS</span></span>
             </a>
-            <div class="hidden md:flex gap-8 text-sm font-medium">
-                <a href="#how-it-works" class="hover:text-yellow-400 transition">How it Works</a>
-                <a href="#stories" class="hover:text-yellow-400 transition">Success Stories</a>
-                <a href="#pricing" class="hover:text-yellow-400 transition">Pricing</a>
+            
+            <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-300">
+                <a href="#agro-soko" class="hover:text-yellow-400 transition">Agro-Soko 🌾</a>
+                <a href="#retail-msme" class="hover:text-yellow-400 transition">MSME Commerce 💼</a>
+                <a href="#campaign-war-room" class="hover:text-yellow-400 transition">Campaign War Room 🗳️</a>
+                <a href="#entertainment" class="hover:text-yellow-400 transition">Satire & Voice 🎭</a>
+                <a href="#triggers" class="hover:text-yellow-400 transition">Live Triggers ⚡</a>
             </div>
-            <a href="https://wa.me/254738071393" class="btn-primary px-6 py-2 rounded-full text-sm">Open Shop</a>
+
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/254738071393?text=kigo%20soko" target="_blank" class="btn-wa px-5 py-2.5 rounded-full text-sm flex items-center gap-2 shadow-lg">
+                    <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                    <span>Try on WhatsApp</span>
+                </a>
+            </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-6">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-tight mb-6">
-                    Run Your Business <br>
-                    <span class="text-yellow-400">While You Sleep.</span>
+    <section class="pt-36 pb-20 px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+            
+            <div class="lg:col-span-7">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full badge-gold text-xs font-semibold uppercase tracking-wider mb-6">
+                    <span class="w-2 h-2 rounded-full bg-yellow-400 animate-pulse"></span>
+                    Muuga Muno! Africa's First WhatsApp Agentic OS
+                </div>
+                
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.08] mb-6">
+                    Run High-Value <br>
+                    <span class="gradient-text-gold">Operations on WhatsApp.</span>
                 </h1>
-                <p class="text-xl text-gray-400 mb-8 max-w-lg leading-relaxed">
-                    Kiggo turns your WhatsApp into an autonomous sales machine. We handle the bargaining, secure the M-Pesa payments, and organize your deliveries.
+                
+                <p class="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl font-light leading-relaxed">
+                    Kiggo transforms standard WhatsApp into an autonomous execution engine. From <strong class="text-white font-semibold">smallholder farm aggregation</strong> and <strong class="text-white font-semibold">24/7 retail negotiations</strong> to <strong class="text-white font-semibold">political war rooms</strong> and <strong class="text-white font-semibold">multimodal voice intelligence</strong>.
                 </p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="https://wa.me/254738071393" class="btn-primary px-10 py-4 rounded-xl text-lg">Start Free Trial</a>
-                    <a href="#how-it-works" class="border border-white/10 px-10 py-4 rounded-xl text-lg hover:bg-white/5 transition">See the Flow</a>
+
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <a href="https://wa.me/254738071393?text=kigo%20soko" target="_blank" class="btn-gold px-8 py-4 rounded-xl text-base flex items-center gap-3">
+                        <span>Launch Live Demo</span>
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </a>
+                    <a href="#modules" class="border border-white/15 hover:border-yellow-400/50 bg-white/5 px-8 py-4 rounded-xl text-base hover:bg-white/10 transition flex items-center gap-2 text-gray-200">
+                        <span>Explore Capabilities</span>
+                    </a>
                 </div>
-                <div class="mt-8 flex items-center gap-4 text-sm text-gray-500">
-                    <span class="flex items-center gap-1">✅ No App to Download</span>
-                    <span class="flex items-center gap-1">✅ 100% WhatsApp Native</span>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs text-gray-400">
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/5">
+                        <span class="block font-bold text-white mb-0.5">🌾 Agro-Soko</span>
+                        <span>Zero Middlemen</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/5">
+                        <span class="block font-bold text-white mb-0.5">💼 MSME Commerce</span>
+                        <span>Auto-Negotiations</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/5">
+                        <span class="block font-bold text-white mb-0.5">🗳️ Political OS</span>
+                        <span>Rally Speeches & Art</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-white/5 border border-white/5">
+                        <span class="block font-bold text-white mb-0.5">🎙️ Voice Studio</span>
+                        <span>Natural PTT Audio</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Visual Flow Mockup -->
-            <div class="relative">
-                <div class="chat-card rounded-3xl p-6 shadow-2xl relative z-10">
-                    <div class="space-y-4">
-                        <div class="bg-white/10 p-3 rounded-2xl rounded-bl-none w-3/4 text-sm">
-                            Niaje, do you have Cement in stock?
+            <!-- Live Mockup Visual -->
+            <div class="lg:col-span-5 relative">
+                <div class="glass-card rounded-3xl p-6 shadow-2xl relative z-10 border border-yellow-400/20">
+                    <div class="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-yellow-400 to-emerald-500 flex items-center justify-center font-bold text-black text-sm">K</div>
+                            <div>
+                                <h4 class="font-bold text-sm text-white">Kiggo Agentic Gateway</h4>
+                                <span class="text-[11px] text-emerald-400 flex items-center gap-1.5">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
+                                    Autonomous Soko & War Room Live
+                                </span>
+                            </div>
                         </div>
-                        <div class="bg-green-500/20 border border-green-500/30 p-3 rounded-2xl rounded-br-none w-3/4 ml-auto text-sm">
-                            <span class="block font-bold text-green-400">Kiggo Agent:</span>
-                            Yes! We have Bamburi Tumbatumba at KES 950. How many bags do you need?
+                        <span class="badge-gold text-[10px] px-2.5 py-1 rounded-full font-bold">MERU • NAIROBI</span>
+                    </div>
+
+                    <!-- Conversation Mockup -->
+                    <div class="space-y-3.5 text-xs">
+                        <div class="chat-bubble-in p-3 rounded-2xl rounded-tl-none w-5/6 text-gray-200">
+                            <span class="text-[10px] text-gray-400 block mb-1">Farmer Silas (Timau)</span>
+                            kigo soko I have 1,200kg grade-1 Hass Avocado ready for harvest, asking 70 bob per kg
                         </div>
-                        <div class="bg-white/10 p-3 rounded-2xl rounded-bl-none w-2/3 text-sm">
-                            Need 20 bags. Delivery to Meru Town?
+
+                        <div class="chat-bubble-out p-3 rounded-2xl rounded-tr-none w-11/12 ml-auto text-emerald-100">
+                            <div class="font-bold text-emerald-400 text-[11px] flex items-center gap-1 mb-1">
+                                <span>🌾 KIGO SOKO TICKET</span>
+                                <span class="text-[9px] bg-emerald-500/20 px-1.5 py-0.5 rounded text-emerald-300">SYNCED TO SHEET</span>
+                            </div>
+                            📍 <strong>Location:</strong> Timau, Meru County<br>
+                            📦 <strong>Produce:</strong> 1,200 kg Grade-1 Hass Avocado<br>
+                            💰 <strong>Total Batch Value:</strong> KES 84,000<br>
+                            ✅ <em>Matching verified Nairobi export packhouses automatically...</em>
                         </div>
-                        <div class="bg-yellow-500/20 border border-yellow-500/30 p-3 rounded-2xl rounded-br-none w-3/4 ml-auto text-sm">
-                            <span class="block font-bold text-yellow-400">Kiggo Dispatch:</span>
-                            Order Total: KES 19,000. Sending M-Pesa prompt now. Once paid, Boda Rider <span class="underline">Juma</span> will deliver in 30 mins.
+
+                        <div class="chat-bubble-in p-3 rounded-2xl rounded-tl-none w-5/6 text-gray-200">
+                            <span class="text-[10px] text-gray-400 block mb-1">Campaign Strategist (Maua)</span>
+                            kigo speech Maua on miraa roads and clean ruuji
+                        </div>
+
+                        <div class="chat-bubble-out p-3 rounded-2xl rounded-tr-none w-11/12 ml-auto text-yellow-100 bg-yellow-500/10 border-yellow-500/30">
+                            <div class="font-bold text-yellow-400 text-[11px] mb-1">🎤 MERU RALLY OUTLINE & VOICE NOTE</div>
+                            🗣️ <em>"Muuga muno atoono ba Maua! We must ensure fair market mbeca and paved roads for our farmers. Twite mbee!"</em><br>
+                            <span class="inline-block mt-2 text-[10px] bg-white/10 px-2 py-1 rounded text-gray-300">🎙️ Spoken WhatsApp Voice Note (PTT) Dispatched</span>
                         </div>
                     </div>
                 </div>
-                <div class="absolute -bottom-6 -right-6 w-full h-full bg-yellow-400/10 rounded-3xl -z-0"></div>
+                <div class="absolute -top-6 -right-6 w-full h-full bg-yellow-400/5 rounded-3xl -z-0 blur-2xl"></div>
             </div>
+
         </div>
     </section>
 
-    <!-- How It Works (Tutorial) -->
-    <section id="how-it-works" class="py-24 px-6 bg-black/20">
+    <!-- Capabilities Grid -->
+    <section id="modules" class="py-24 px-6 bg-black/30 border-y border-white/5">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">3 Steps to Automate</h2>
-                <p class="text-gray-400">Onboarding takes less than 5 minutes. No complex tech skills needed.</p>
+            <div class="text-center max-w-3xl mx-auto mb-20">
+                <span class="badge-wa px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">Enterprise Modular Suite</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mb-4">Engineered for Ground Realities</h2>
+                <p class="text-gray-400 text-base sm:text-lg">
+                    Whether you are aggregating farm harvests in Meru, closing retail sales in Nairobi CBD, or running a 2027 political campaign war room, Kiggo handles the complexity natively on WhatsApp.
+                </p>
             </div>
-            
-            <div class="grid md:grid-cols-3 gap-12">
-                <div class="text-center">
-                    <div class="step-number text-6xl font-bold mb-4">01</div>
-                    <h3 class="text-xl font-bold mb-2">Connect Your Inventory</h3>
-                    <p class="text-gray-400 text-sm">Send us a list of your products and prices on WhatsApp. Kiggo learns your stock instantly.</p>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Pillar 1: Agro-Soko -->
+                <div id="agro-soko" class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-3xl mb-6">🥑</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Agro-Soko & Supply Chains</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Smallholder farmers log harvests in natural language (Avocado, Shangi Potatoes, Miraa, Macadamia). Kiggo aggregates volume clusters, issues digital trade tickets, and syncs directly into centralized spreadsheets for Nairobi exporters.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="border-t border-white/10 pt-4 text-xs text-emerald-400 font-semibold flex items-center justify-between">
+                            <span>Kimeru & Swahili Intake</span>
+                            <span>Live Sheet Sync</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="step-number text-6xl font-bold mb-4">02</div>
-                    <h3 class="text-xl font-bold mb-2">Set Your Bargain Range</h3>
-                    <p class="text-gray-400 text-sm">Tell Kiggo your lowest price. It will negotiate with customers to get you the best price possible.</p>
+
+                <!-- Pillar 2: Retail & MSME -->
+                <div id="retail-msme" class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/20 flex items-center justify-center text-3xl mb-6">👟</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">MSME Sales Concierge</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            24/7 autonomous WhatsApp storefront for boutiques, electronics, and pharmacies. Automatically showcases product photos, bargains dynamically within your bottom-price margins, and collects M-Pesa payments while you sleep.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="border-t border-white/10 pt-4 text-xs text-yellow-400 font-semibold flex items-center justify-between">
+                            <span>Dynamic Price Bargaining</span>
+                            <span>M-Pesa STK Locking</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <div class="step-number text-6xl font-bold mb-4">03</div>
-                    <h3 class="text-xl font-bold mb-2">Automate Dispatch</h3>
-                    <p class="text-gray-400 text-sm">Link your trusted riders. Kiggo sends them the delivery location automatically after payment.</p>
+
+                <!-- Pillar 3: Political War Room -->
+                <div id="campaign-war-room" class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-red-500/10 border border-red-500/20 flex items-center justify-center text-3xl mb-6">🗳️</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Campaign War Room</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            Political ground intelligence for leaders and aspirants. Generates 15-minute localized rally speech outlines with authentic Kimeru proverbs, Gazette black-and-white editorial sketches, and daily ward sentiment briefings.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="border-t border-white/10 pt-4 text-xs text-red-400 font-semibold flex items-center justify-between">
+                            <span>Hon. Linturi & Regional Persona</span>
+                            <span>Gazette B&W Cartoons</span>
+                        </div>
+                    </div>
                 </div>
+
+                <!-- Pillar 4: Multimodal Satire & Voice -->
+                <div id="entertainment" class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/20 flex items-center justify-center text-3xl mb-6">🎭</div>
+                        <h3 class="text-2xl font-bold mb-3 text-white">Satire, Counsel & Voice</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed mb-6">
+                            High-engagement multimodal personas. Consult **Mganga wa Pemba** for mystical remedies, receive spiritual peace from **Jesus of Nazareth**, hear **Riggy G vs. Kasongo** national debates, and generate real-time audio voice notes.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="border-t border-white/10 pt-4 text-xs text-purple-400 font-semibold flex items-center justify-between">
+                            <span>Spoken Audio (PTT) Notes</span>
+                            <span>1024x1024 AI Art</span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Success Stories (Case Samples) -->
-    <section id="stories" class="py-24 px-6">
+    <!-- Deep Dive: Real-World Use Cases -->
+    <section class="py-24 px-6">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-12 text-center">Trusted by Hustlers wenye wako Rada</h2>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Case 1: Dante Kicks -->
-                <div class="chat-card p-8 rounded-3xl success-border">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center text-2xl">👟</div>
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Tested Across Key Sectors</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Real deployments delivering verified outcomes across Kenyan counties.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Case 1 -->
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-emerald-500">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-3xl">🌱</span>
                         <div>
-                            <h4 class="text-xl font-bold">Dante Kicks</h4>
-                            <p class="text-sm text-yellow-400">Sneaker Retailer, Maua</p>
+                            <h4 class="font-bold text-white text-base">Meru Smallholder Aggregators</h4>
+                            <span class="text-xs text-emerald-400">Timau • Maua • Kianjai • Nkubu</span>
                         </div>
                     </div>
-                    <p class="text-gray-300 italic mb-6">
-                        "I used to lose sales because I couldn't reply to WhatsApp while serving customers in the shop. Now, Kiggo bargains and closes the sale while I'm attending to walk-ins. My evening deliveries are always ready before I close the shop."
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        Farmers list Macadamia, Shangi potatoes, and Hass avocados by texting crop quantities. Kiggo logs every entry into a shared live marketplace ledger, cutting out predatory middlemen and saving export trucks days of scattered village collection.
                     </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/5 p-3 rounded-xl">
-                            <span class="block text-xs text-gray-500 uppercase">Problem</span>
-                            <span class="text-sm">Delayed Replies</span>
-                        </div>
-                        <div class="bg-green-500/10 p-3 rounded-xl">
-                            <span class="block text-xs text-green-400 uppercase">Kiggo Fix</span>
-                            <span class="text-sm">Instant 24/7 Sales</span>
-                        </div>
+                    <div class="bg-black/30 p-3.5 rounded-xl text-xs space-y-1">
+                        <div class="text-gray-400"><strong>Kimeru Dialect:</strong> <em>"Mbeca za mkulima zinalindwa moja kwa moja."</em></div>
+                        <div class="text-emerald-400 font-semibold">Outcome: +28% Net Farm-Gate Price</div>
                     </div>
                 </div>
 
-                <!-- Case 2: Kiggo Ardhi -->
-                <div class="chat-card p-8 rounded-3xl success-border">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center text-2xl">🚜</div>
+                <!-- Case 2 -->
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-yellow-500">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-3xl">🏬</span>
                         <div>
-                            <h4 class="text-xl font-bold">Kiggo Ardhi</h4>
-                            <p class="text-sm text-yellow-400">Agro-vet & Wholesaler</p>
+                            <h4 class="font-bold text-white text-base">Dante Kicks & Retailers</h4>
+                            <span class="text-xs text-yellow-400">Maua CBD • Nairobi Dubois</span>
                         </div>
                     </div>
-                    <p class="text-gray-300 italic mb-6">
-                        "Managing bulk fertilizer orders used to be a headache of phone calls and M-Pesa messages. Kiggo Ledger now organizes every payment into a clean statement, helping me see exactly what's moving and when."
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        High-traffic shop owners who cannot reply to hundreds of WhatsApp DMs during busy walk-in hours use Kiggo to automate stock inquiries, display product photos, negotiate bottom prices, and lock delivery orders automatically.
                     </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/5 p-3 rounded-xl">
-                            <span class="block text-xs text-gray-500 uppercase">Problem</span>
-                            <span class="text-sm">Order Chaos</span>
-                        </div>
-                        <div class="bg-green-500/10 p-3 rounded-xl">
-                            <span class="block text-xs text-green-400 uppercase">Kiggo Fix</span>
-                            <span class="text-sm">Digital Ledger</span>
-                        </div>
+                    <div class="bg-black/30 p-3.5 rounded-xl text-xs space-y-1">
+                        <div class="text-gray-400"><strong>Speed:</strong> Sub-3 second responses 24/7</div>
+                        <div class="text-yellow-400 font-semibold">Outcome: Zero Missed Sales During Peak Hours</div>
                     </div>
                 </div>
+
+                <!-- Case 3 -->
+                <div class="glass-card p-8 rounded-3xl border-l-4 border-l-red-500">
+                    <div class="flex items-center gap-3 mb-5">
+                        <span class="text-3xl">🏛️</span>
+                        <div>
+                            <h4 class="font-bold text-white text-base">Constituency & Campaign War Rooms</h4>
+                            <span class="text-xs text-red-400">Igembe South • Meru County</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-6 leading-relaxed">
+                        Candidates and strategy directors generate localized rally speech outlines while driving to grounds, produce black-and-white gazette editorial cartoons for social channels, and audit constituency project allocations with forensic accuracy.
+                    </p>
+                    <div class="bg-black/30 p-3.5 rounded-xl text-xs space-y-1">
+                        <div class="text-gray-400"><strong>Call to Action:</strong> <em>"Twite mbee na uongozi wa vitendo!"</em></div>
+                        <div class="text-red-400 font-semibold">Outcome: Rapid Grassroots Ground Mobilization</div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
 
-    <!-- Pricing (Simplified for Customers) -->
-    <section id="pricing" class="py-24 px-6 bg-black/20">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold mb-4">Start for KES 500</h2>
-            <p class="text-gray-400 mb-12">Upgrade your shop to an Autonomous Business today.</p>
+    <!-- Live Triggers Playground -->
+    <section id="triggers" class="py-24 px-6 bg-black/40 border-t border-white/5">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="badge-gold px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4 inline-block">Interactive Command Center</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold mb-4">Test Live on WhatsApp</h2>
+                <p class="text-gray-400 text-sm sm:text-base">
+                    Send any of these exact commands to <a href="https://wa.me/254738071393" target="_blank" class="text-yellow-400 font-bold underline">+254 738 071393</a> to test Kiggo's live neural matrix:
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Trigger 1 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Agro-Soko Intake</span>
+                        <span class="text-xs bg-emerald-500/20 px-2 py-0.5 rounded text-emerald-300">Live Sheet Sync</span>
+                    </div>
+                    <code class="block bg-black/50 p-3 rounded-xl text-xs text-yellow-300 font-mono mb-3 select-all">
+                        kigo soko I have 1,200kg grade-1 Hass Avocado in Timau at 70 bob
+                    </code>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Generates a verified digital trade ticket and writes directly to the central commodity ledger.
+                    </p>
+                </div>
+
+                <!-- Trigger 2 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-red-400 uppercase tracking-wider">Rally Speech & Audio</span>
+                        <span class="text-xs bg-red-500/20 px-2 py-0.5 rounded text-red-300">Voice Note (PTT)</span>
+                    </div>
+                    <code class="block bg-black/50 p-3 rounded-xl text-xs text-yellow-300 font-mono mb-3 select-all">
+                        kigo speech Maua on miraa roads and youth empowerment
+                    </code>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Writes a 3-minute rally outline with authentic Kimeru greetings and sends a spoken voice note.
+                    </p>
+                </div>
+
+                <!-- Trigger 3 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-yellow-400 uppercase tracking-wider">Gazette Caricature</span>
+                        <span class="text-xs bg-yellow-500/20 px-2 py-0.5 rounded text-yellow-300">B&W Ink Sketch</span>
+                    </div>
+                    <code class="block bg-black/50 p-3 rounded-xl text-xs text-yellow-300 font-mono mb-3 select-all">
+                        kigo linturi picha addressing farmers in Maua on road mbeca
+                    </code>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Generates a hand-drawn black-and-white editorial newspaper cartoon and political quote.
+                    </p>
+                </div>
+
+                <!-- Trigger 4 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-purple-400 uppercase tracking-wider">Satirical Healer</span>
+                        <span class="text-xs bg-purple-500/20 px-2 py-0.5 rounded text-purple-300">Mganga wa Pemba</span>
+                    </div>
+                    <code class="block bg-black/50 p-3 rounded-xl text-xs text-yellow-300 font-mono mb-3 select-all">
+                        kigo mganga nimepoteza 5k kwa Aviator nifanye nini?
+                    </code>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Diagnoses modern problems with hilarious traditional Coastal/Kitui herbal remedies.
+                    </p>
+                </div>
+
+                <!-- Trigger 5 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-blue-400 uppercase tracking-wider">Spiritual Counsel</span>
+                        <span class="text-xs bg-blue-500/20 px-2 py-0.5 rounded text-blue-300">Jesus of Nazareth</span>
+                    </div>
+                    <code class="block bg-black/50 p-3 rounded-xl text-xs text-yellow-300 font-mono mb-3 select-all">
+                        kigo jesus I am feeling anxious about my startup and finances
+                    </code>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Provides gentle biblical wisdom, parables, and comforting spiritual counsel.
+                    </p>
+                </div>
+
+                <!-- Trigger 6 -->
+                <div class="glass-card p-6 rounded-2xl">
+                    <div class="flex items-center justify-between mb-3">
+                        <span class="text-xs font-bold text-orange-400 uppercase tracking-wider">National Debate</span>
+                        <span class="text-xs bg-orange-500/20 px-2 py-0.5 rounded text-orange-300">4-Turn Clash</span>
+                    </div>
+                    <code class="block bg-black/50 p-3 rounded-xl text-xs text-yellow-300 font-mono mb-3 select-all">
+                        kigo battle The Finance Bill and local market taxes
+                    </code>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        Triggers a 4-turn satirical clash between Riggy G 🏔️ and Kasongo 💼.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Deployment Tiers -->
+    <section class="py-24 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-bold mb-4">Modular Deployment Tiers</h2>
+                <p class="text-gray-400 text-sm sm:text-base">Customized agentic workflows engineered for your enterprise scale.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Tier 1 -->
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <span class="badge-wa text-[11px] font-bold px-2.5 py-1 rounded-full uppercase mb-4 inline-block">Retail & Trade</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">MSME Commerce</h3>
+                        <p class="text-gray-400 text-xs mb-6">For physical shops, boutiques, pharmacies, and merchants.</p>
+                        
+                        <ul class="space-y-3 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2">✅ 24/7 Autonomous Sales Concierge</li>
+                            <li class="flex items-center gap-2">✅ Dynamic Price Negotiation Engine</li>
+                            <li class="flex items-center gap-2">✅ Automated Product Photo Delivery</li>
+                            <li class="flex items-center gap-2">✅ M-Pesa Order Verification</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/254738071393?text=talk%20to%20demo" target="_blank" class="block text-center border border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-black py-3 rounded-xl font-bold text-sm transition">Deploy MSME Agent</a>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="glass-card p-8 rounded-3xl border-yellow-400/50 flex flex-col justify-between relative shadow-xl">
+                    <div class="absolute -top-3 right-6 bg-yellow-400 text-black text-[10px] font-black px-3 py-1 rounded-full uppercase">Most Requested</div>
+                    <div>
+                        <span class="badge-gold text-[11px] font-bold px-2.5 py-1 rounded-full uppercase mb-4 inline-block">Agri-Business</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Agro-Soko Hub</h3>
+                        <p class="text-gray-400 text-xs mb-6">For farm cooperatives, aggregators, and fresh produce exporters.</p>
+                        
+                        <ul class="space-y-3 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2">✅ Smallholder Harvest Digital Soko Tickets</li>
+                            <li class="flex items-center gap-2">✅ Real-Time Google Sheets / ERP Database Sync</li>
+                            <li class="flex items-center gap-2">✅ Batch Volume Aggregation Engine</li>
+                            <li class="flex items-center gap-2">✅ Pre-Harvest Buyer Connection Manifests</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/254738071393?text=kigo%20soko" target="_blank" class="block text-center btn-gold py-3.5 rounded-xl font-bold text-sm">Deploy Agro-Soko Hub</a>
+                </div>
+
+                <!-- Tier 3 -->
+                <div class="glass-card p-8 rounded-3xl flex flex-col justify-between">
+                    <div>
+                        <span class="badge-gold text-[11px] font-bold px-2.5 py-1 rounded-full uppercase mb-4 inline-block">Strategic</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Campaign War Room</h3>
+                        <p class="text-gray-400 text-xs mb-6">For political candidates, county leaders, and strategic teams.</p>
+                        
+                        <ul class="space-y-3 text-xs text-gray-300 mb-8">
+                            <li class="flex items-center gap-2">✅ Ward Grassroots Sentiment Sentinel</li>
+                            <li class="flex items-center gap-2">✅ 15-Min Localized Rally Speech & Audio Briefs</li>
+                            <li class="flex items-center gap-2">✅ Black & White Gazette Editorial Caricatures</li>
+                            <li class="flex items-center gap-2">✅ Rapid Response Counter-Narratives</li>
+                        </ul>
+                    </div>
+                    <a href="https://wa.me/254738071393?text=talk%20to%20linturi" target="_blank" class="block text-center border border-yellow-400 text-yellow-400 hover:bg-yellow-400 hover:text-black py-3 rounded-xl font-bold text-sm transition">Deploy War Room</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Call to Action -->
+    <section class="py-24 px-6 bg-gradient-to-b from-transparent to-black/60 text-center border-t border-white/5">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-5xl font-extrabold mb-6">
+                Ready to Deploy <span class="gradient-text-gold">Autonomous Intelligence?</span>
+            </h2>
+            <p class="text-gray-300 text-base sm:text-lg mb-10 max-w-xl mx-auto font-light">
+                Connect with our team directly on WhatsApp to test live capabilities or request a customized deployment for your enterprise.
+            </p>
             
-            <div class="grid md:grid-cols-2 gap-8 text-left">
-                <div class="chat-card p-8 rounded-2xl">
-                    <h3 class="text-xl font-bold mb-2">Micro-Hustle</h3>
-                    <p class="text-4xl font-bold mb-6">KES 500<span class="text-sm text-gray-500 font-normal">/mo</span></p>
-                    <ul class="space-y-3 text-sm text-gray-300">
-                        <li>✅ 24/7 AI Sales Agent</li>
-                        <li>✅ M-Pesa STK Push</li>
-                        <li>✅ Digital Sales Record</li>
-                    </ul>
-                    <a href="https://wa.me/254738071393" class="block text-center mt-8 border border-yellow-400 text-yellow-400 py-3 rounded-xl font-bold">Try 7 Days Free</a>
-                </div>
-                <div class="chat-card p-8 rounded-2xl border-yellow-400">
-                    <div class="bg-yellow-400 text-black text-[10px] font-black px-2 py-1 rounded inline-block mb-2 uppercase">Recommended</div>
-                    <h3 class="text-xl font-bold mb-2">Power Seller</h3>
-                    <p class="text-4xl font-bold mb-6">KES 1,500<span class="text-sm text-gray-500 font-normal">/mo</span></p>
-                    <ul class="space-y-3 text-sm text-gray-300">
-                        <li>✅ Everything in Micro</li>
-                        <li>✅ Automatic Rider Dispatch</li>
-                        <li>✅ Inventory Tracking</li>
-                    </ul>
-                    <a href="https://wa.me/254738071393" class="block text-center mt-8 btn-primary py-3 rounded-xl font-bold">Scale My Business</a>
-                </div>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://wa.me/254738071393?text=kigo%20demo" target="_blank" class="btn-gold px-10 py-4 rounded-full text-base sm:text-lg flex items-center gap-3">
+                    <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                    <span>Chat on WhatsApp (+254 738 071393)</span>
+                </a>
+            </div>
+
+            <div class="mt-16 text-xs text-gray-500 flex flex-wrap justify-center gap-6">
+                <span>📍 Maua, Meru County</span>
+                <span>📍 Nairobi, Kenya</span>
+                <span>🎓 University of Nairobi Incubation Cohort 1</span>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-20 px-6 border-t border-white/5 text-center">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8">Ready to formalize your hustle?</h2>
-            <a href="https://wa.me/254738071393" class="btn-primary px-12 py-4 rounded-full text-xl inline-block">Chat with Kiggo</a>
-            <div class="mt-20 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500">
-                <p>&copy; 2026 KangwanaTech. Built in Nairobi for Africa.</p>
-                <div class="flex gap-6 mt-4 md:mt-0">
-                    <a href="#" class="hover:text-yellow-400 transition">How it Works</a>
-                    <a href="#" class="hover:text-yellow-400 transition">Terms</a>
-                    <a href="mailto:roykangwana@gmail.com" class="hover:text-yellow-400 transition">Support</a>
-                </div>
+    <footer class="py-12 px-6 border-t border-white/5 bg-black/40 text-center text-xs text-gray-500">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Kiggo Agentic Systems. Built in Maua & Nairobi for Africa.</p>
+            <div class="flex gap-6">
+                <a href="#modules" class="hover:text-yellow-400 transition">Modules</a>
+                <a href="#triggers" class="hover:text-yellow-400 transition">Live Triggers</a>
+                <a href="mailto:roykangwana@gmail.com" class="hover:text-yellow-400 transition">Contact Founder</a>
             </div>
         </div>
     </footer>
